@@ -1,3 +1,4 @@
+
 <table><tbody><tr><td width="400" valign="top">
 
 In Bun, you can start a web server without having to explicitly call
@@ -16,10 +17,10 @@ export default {
 };
 ```
 
+</td></tr></tbody></table>
+
 <table><tr><td><details><summary>Example request</summary>
 
 TODO
 
 </details></td></tr></table>
-
-</td></tr></tbody></table>
