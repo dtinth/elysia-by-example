@@ -1,7 +1,6 @@
-
 <table>
-<colgroup><col width="1000"><col width="1000"></colgroup>
-<tbody><tr><td width="1000" valign="top">
+<tbody>
+<tr><td width="2000" valign="top">
 
 In Bun, you can start a web server without having to explicitly call
 the `listen` method — just `export default` an object that has a
@@ -27,7 +26,7 @@ Started development server: http://localhost:3000
 
 <img src='sizer.png' width='8000' height='1'>
 
-</td><td width="1000" valign="top">
+</td><td width="2000" valign="top">
 
 ```ts
 export default {
@@ -49,29 +48,28 @@ export default {
 
 <img src='sizer.png' width='7000' height='1'>
 
-</td></tr></tbody></table>
-
+</td></tr>
+<tr><td colspan="2">
 <table><tr><td><details><summary>Example request</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:36:38 GMT
+Date: Thu, 19 Dec 2024 17:40:30 GMT
 Content-Length: 11
 
 hello world
 ```
 
 </details></td></tr></table>
-
 <table><tr><td><details><summary>Example request with a query parameter</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:36:38 GMT
+Date: Thu, 19 Dec 2024 17:40:30 GMT
 Content-Length: 11
 
 hello world
@@ -80,17 +78,15 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:36:38 GMT
+Date: Thu, 19 Dec 2024 17:40:30 GMT
 Content-Length: 11
 
 hello alice
 ```
 
 </details></td></tr></table>
-
-<table>
-<colgroup><col width="1000"><col width="1000"></colgroup>
-<tbody><tr><td width="1000" valign="top">
+</td></tr>
+<tr><td width="2000" valign="top">
 
 Elysia implements such an interface.
 That means you can `export default` an Elysia app and it will start a server when run with Bun.
@@ -99,7 +95,7 @@ Right now, the server does not have any routes, so it will return a 404 response
 
 <img src='sizer.png' width='8000' height='1'>
 
-</td><td width="1000" valign="top">
+</td><td width="2000" valign="top">
 
 ```ts
 import { Elysia } from "elysia";
@@ -108,18 +104,20 @@ export default new Elysia();
 
 <img src='sizer.png' width='7000' height='1'>
 
-</td></tr></tbody></table>
-
+</td></tr>
+<tr><td colspan="2">
 <table><tr><td><details><summary>Example request</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:36:38 GMT
+Date: Thu, 19 Dec 2024 17:40:30 GMT
 Content-Length: 9
 
 NOT_FOUND
 ```
 
 </details></td></tr></table>
+</td></tr>
+</tbody></table>
