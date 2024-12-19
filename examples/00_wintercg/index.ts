@@ -1,1 +1,7 @@
-export default () => new Response("haiyaa", { status: 200 });
+export default {
+  fetch() {
+    return new Response("hi", {
+      status: 200,
+    });
+  },
+};

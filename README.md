@@ -7,7 +7,13 @@ the `listen` method — just `export default` an object that has a
 </td><td width="400">
 
 ```ts
-export default () => new Response("haiyaa", { status: 200 });
+export default {
+  fetch() {
+    return new Response("hi", {
+      status: 200,
+    });
+  },
+};
 ```
 
 <table><tr><td><details><summary>Example request</summary>
