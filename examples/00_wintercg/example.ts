@@ -4,7 +4,10 @@ export { default as app } from "./index";
 export default markdown`
 In Bun, you can start a web server without having to explicitly call
 the \`listen\` method — just \`export default\` an object that has a
-\`fetch\` method.
+\`fetch\` method. It should:
+
+1. Accept a \`Request\` object.
+2. Return a \`Response\` object.
 
 When you run:
 
@@ -27,6 +30,12 @@ export const tests = [
     title: "Example request",
     request: {
       url: "/",
+    },
+  }),
+  defineTest({
+    title: "Example request with a query parameter",
+    request: {
+      url: "/?name=alice",
     },
   }),
 ];
