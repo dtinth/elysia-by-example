@@ -33,6 +33,14 @@ export default {
 
 <table><tr><td><details><summary>Example request</summary>
 
-TODO
+```sh-session
+$ curl -s -D- "http://localhost:63526/"
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 12:17:14 GMT
+Content-Length: 2
+
+hi
+```
 
 </details></td></tr></table>

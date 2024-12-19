@@ -1,4 +1,5 @@
 import { defineTest, markdown } from "../../src/docs";
+export { default as app } from "./index";
 
 export default markdown`
 In Bun, you can start a web server without having to explicitly call
@@ -18,10 +19,11 @@ Started development server: http://localhost:3000
 ~~~
 `;
 
-export const module = await import("./index");
 export const tests = [
   defineTest({
     title: "Example request",
-    request: (fetch) => fetch("/"),
+    request: {
+      url: "/",
+    },
   }),
 ];

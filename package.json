@@ -5,9 +5,15 @@
   "devDependencies": {
     "@tsconfig/bun": "^1.0.7",
     "@types/bun": "latest",
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.10.2",
+    "@types/statuses": "^2.0.5",
+    "prettier": "^3.4.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "execa": "^9.5.2",
+    "statuses": "^2.0.1"
   }
 }

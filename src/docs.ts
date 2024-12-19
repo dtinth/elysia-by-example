@@ -4,9 +4,13 @@ export const markdown = (strings: TemplateStringsArray, ...values: any[]) => {
   }, "");
 };
 
+export interface TestRequest {
+  url: string;
+}
+
 export interface Test {
   title: string;
-  request: (fetch: Fetch) => Promise<Response>;
+  request: TestRequest;
 }
 
 export function defineTest(test: Test) {
