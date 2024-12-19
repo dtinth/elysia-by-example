@@ -52,7 +52,7 @@ export default {
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:49:52 GMT
+Date: Thu, 19 Dec 2024 17:50:31 GMT
 Content-Length: 11
 
 hello world
@@ -65,7 +65,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:49:52 GMT
+Date: Thu, 19 Dec 2024 17:50:31 GMT
 Content-Length: 11
 
 hello alice
@@ -80,10 +80,40 @@ The fetch handler is called for every request, so paths like "/arbitrary-path" w
 $ curl -s -D- "http://localhost:3000/arbitrary-path?name=bob"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:49:52 GMT
+Date: Thu, 19 Dec 2024 17:50:31 GMT
 Content-Length: 9
 
 hello bob
+```
+
+</details></td></tr></table>
+</td></tr>
+<tr><td width="2000" valign="top">
+
+Elysia implements such an interface.
+That means you can `export default` an Elysia app and it will start a server when run with Bun.
+
+Right now, the server does not have any routes, so it will return a 404 response for any request.
+
+</td><td width="2000" valign="top">
+
+```ts
+import { Elysia } from "elysia";
+export default new Elysia();
+```
+
+</td></tr>
+<tr><td colspan="2">
+<table><tr><td><details><summary>GET /</summary>
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/"
+HTTP/1.1 404 Not Found
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 17:50:31 GMT
+Content-Length: 9
+
+NOT_FOUND
 ```
 
 </details></td></tr></table>
@@ -128,7 +158,7 @@ export default new Elysia().get(
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:49:52 GMT
+Date: Thu, 19 Dec 2024 17:50:31 GMT
 Content-Length: 11
 
 hello world
@@ -141,7 +171,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:49:52 GMT
+Date: Thu, 19 Dec 2024 17:50:31 GMT
 Content-Length: 11
 
 hello alice
@@ -154,37 +184,7 @@ hello alice
 $ curl -s -D- "http://localhost:3000/arbitrary-path"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:49:52 GMT
-Content-Length: 9
-
-NOT_FOUND
-```
-
-</details></td></tr></table>
-</td></tr>
-<tr><td width="2000" valign="top">
-
-Elysia implements such an interface.
-That means you can `export default` an Elysia app and it will start a server when run with Bun.
-
-Right now, the server does not have any routes, so it will return a 404 response for any request.
-
-</td><td width="2000" valign="top">
-
-```ts
-import { Elysia } from "elysia";
-export default new Elysia();
-```
-
-</td></tr>
-<tr><td colspan="2">
-<table><tr><td><details><summary>GET /</summary>
-
-```sh-session
-$ curl -s -D- "http://localhost:3000/"
-HTTP/1.1 404 Not Found
-content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:49:52 GMT
+Date: Thu, 19 Dec 2024 17:50:31 GMT
 Content-Length: 9
 
 NOT_FOUND

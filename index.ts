@@ -6,7 +6,7 @@ async function* doc() {
   const glob = new Bun.Glob("**/example.ts");
   yield `<table>`;
   yield `<tbody>`;
-  for await (const file of glob.scan("examples")) {
+  for (const file of Array.from(glob.scanSync("examples")).sort()) {
     const module = await import(`./examples/${file}`);
     yield `<tr><td width="2000" valign="top">`;
     yield ``;
