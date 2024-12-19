@@ -2,11 +2,11 @@ async function* doc() {
   const glob = new Bun.Glob("**/example.ts");
   for await (const file of glob.scan("examples")) {
     const module = await import(`./examples/${file}`);
-    yield `<table><tbody><tr><td width="400">`;
+    yield `<table><tbody><tr><td width="400" valign="top">`;
     yield ``;
     yield module.default.trim();
     yield ``;
-    yield `</td><td width="400">`;
+    yield `</td><td width="400" valign="top">`;
     yield ``;
     yield "```ts";
     yield (
