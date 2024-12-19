@@ -13,6 +13,8 @@ async function* doc() {
     yield ``;
     yield module.default.trim();
     yield ``;
+    yield "<img src='sizer.png'>";
+    yield ``;
     yield `</td><td width="1000" valign="top">`;
     yield ``;
     yield "```ts";
@@ -22,8 +24,6 @@ async function* doc() {
       ).text()
     ).trim();
     yield "```";
-    yield "";
-    yield "<img src='sizer.png'>";
     yield "";
     yield `</td></tr></tbody></table>`;
     if (module.tests) {
