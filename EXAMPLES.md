@@ -52,7 +52,7 @@ export default {
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 11
 
 hello world
@@ -65,7 +65,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 11
 
 hello alice
@@ -80,7 +80,7 @@ The fetch handler is called for every request, so paths like "/arbitrary-path" w
 $ curl -s -D- "http://localhost:3000/arbitrary-path?name=bob"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 9
 
 hello bob
@@ -110,7 +110,7 @@ export default new Elysia();
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 9
 
 NOT_FOUND
@@ -164,7 +164,7 @@ export default new Elysia().get(
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 11
 
 hello world
@@ -177,7 +177,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 11
 
 hello alice
@@ -190,7 +190,7 @@ hello alice
 $ curl -s -D- "http://localhost:3000/arbitrary-path"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 9
 
 NOT_FOUND
@@ -230,7 +230,7 @@ export default new Elysia().get(
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 11
 
 hello world
@@ -263,7 +263,7 @@ export default new Elysia().get(
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 11
 
 hello world
@@ -276,7 +276,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 18:04:02 GMT
+Date: Thu, 19 Dec 2024 18:04:32 GMT
 Content-Length: 11
 
 hello alice
