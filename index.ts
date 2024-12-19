@@ -12,8 +12,6 @@ async function* doc() {
     yield ``;
     yield module.default.trim();
     yield ``;
-    yield "<img src='sizer.png' width='8000' height='1'>";
-    yield ``;
     yield `</td><td width="2000" valign="top">`;
     yield ``;
     yield "```ts";
@@ -23,8 +21,6 @@ async function* doc() {
       ).text()
     ).trim();
     yield "```";
-    yield ``;
-    yield "<img src='sizer.png' width='7000' height='1'>";
     yield ``;
     yield `</td></tr>`;
     if (module.tests) {

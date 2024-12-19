@@ -24,8 +24,6 @@ Started development server: http://localhost:3000
 - You can configure the listening port by setting the `PORT` environment variable.
 - If you set `NODE_ENV=production`, it will say “Started server” instead of “Started development server”.
 
-<img src='sizer.png' width='8000' height='1'>
-
 </td><td width="2000" valign="top">
 
 ```ts
@@ -46,8 +44,6 @@ export default {
 };
 ```
 
-<img src='sizer.png' width='7000' height='1'>
-
 </td></tr>
 <tr><td colspan="2">
 <table><tr><td><details><summary>Example request</summary>
@@ -56,7 +52,7 @@ export default {
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:40:30 GMT
+Date: Thu, 19 Dec 2024 17:41:23 GMT
 Content-Length: 11
 
 hello world
@@ -69,7 +65,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:40:30 GMT
+Date: Thu, 19 Dec 2024 17:41:23 GMT
 Content-Length: 11
 
 hello world
@@ -78,7 +74,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:40:30 GMT
+Date: Thu, 19 Dec 2024 17:41:23 GMT
 Content-Length: 11
 
 hello alice
@@ -93,16 +89,12 @@ That means you can `export default` an Elysia app and it will start a server whe
 
 Right now, the server does not have any routes, so it will return a 404 response for any request.
 
-<img src='sizer.png' width='8000' height='1'>
-
 </td><td width="2000" valign="top">
 
 ```ts
 import { Elysia } from "elysia";
 export default new Elysia();
 ```
-
-<img src='sizer.png' width='7000' height='1'>
 
 </td></tr>
 <tr><td colspan="2">
@@ -112,7 +104,7 @@ export default new Elysia();
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:40:30 GMT
+Date: Thu, 19 Dec 2024 17:41:23 GMT
 Content-Length: 9
 
 NOT_FOUND
