@@ -1,0 +1,13 @@
+{
+  "name": "elysia-by-example",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@tsconfig/bun": "^1.0.7",
+    "@types/bun": "latest",
+    "@types/node": "^22.10.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
