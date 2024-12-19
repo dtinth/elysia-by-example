@@ -1,5 +1,5 @@
 
-<table><tbody><tr><td width="400" valign="top">
+<table><tbody><tr><td width="1000" valign="top">
 
 In Bun, you can start a web server without having to explicitly call
 the `listen` method — just `export default` an object that has a
@@ -17,7 +17,7 @@ You should see:
 Started development server: http://localhost:3000
 ~~~
 
-</td><td width="400" valign="top">
+</td><td width="1000" valign="top">
 
 ```ts
 export default {
