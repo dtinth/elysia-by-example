@@ -31,6 +31,7 @@ async function* doc() {
         yield "";
         await tester.run(test.request);
         yield tester.log.join("\n");
+        tester.log.length = 0;
         yield "";
         yield "</details></td></tr></table>";
       }
