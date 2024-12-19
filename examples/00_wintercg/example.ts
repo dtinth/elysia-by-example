@@ -17,6 +17,9 @@ You should see:
 ~~~
 Started development server: http://localhost:3000
 ~~~
+
+- You can configure the listening port by setting the \`PORT\` environment variable.
+- If you set \`NODE_ENV=production\`, it will say “Started server” instead of “Started development server”.
 `;
 
 export const tests = [

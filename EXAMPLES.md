@@ -17,6 +17,9 @@ You should see:
 Started development server: http://localhost:3000
 ~~~
 
+- You can configure the listening port by setting the `PORT` environment variable.
+- If you set `NODE_ENV=production`, it will say “Started server” instead of “Started development server”.
+
 </td><td width="1000" valign="top">
 
 ```ts
@@ -37,7 +40,7 @@ export default {
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 12:18:55 GMT
+Date: Thu, 19 Dec 2024 12:25:10 GMT
 Content-Length: 2
 
 hi
