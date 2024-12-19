@@ -15,6 +15,18 @@ async function* doc() {
       ).text()
     ).trim();
     yield "```";
+
+    if (module.tests) {
+      for (const test of module.tests) {
+        yield "";
+        yield `<table><tr><td><details><summary>${test.title}</summary>`;
+        yield "";
+        yield "TODO";
+        yield "";
+        yield "</details></td></tr></table>";
+      }
+    }
+
     yield "";
     yield `</td></tr></tbody></table>`;
   }
