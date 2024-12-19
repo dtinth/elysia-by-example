@@ -57,7 +57,9 @@ class Tester {
     command += " ";
     command += $.escape(new URL(request.url, this.server.url).href);
     this.log.push("```sh-session");
-    this.log.push(`$ ${command}`);
+    this.log.push(
+      `$ ${command.replace(this.server.url.origin, "http://localhost:3000")}`
+    );
     this.log.push((await execa(command + " 2>&1", { shell: true })).stdout);
     this.log.push("```");
   }

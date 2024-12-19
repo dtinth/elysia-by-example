@@ -34,10 +34,10 @@ export default {
 <table><tr><td><details><summary>Example request</summary>
 
 ```sh-session
-$ curl -s -D- "http://localhost:63526/"
+$ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 12:17:14 GMT
+Date: Thu, 19 Dec 2024 12:18:55 GMT
 Content-Length: 2
 
 hi
