@@ -7,7 +7,9 @@ async function* doc() {
   for await (const file of glob.scan("examples")) {
     yield ``;
     const module = await import(`./examples/${file}`);
-    yield `<table><tbody><tr><td width="1000" valign="top">`;
+    yield `<table>`;
+    yield `<colgroup><col width="1000"><col width="1000"></colgroup>`;
+    yield `<tbody><tr><td width="1000" valign="top">`;
     yield ``;
     yield module.default.trim();
     yield ``;
