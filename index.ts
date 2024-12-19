@@ -8,6 +8,11 @@ async function* doc() {
   yield `<tbody>`;
   for (const file of Array.from(glob.scanSync("examples")).sort()) {
     const module = await import(`./examples/${file}`);
+    yield `<tr><td colspan="2">`;
+    yield ``;
+    yield `## [${file.replace("/example.ts", "")}](${file.replace("/example.ts", "/index.ts")})`;
+    yield ``;
+    yield `</td></tr>`;
     yield `<tr><td width="2000" valign="top">`;
     yield ``;
     yield module.default.trim();
