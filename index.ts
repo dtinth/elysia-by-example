@@ -23,6 +23,8 @@ async function* doc() {
     ).trim();
     yield "```";
     yield "";
+    yield "<img src='sizer.png'>";
+    yield "";
     yield `</td></tr></tbody></table>`;
     if (module.tests) {
       using tester = new Tester(module.app);

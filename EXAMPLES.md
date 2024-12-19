@@ -45,6 +45,8 @@ export default {
 };
 ```
 
+<img src='sizer.png'>
+
 </td></tr></tbody></table>
 
 <table><tr><td><details><summary>Example request</summary>
@@ -53,7 +55,7 @@ export default {
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:32:04 GMT
+Date: Thu, 19 Dec 2024 17:34:48 GMT
 Content-Length: 11
 
 hello world
@@ -67,7 +69,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:32:04 GMT
+Date: Thu, 19 Dec 2024 17:34:48 GMT
 Content-Length: 11
 
 hello world
@@ -76,7 +78,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:32:04 GMT
+Date: Thu, 19 Dec 2024 17:34:48 GMT
 Content-Length: 11
 
 hello alice
@@ -100,6 +102,8 @@ import { Elysia } from "elysia";
 export default new Elysia();
 ```
 
+<img src='sizer.png'>
+
 </td></tr></tbody></table>
 
 <table><tr><td><details><summary>Example request</summary>
@@ -108,7 +112,7 @@ export default new Elysia();
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:32:04 GMT
+Date: Thu, 19 Dec 2024 17:34:48 GMT
 Content-Length: 9
 
 NOT_FOUND
