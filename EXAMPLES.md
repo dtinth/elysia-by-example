@@ -1,5 +1,7 @@
 
-<table><tbody><tr><td width="1000" valign="top">
+<table>
+<colgroup><col width="1000"><col width="1000"></colgroup>
+<tbody><tr><td width="1000" valign="top">
 
 In Bun, you can start a web server without having to explicitly call
 the `listen` method — just `export default` an object that has a
@@ -51,7 +53,7 @@ export default {
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:29:55 GMT
+Date: Thu, 19 Dec 2024 17:32:04 GMT
 Content-Length: 11
 
 hello world
@@ -65,7 +67,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:29:55 GMT
+Date: Thu, 19 Dec 2024 17:32:04 GMT
 Content-Length: 11
 
 hello world
@@ -74,7 +76,7 @@ hello world
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:29:55 GMT
+Date: Thu, 19 Dec 2024 17:32:04 GMT
 Content-Length: 11
 
 hello alice
@@ -82,7 +84,9 @@ hello alice
 
 </details></td></tr></table>
 
-<table><tbody><tr><td width="1000" valign="top">
+<table>
+<colgroup><col width="1000"><col width="1000"></colgroup>
+<tbody><tr><td width="1000" valign="top">
 
 Elysia implements such an interface.
 That means you can `export default` an Elysia app and it will start a server when run with Bun.
@@ -104,7 +108,7 @@ export default new Elysia();
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:29:55 GMT
+Date: Thu, 19 Dec 2024 17:32:04 GMT
 Content-Length: 9
 
 NOT_FOUND
