@@ -27,15 +27,23 @@ Started development server: http://localhost:3000
 
 export const tests = [
   defineTest({
-    title: "Example request",
+    title: "GET /",
     request: {
       url: "/",
     },
   }),
   defineTest({
-    title: "Example request with a query parameter",
+    title: "GET /?name=alice",
     request: {
       url: "/?name=alice",
+    },
+  }),
+  defineTest({
+    title: "GET /arbitrary-path?name=bob",
+    description:
+      'The fetch handler is called for every request, so paths like "/arbitrary-path" work too.',
+    request: {
+      url: "/arbitrary-path?name=bob",
     },
   }),
 ];

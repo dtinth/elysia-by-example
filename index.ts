@@ -1,6 +1,6 @@
 import { $, type Server } from "bun";
 import { execa } from "execa";
-import type { TestRequest } from "./src/docs";
+import type { Test, TestRequest } from "./src/docs";
 
 async function* doc() {
   const glob = new Bun.Glob("**/example.ts");
@@ -26,13 +26,25 @@ async function* doc() {
     if (module.tests) {
       using tester = new Tester(module.app);
       yield `<tr><td colspan="2">`;
-      for (const test of module.tests) {
+      for (const test of module.tests as Test[]) {
         yield `<table><tr><td><details><summary>${test.title}</summary>`;
         yield "";
+
+        if (test.description) {
+          yield test.description;
+          yield "";
+        }
+
         await tester.run(test.request);
         yield tester.log.join("\n");
         tester.log.length = 0;
         yield "";
+
+        if (test.explanation) {
+          yield test.explanation;
+          yield "";
+        }
+
         yield "</details></td></tr></table>";
       }
       yield `</td></tr>`;

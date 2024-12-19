@@ -10,7 +10,9 @@ export interface TestRequest {
 
 export interface Test {
   title: string;
+  description?: string;
   request: TestRequest;
+  explanation?: string;
 }
 
 export function defineTest(test: Test) {

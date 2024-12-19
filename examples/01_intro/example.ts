@@ -10,7 +10,7 @@ Right now, the server does not have any routes, so it will return a 404 response
 
 export const tests = [
   defineTest({
-    title: "Example request",
+    title: "GET /",
     request: {
       url: "/",
     },

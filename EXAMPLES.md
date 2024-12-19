@@ -46,29 +46,118 @@ export default {
 
 </td></tr>
 <tr><td colspan="2">
-<table><tr><td><details><summary>Example request</summary>
+<table><tr><td><details><summary>GET /</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:42:46 GMT
+Date: Thu, 19 Dec 2024 17:49:52 GMT
 Content-Length: 11
 
 hello world
 ```
 
 </details></td></tr></table>
-<table><tr><td><details><summary>Example request with a query parameter</summary>
+<table><tr><td><details><summary>GET /?name=alice</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:42:46 GMT
+Date: Thu, 19 Dec 2024 17:49:52 GMT
 Content-Length: 11
 
 hello alice
+```
+
+</details></td></tr></table>
+<table><tr><td><details><summary>GET /arbitrary-path?name=bob</summary>
+
+The fetch handler is called for every request, so paths like "/arbitrary-path" work too.
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/arbitrary-path?name=bob"
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 17:49:52 GMT
+Content-Length: 9
+
+hello bob
+```
+
+</details></td></tr></table>
+</td></tr>
+<tr><td width="2000" valign="top">
+
+You can define routes by calling the `.get`, `.post`, `.put`, `.patch`, and `.delete` methods on an Elysia app.
+
+It takes 3 arguments:
+
+1. The pathname pattern.
+2. The handler function.
+3. An optional options object.
+
+</td><td width="2000" valign="top">
+
+```ts
+import { Elysia } from "elysia";
+export default new Elysia().get(
+  // Pathname
+  "/",
+
+  // Handler
+  ({ request }) => {
+    const url = new URL(request.url);
+    const name =
+      url.searchParams.get("name") || "world";
+    return new Response("hello " + name, {
+      status: 200,
+    });
+  },
+
+  // No options for now...
+);
+```
+
+</td></tr>
+<tr><td colspan="2">
+<table><tr><td><details><summary>GET /</summary>
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/"
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 17:49:52 GMT
+Content-Length: 11
+
+hello world
+```
+
+</details></td></tr></table>
+<table><tr><td><details><summary>GET /?name=alice</summary>
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/?name=alice"
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 17:49:52 GMT
+Content-Length: 11
+
+hello alice
+```
+
+</details></td></tr></table>
+<table><tr><td><details><summary>GET /arbitrary-path</summary>
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/arbitrary-path"
+HTTP/1.1 404 Not Found
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 17:49:52 GMT
+Content-Length: 9
+
+NOT_FOUND
 ```
 
 </details></td></tr></table>
@@ -89,13 +178,13 @@ export default new Elysia();
 
 </td></tr>
 <tr><td colspan="2">
-<table><tr><td><details><summary>Example request</summary>
+<table><tr><td><details><summary>GET /</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:42:46 GMT
+Date: Thu, 19 Dec 2024 17:49:52 GMT
 Content-Length: 9
 
 NOT_FOUND
