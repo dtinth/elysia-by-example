@@ -2,10 +2,7 @@ import { defineTest, markdown } from "../../src/docs";
 export { default as app } from "./index";
 
 export default markdown`
-Elysia implements such an interface.
-That means you can \`export default\` an Elysia app and it will start a server when run with Bun.
-
-Right now, the server does not have any routes, so it will return a 404 response for any request.
+The context also contains a \`query\` property which is an object containing the query parameters.
 `;
 
 export const tests = [
@@ -13,6 +10,12 @@ export const tests = [
     title: "GET / — basic request",
     request: {
       url: "/",
+    },
+  }),
+  defineTest({
+    title: "GET /?name=alice — with query parameters",
+    request: {
+      url: "/?name=alice",
     },
   }),
 ];

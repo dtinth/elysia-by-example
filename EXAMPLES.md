@@ -46,33 +46,33 @@ export default {
 
 </td></tr>
 <tr><td colspan="2">
-<table><tr><td><details><summary>GET /</summary>
+<table><tr><td><details><summary>GET / — basic request</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:50:31 GMT
+Date: Thu, 19 Dec 2024 18:04:02 GMT
 Content-Length: 11
 
 hello world
 ```
 
 </details></td></tr></table>
-<table><tr><td><details><summary>GET /?name=alice</summary>
+<table><tr><td><details><summary>GET /?name=alice — with query parameters</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:50:31 GMT
+Date: Thu, 19 Dec 2024 18:04:02 GMT
 Content-Length: 11
 
 hello alice
 ```
 
 </details></td></tr></table>
-<table><tr><td><details><summary>GET /arbitrary-path?name=bob</summary>
+<table><tr><td><details><summary>GET /arbitrary-path?name=bob — arbitrary path</summary>
 
 The fetch handler is called for every request, so paths like "/arbitrary-path" work too.
 
@@ -80,7 +80,7 @@ The fetch handler is called for every request, so paths like "/arbitrary-path" w
 $ curl -s -D- "http://localhost:3000/arbitrary-path?name=bob"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:50:31 GMT
+Date: Thu, 19 Dec 2024 18:04:02 GMT
 Content-Length: 9
 
 hello bob
@@ -104,13 +104,13 @@ export default new Elysia();
 
 </td></tr>
 <tr><td colspan="2">
-<table><tr><td><details><summary>GET /</summary>
+<table><tr><td><details><summary>GET / — basic request</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:50:31 GMT
+Date: Thu, 19 Dec 2024 18:04:02 GMT
 Content-Length: 9
 
 NOT_FOUND
@@ -125,8 +125,14 @@ You can define routes by calling the `.get`, `.post`, `.put`, `.patch`, and `.de
 It takes 3 arguments:
 
 1. The pathname pattern.
-2. The handler function.
+2. The handler function which receives a `context` object and returns a response.
 3. An optional options object.
+
+The `context` object contains many properties. One of which is the original `request` object.
+
+When accessing the `context` object, it is customary to use destructuring to extract the properties you need.
+When you use destructuring, Elysia can statically analyze your function’s argument list to determine which context properties it’s actually using.
+This helps Elysia to optimize its performance.
 
 </td><td width="2000" valign="top">
 
@@ -152,42 +158,128 @@ export default new Elysia().get(
 
 </td></tr>
 <tr><td colspan="2">
-<table><tr><td><details><summary>GET /</summary>
+<table><tr><td><details><summary>GET / — basic request</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:50:31 GMT
+Date: Thu, 19 Dec 2024 18:04:02 GMT
 Content-Length: 11
 
 hello world
 ```
 
 </details></td></tr></table>
-<table><tr><td><details><summary>GET /?name=alice</summary>
+<table><tr><td><details><summary>GET /?name=alice — with query parameters</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/?name=alice"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:50:31 GMT
+Date: Thu, 19 Dec 2024 18:04:02 GMT
 Content-Length: 11
 
 hello alice
 ```
 
 </details></td></tr></table>
-<table><tr><td><details><summary>GET /arbitrary-path</summary>
+<table><tr><td><details><summary>GET /arbitrary-path — arbitrary path</summary>
 
 ```sh-session
 $ curl -s -D- "http://localhost:3000/arbitrary-path"
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Thu, 19 Dec 2024 17:50:31 GMT
+Date: Thu, 19 Dec 2024 18:04:02 GMT
 Content-Length: 9
 
 NOT_FOUND
+```
+
+This time, we only defined a route for "/", so this request returned a 404 response.
+
+</details></td></tr></table>
+</td></tr>
+<tr><td width="2000" valign="top">
+
+In Elysia, when you return a non-Response object from a route handler,
+Elysia will convert it to a Response object for you.
+
+For example, a string will be converted to a `text/plain` response.
+
+</td><td width="2000" valign="top">
+
+```ts
+import { Elysia } from "elysia";
+export default new Elysia().get(
+  "/",
+  ({ request }) => {
+    const url = new URL(request.url);
+    const name =
+      url.searchParams.get("name") || "world";
+    return "hello " + name;
+  },
+);
+```
+
+</td></tr>
+<tr><td colspan="2">
+<table><tr><td><details><summary>GET / — basic request</summary>
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/"
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 18:04:02 GMT
+Content-Length: 11
+
+hello world
+```
+
+</details></td></tr></table>
+</td></tr>
+<tr><td width="2000" valign="top">
+
+The context also contains a `query` property which is an object containing the query parameters.
+
+</td><td width="2000" valign="top">
+
+```ts
+import { Elysia } from "elysia";
+export default new Elysia().get(
+  "/",
+  ({ query }) => {
+    const name = query["name"] || "world";
+    return "hello " + name;
+  },
+);
+```
+
+</td></tr>
+<tr><td colspan="2">
+<table><tr><td><details><summary>GET / — basic request</summary>
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/"
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 18:04:02 GMT
+Content-Length: 11
+
+hello world
+```
+
+</details></td></tr></table>
+<table><tr><td><details><summary>GET /?name=alice — with query parameters</summary>
+
+```sh-session
+$ curl -s -D- "http://localhost:3000/?name=alice"
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Thu, 19 Dec 2024 18:04:02 GMT
+Content-Length: 11
+
+hello alice
 ```
 
 </details></td></tr></table>

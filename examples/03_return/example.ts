@@ -2,10 +2,10 @@ import { defineTest, markdown } from "../../src/docs";
 export { default as app } from "./index";
 
 export default markdown`
-Elysia implements such an interface.
-That means you can \`export default\` an Elysia app and it will start a server when run with Bun.
+In Elysia, when you return a non-Response object from a route handler,
+Elysia will convert it to a Response object for you.
 
-Right now, the server does not have any routes, so it will return a 404 response for any request.
+For example, a string will be converted to a \`text/plain\` response.
 `;
 
 export const tests = [
