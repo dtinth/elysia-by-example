@@ -12,13 +12,13 @@
 
 # Hooks
 
-Elysia provides hooks to tap into the request lifecycle.
+Elysia provides hooks to tap into the [request lifecycle](https://elysiajs.com/essential/life-cycle.html).
 
 
 ## Listing all available hooks
 
 ```ts
-// examples/hooks/list.example.ts
+// examples/hooks/1-list.example.ts
 import Elysia from "elysia";
 
 const hookNames: string[] = [];
@@ -45,7 +45,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Fri, 20 Dec 2024 13:01:34 GMT
+Date: Fri, 20 Dec 2024 13:58:13 GMT
 Content-Length: 121
 
 ["start","request","parse","transform","beforeHandle","afterHandle","mapResponse","afterResponse","trace","error","stop"]
@@ -54,7 +54,7 @@ Content-Length: 121
 
 ## Available context properties inside each hook
 ```ts
-// examples/hooks/log.example.ts
+// examples/hooks/2-log.example.ts
 import { Elysia } from "elysia";
 
 const logContext = (name: string, context: any) => {
@@ -98,7 +98,7 @@ curl -s -D- http://localhost:3000 -X POST -d x=1
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:01:34 GMT
+Date: Fri, 20 Dec 2024 13:58:13 GMT
 Content-Length: 2
 
 ok
@@ -122,12 +122,294 @@ curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1
 ```http
 HTTP/1.1 500 Internal Server Error
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:01:34 GMT
+Date: Fri, 20 Dec 2024 13:58:13 GMT
 Content-Length: 34
 
 {"name":"Error","message":"crash"}
 ```
 
 <div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">[onRequest]       { error, path, qi, redirect, request, server, set, store, url }<br>[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }<br>[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }<br>[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }</code></pre></div>
+
+:::
+
+## Most hooks are route-specific
+It can be useful to think of hooks as if **each route has its own set of hooks**.
+When you declare a hook, it only affects the routes declared after it.
+```ts
+// examples/hooks/3-order.example.ts
+import { Elysia } from "elysia";
+
+export default new Elysia()
+  .get("/a", () => "a")
+  .onBeforeHandle(() => console.log("onBeforeHandle"))
+  .get("/b", () => "b");
+
+```
+
+In this example, the `onBeforeHandle` hook only applies to the `/b` route.
+
+When you make a request to `/a`, you will not see the log message.
+
+::: details Example request: GET /a
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/a" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+a
+```
+:::
+
+
+But when you make a request to `/b`, you will see the log message.
+
+::: details Example request: GET /b
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/b" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+b
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">onBeforeHandle</code></pre></div>
+
+:::
+
+
+::: tip Mental model
+
+I like to think of Elysia as a route generator that maintains a current list of hooks that should be applied to future routes.
+
+- When you declare a hook, it's added to this list.
+- When you declare a route, the current list of hooks (at that point in time) is copied into that route.
+
+This explains how:
+
+- Hooks only affect routes declared after them
+- Each route has its own set of hooks
+
+This mental model will become especially useful when we later incorporate
+_local hooks_ and _plugins_ into the picture.
+:::
+## `onRequest` hook is not route-specific
+The `onRequest` hook is an exception to the rule, because `onRequest` is called **outside** the router (i.e. it is called even before the router sees the request).
+```ts
+// examples/hooks/4-request.example.ts
+import { Elysia } from "elysia";
+
+export default new Elysia()
+  .get("/a", () => "a")
+  .onRequest(() => console.log("onRequest"))
+  .get("/b", () => "b");
+
+```
+
+In this example, the `onRequest` hook applies to both routes.
+
+When you make a request to `/a`, you will not see the log message.
+
+::: details Example request: GET /a
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/a" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+a
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">onRequest</code></pre></div>
+
+:::
+
+
+But when you make a request to `/b`, you will see the log message.
+
+::: details Example request: GET /b
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/b" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+b
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">onRequest</code></pre></div>
+
+:::
+
+## Local hooks
+You can also define hooks **directly** on the route.
+
+```ts
+// examples/hooks/5-local-intro.example.ts
+import { Elysia } from "elysia";
+
+export default new Elysia()
+  .get("/a", () => "a", {
+    beforeHandle: () => console.log("[local] onBeforeHandle"),
+  })
+  .get("/b", () => "b");
+
+```
+
+Here, a `beforeHandle` hook is defined **locally** on the `/a` route.
+
+::: details Example request
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/a"
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+a
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">[local] onBeforeHandle</code></pre></div>
+
+:::
+
+
+::: tip Types of hook
+We have now seen both types of hooks. Now let’s name these concepts:
+
+- **Local hooks** are hooks defined directly on the route.
+- **Interceptor hooks** are hooks defined on the Elysia instance and applies to routes that come after it.
+:::
+### Combined example
+
+```ts
+// examples/hooks/6-local.example.ts
+import { Elysia } from "elysia";
+
+export default new Elysia()
+  .get("/a", () => "a")
+  .onBeforeHandle(() => console.log("[interceptor] onBeforeHandle"))
+  .get("/b", () => "b", {
+    beforeHandle: () => console.log("[local] onBeforeHandle"),
+  })
+  .get("/c", () => "c")
+  .onRequest(() => console.log("[interceptor] onRequest"));
+
+```
+
+
+::: details Example request: GET /a
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/a" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+a
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">[interceptor] onRequest</code></pre></div>
+
+:::
+
+
+::: details Example request: GET /b
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/b" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+b
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">[interceptor] onRequest<br>[interceptor] onBeforeHandle<br>[local] onBeforeHandle</code></pre></div>
+
+:::
+
+
+::: details Example request: GET /c
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000/c" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:58:13 GMT
+Content-Length: 1
+
+c
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">[interceptor] onRequest<br>[interceptor] onBeforeHandle</code></pre></div>
 
 :::

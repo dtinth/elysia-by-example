@@ -20,7 +20,7 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: "Usage",
+        text: "Learning",
         items: [
           { text: "Introduction", link: "/examples/intro" },
           { text: "The Smallest Server", link: "/examples/empty" },
@@ -29,7 +29,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "Internals",
+        text: "Understanding",
         items: [{ text: "Hooks", link: "/examples/hooks" }],
       },
     ],

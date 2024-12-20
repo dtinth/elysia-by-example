@@ -29,6 +29,8 @@ While Elysia.js can feel **magical** (in both good and bad ways), it's important
 
 ## About this project
 
-This **Elysia by Example** project aims to demystify these “magical” aspects through code examples. Since Elysia.js uses static analysis and dynamic code generation for optimizing performance, understanding its behavior can be challenging by just reading the source code. These examples may help clarify how things work under the hood.
+This **Elysia by Example** project aims to demystify Elysia.js's “magical” aspects. It is not trying to be a comprehensive guide. Rather, it’s a collection of examples that document surprising or unexpected behaviors I’ve encountered while working with Elysia.js in production applications.
+
+Think of it as a curated list of “gotchas” and learning moments that helps demystify the framework’s behavior. When Elysia.js doesn’t behave the way I expect it to, I create minimal examples to understand and document these edge cases.
 
 The contents of this website are generated from [`*.example.ts` files in the `dtinth/elysia-by-example` repo](https://github.com/dtinth/elysia-by-example/tree/main/examples).

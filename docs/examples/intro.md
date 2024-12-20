@@ -41,7 +41,9 @@ While Elysia.js can feel **magical** (in both good and bad ways), it's important
 
 ## About this project
 
-This **Elysia by Example** project aims to demystify these “magical” aspects through code examples. Since Elysia.js uses static analysis and dynamic code generation for optimizing performance, understanding its behavior can be challenging by just reading the source code. These examples may help clarify how things work under the hood.
+This **Elysia by Example** project aims to demystify Elysia.js's “magical” aspects. It is not trying to be a comprehensive guide. Rather, it’s a collection of examples that document surprising or unexpected behaviors I’ve encountered while working with Elysia.js in production applications.
+
+Think of it as a curated list of “gotchas” and learning moments that helps demystify the framework’s behavior. When Elysia.js doesn’t behave the way I expect it to, I create minimal examples to understand and document these edge cases.
 
 The contents of this website are generated from [`*.example.ts` files in the `dtinth/elysia-by-example` repo](https://github.com/dtinth/elysia-by-example/tree/main/examples).
 
@@ -96,7 +98,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 11
 
 hello world
@@ -141,7 +143,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 11
 
 hello world
@@ -162,7 +164,7 @@ curl -s -D- "http://localhost:3000?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 11
 
 hello alice
@@ -186,7 +188,7 @@ curl -s -D- -X PUT http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 11
 
 hello world
@@ -207,7 +209,7 @@ curl -s -D- -X PUT http://localhost:3000/this/is/irrelevant
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 11
 
 hello world
@@ -261,7 +263,7 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 14
 
 it is working!
@@ -282,7 +284,7 @@ curl -s -D- "http://localhost:3000/greeting"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 11
 
 hello world
@@ -303,7 +305,7 @@ curl -s -D- "http://localhost:3000/greeting?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 11
 
 hello alice
@@ -324,7 +326,7 @@ curl -s -D- "http://localhost:3000/nonexistent"
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 9
 
 not found
@@ -345,7 +347,7 @@ curl -s -D- "http://localhost:3000" -X POST
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 13:19:05 GMT
+Date: Fri, 20 Dec 2024 14:02:01 GMT
 Content-Length: 9
 
 not found
