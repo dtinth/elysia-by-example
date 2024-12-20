@@ -45,7 +45,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Fri, 20 Dec 2024 13:01:34 GMT
 Content-Length: 121
 
 ["start","request","parse","transform","beforeHandle","afterHandle","mapResponse","afterResponse","trace","error","stop"]
@@ -70,23 +70,27 @@ export default new Elysia()
   .onTransform((context) => logContext("onTransform", context))
   .onBeforeHandle((context) => logContext("onBeforeHandle", context))
   .onAfterHandle((context) => logContext("onAfterHandle", context))
-  .mapResponse((context) => logContext("mapResponse", context))
+  .mapResponse((context) => {
+    logContext("mapResponse", context);
+    return context.response;
+  })
   .onAfterResponse((context) => logContext("onAfterResponse", context))
   .onError((context) => logContext("onError", context))
   .post("/", async (context) => {
     logContext("handler", context);
+    if (context.query["crash"]) throw new Error("crash");
     return "ok";
   });
 
 ```
 
 
-::: details Example request
+::: details Example request: A successful request
 
 <div style="margin-bottom: 0.5rem">
 
 ```sh
-curl -s -D- http://localhost:3000 -X POST -d x=1
+curl -s -D- http://localhost:3000 -X POST -d x=1 
 ```
 
 </div>
@@ -94,12 +98,36 @@ curl -s -D- http://localhost:3000 -X POST -d x=1
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Fri, 20 Dec 2024 13:01:34 GMT
 Content-Length: 2
 
 ok
 ```
 
 <div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">[onRequest]       { error, path, qi, redirect, request, server, set, store, url }<br>[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }<br>[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }<br>[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }</code></pre></div>
+
+:::
+
+
+::: details Example request: A crashing request
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1 
+```
+
+</div>
+
+```http
+HTTP/1.1 500 Internal Server Error
+content-type: text/plain;charset=utf-8
+Date: Fri, 20 Dec 2024 13:01:34 GMT
+Content-Length: 34
+
+{"name":"Error","message":"crash"}
+```
+
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">[onRequest]       { error, path, qi, redirect, request, server, set, store, url }<br>[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }<br>[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }<br>[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }<br>[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }</code></pre></div>
 
 :::
