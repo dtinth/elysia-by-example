@@ -19,6 +19,7 @@ While Elysia.js can feel **magical** (in both good and bad ways), it's important
 - Simplified request validation through schema definitions
 - Automatic API documentation generation
 - End-to-end type safety
+- “Wow, you can do _this??_ That’s magical!”
 
 ### The challenges
 
@@ -26,6 +27,7 @@ While Elysia.js can feel **magical** (in both good and bad ways), it's important
 - Finding best practices for common patterns (e.g., authentication)
 - Dealing with advanced concepts like `derive`, `resolve`, `mapResponse`, `store`, and lifecycle hooks
 - Debugging issues due to the framework's code generation approach
+- “What’s going on here?? What kind of magic is this?”
 
 ## About this project
 

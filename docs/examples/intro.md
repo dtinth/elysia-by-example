@@ -31,6 +31,7 @@ While Elysia.js can feel **magical** (in both good and bad ways), it's important
 - Simplified request validation through schema definitions
 - Automatic API documentation generation
 - End-to-end type safety
+- “Wow, you can do _this??_ That’s magical!”
 
 ### The challenges
 
@@ -38,6 +39,7 @@ While Elysia.js can feel **magical** (in both good and bad ways), it's important
 - Finding best practices for common patterns (e.g., authentication)
 - Dealing with advanced concepts like `derive`, `resolve`, `mapResponse`, `store`, and lifecycle hooks
 - Debugging issues due to the framework's code generation approach
+- “What’s going on here?? What kind of magic is this?”
 
 ## About this project
 
@@ -98,7 +100,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 11
 
 hello world
@@ -143,7 +145,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 11
 
 hello world
@@ -164,7 +166,7 @@ curl -s -D- "http://localhost:3000?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 11
 
 hello alice
@@ -188,7 +190,7 @@ curl -s -D- -X PUT http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 11
 
 hello world
@@ -209,7 +211,7 @@ curl -s -D- -X PUT http://localhost:3000/this/is/irrelevant
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 11
 
 hello world
@@ -263,7 +265,7 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 14
 
 it is working!
@@ -284,7 +286,7 @@ curl -s -D- "http://localhost:3000/greeting"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 11
 
 hello world
@@ -305,7 +307,7 @@ curl -s -D- "http://localhost:3000/greeting?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 11
 
 hello alice
@@ -326,7 +328,7 @@ curl -s -D- "http://localhost:3000/nonexistent"
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 9
 
 not found
@@ -347,7 +349,7 @@ curl -s -D- "http://localhost:3000" -X POST
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:02:01 GMT
+Date: Fri, 20 Dec 2024 14:03:46 GMT
 Content-Length: 9
 
 not found
