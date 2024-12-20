@@ -1,20 +1,33 @@
+import AnsiToHtml from "ansi-to-html";
 import { $, type Server } from "bun";
 import { groupBy } from "lodash-es";
 import { randomUUID } from "node:crypto";
 import { dirname } from "node:path";
+import { formatWithOptions } from "node:util";
 
 async function main() {
+  const ansi = new AnsiToHtml();
   const glob = new Bun.Glob("**/*.example.ts");
   const groups = groupBy(Array.from(glob.scanSync("examples")), (file) =>
     dirname(file)
   );
   for (const [group, exampleFiles] of Object.entries(groups)) {
     exampleFiles.sort();
-    const out: string[] = [];
+    const out: string[] = [
+      "<!-- This file is automatically-generated. Do not edit. -->",
+      "",
+    ];
+    const readme = Bun.file(`examples/${group}/README.md`);
+    if (await readme.exists()) {
+      out.push(await readme.text());
+      out.push("");
+    }
     const generatePlaceholder = () => ":" + randomUUID() + ":";
     const placeholders = new Map<string, string>();
     for (const file of exampleFiles) {
-      const { default: app } = await import(`./examples/${file}`);
+      using consoleLog = new ConsoleLogCapture();
+      const filePath = `examples/${file}`;
+      const { default: app } = await import(`./${filePath}`);
       using tester = new Tester(app);
       const lines = new LineParseState(
         (await Bun.file(`examples/${file}`).text()).trim().split("\n")
@@ -30,7 +43,7 @@ async function main() {
                 .consume()
                 .trimStart()
                 .slice(3)
-                .replaceAll("$EXAMPLE", `examples/${file}`)
+                .replaceAll("$EXAMPLE", filePath)
             );
           }
         }
@@ -39,7 +52,8 @@ async function main() {
       const parseCode = (): void => {
         skipEmptyLines();
         if (lines.ended) return;
-        out.push("```ts [file]");
+        out.push("```ts");
+        out.push(`// ${filePath}`);
         while (!lines.ended) {
           if (lines.next.trim() === "// [prose]") {
             lines.consume();
@@ -61,9 +75,9 @@ async function main() {
           const line = lines
             .consume()
             .trim()
-            .replace(/^\/\/[$]?\s*/, "");
+            .replace(/^\/\/[$\s]?\s?/, "");
           command.push(line);
-          if (!line.endsWith("$")) break;
+          if (!line.endsWith("\\")) break;
         }
         const placeholder = generatePlaceholder();
         out.push("", placeholder, "");
@@ -79,6 +93,7 @@ async function main() {
           const runCmd = rawCmd.replaceAll("$SERVER", tester.server.url.origin);
           const showCmd = rawCmd.replaceAll("$SERVER", "http://localhost:3000");
           const result = await $`bash -c ${runCmd} 2>&1`.text();
+          const consoleOutput = consoleLog.consume();
           placeholders.set(
             placeholder,
             [
@@ -93,8 +108,18 @@ async function main() {
               "</div>",
               "",
               "```http",
-              result,
+              result.replaceAll(tester.server.url.host, "localhost:3000"),
               "```",
+              ...(consoleOutput.length > 0
+                ? [
+                    "",
+                    `<div style="margin-top: 0.5rem" class="language-ansi">` +
+                      `<span class="lang">console output</span>` +
+                      `<pre style="background: black"><code style="color: white">${ansi.toHtml(consoleOutput.join("\n")).split("\n").join("<br>")}</code></pre>` +
+                      `</div>`,
+                    "",
+                  ]
+                : []),
               ":::",
             ].join("\n")
           );
@@ -107,11 +132,28 @@ async function main() {
     }
     let outText = out.join("\n");
     for (const [placeholder, replacement] of placeholders) {
-      outText = outText.replaceAll(placeholder, replacement);
+      outText = outText.replaceAll(placeholder, () => replacement);
     }
     const outFile = `docs/examples/${group}.md`;
-    Bun.write(outFile, outText.replace(/\r\n/g, "\n"));
-    console.log(`Wrote ${outFile}`);
+    await updateFile(outFile, outText.replace(/\r\n/g, "\n"));
+  }
+}
+
+async function updateFile(filePath: string, content: string) {
+  const file = Bun.file(filePath);
+  let shouldWrite = true;
+  if (await file.exists()) {
+    const existingContent = await file.text();
+    const normalize = (s: string) => s.replaceAll(/^Date: .+ GMT/gm, "-");
+    if (normalize(existingContent) === normalize(content)) {
+      shouldWrite = false;
+    }
+  }
+  if (shouldWrite) {
+    await Bun.write(file, content);
+    console.log(`Wrote: ${filePath}`);
+  } else {
+    console.log(`Up-to-date: ${filePath}`);
   }
 }
 
@@ -135,9 +177,26 @@ class LineParseState {
   }
 }
 
+class ConsoleLogCapture {
+  log: string[] = [];
+  original = console.log;
+  constructor() {
+    console.log = (...args) => {
+      this.log.push(formatWithOptions({ colors: true }, ...args));
+    };
+  }
+  [Symbol.dispose]() {
+    console.log = this.original;
+  }
+  consume() {
+    const log = this.log;
+    this.log = [];
+    return log;
+  }
+}
+
 class Tester {
   server: Server;
-  log: string[] = [];
   constructor(app: { fetch: any }) {
     this.server = Bun.serve({
       port: 0,

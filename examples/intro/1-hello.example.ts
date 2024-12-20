@@ -1,4 +1,4 @@
-// # Introduction
+// ## Running a web server with Bun
 //
 // In Bun, you can start a web server without having to explicitly call
 // the [`Bun.serve()`](https://bun.sh/docs/api/http) method.

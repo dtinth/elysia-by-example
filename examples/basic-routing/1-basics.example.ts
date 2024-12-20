@@ -1,5 +1,4 @@
-// # Basic Routing
-// Define routes by calling the `.get`, `.post`, `.put`, `.patch`, and `.delete` methods on an Elysia app.
+// ## Just routing
 //
 // ::: danger Not idiomatic
 // The following code is not idiomatic Elysia code. We will gradually refactor it to idiomatic Elysia in the following examples.
