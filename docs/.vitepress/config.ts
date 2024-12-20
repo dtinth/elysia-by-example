@@ -32,6 +32,10 @@ export default defineConfig({
         text: "Understanding",
         items: [{ text: "Hooks", link: "/examples/hooks" }],
       },
+      {
+        text: "Bugs",
+        items: [{ text: "Bugs", link: "/examples/bugs" }],
+      },
     ],
     outline: { level: [2, 3] },
 
