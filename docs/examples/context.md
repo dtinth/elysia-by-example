@@ -1,5 +1,15 @@
 <!-- This file is automatically-generated. Do not edit. -->
 
+<template v-if="false">
+
+> [!CAUTION]
+> This file has been automatically generated from the [examples in the `examples/context` directory.](https://github.com/dtinth/elysia-by-example/tree/main/examples/context).
+> Do not directly edit this file, as it will be overwritten.
+> [[View the live site here.]](https://dtinth.github.io/elysia-by-example/examples/context.html)
+
+</template>
+
+
 # Context
 
 ::: warning Not idiomatic
@@ -30,7 +40,7 @@ curl -s -D- "http://localhost:3000/context"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 593
 
 {

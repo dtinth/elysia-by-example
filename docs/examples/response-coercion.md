@@ -1,5 +1,15 @@
 <!-- This file is automatically-generated. Do not edit. -->
 
+<template v-if="false">
+
+> [!CAUTION]
+> This file has been automatically generated from the [examples in the `examples/response-coercion` directory.](https://github.com/dtinth/elysia-by-example/tree/main/examples/response-coercion).
+> Do not directly edit this file, as it will be overwritten.
+> [[View the live site here.]](https://dtinth.github.io/elysia-by-example/examples/response-coercion.html)
+
+</template>
+
+
 # Response Coercion
 
 If a value returned by the [route handler](https://elysiajs.com/essential/handler.html#response) is not a Response object, Elysia will attempt to coerce it into a Response object.
@@ -30,7 +40,7 @@ curl -s -D- "http://localhost:3000/json"
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 11
 
 {"ok":true}
@@ -60,7 +70,7 @@ curl -s -D- "http://localhost:3000/text"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 2
 
 hi

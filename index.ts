@@ -13,8 +13,19 @@ async function main() {
   );
   for (const [group, exampleFiles] of Object.entries(groups)) {
     exampleFiles.sort();
+    const exampleLink = `https://github.com/dtinth/elysia-by-example/tree/main/examples/${group}`;
     const out: string[] = [
       "<!-- This file is automatically-generated. Do not edit. -->",
+      "",
+      `<template v-if="false">`,
+      "",
+      `> [!CAUTION]`,
+      `> This file has been automatically generated from the [examples in the \`examples/${group}\` directory.](${exampleLink}).`,
+      `> Do not directly edit this file, as it will be overwritten.`,
+      `> [[View the live site here.]](https://dtinth.github.io/elysia-by-example/examples/${group}.html)`,
+      "",
+      "</template>",
+      "",
       "",
     ];
     const readme = Bun.file(`examples/${group}/README.md`);

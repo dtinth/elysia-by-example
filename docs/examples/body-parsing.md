@@ -1,5 +1,15 @@
 <!-- This file is automatically-generated. Do not edit. -->
 
+<template v-if="false">
+
+> [!CAUTION]
+> This file has been automatically generated from the [examples in the `examples/body-parsing` directory.](https://github.com/dtinth/elysia-by-example/tree/main/examples/body-parsing).
+> Do not directly edit this file, as it will be overwritten.
+> [[View the live site here.]](https://dtinth.github.io/elysia-by-example/examples/body-parsing.html)
+
+</template>
+
+
 # Body Parsing
 By default, Elysia is able to parse request body of various formats.
 
@@ -32,7 +42,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 68
 
 {
@@ -67,7 +77,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 33
 
 {
@@ -95,7 +105,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 35
 
 {
@@ -122,7 +132,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 33
 
 {
@@ -152,7 +162,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 63
 
 {
@@ -181,11 +191,11 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 102
 
 {
-  file: File (0.65 KB) {
+  file: File (0.70 KB) {
     name: "package.json",
     type: "application/json;charset=utf-8"
   },
@@ -211,12 +221,12 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 217
 
 {
   file: [
-    File (0.65 KB) {
+    File (0.70 KB) {
       name: "package.json",
       type: "application/json;charset=utf-8"
     }, File (45 bytes) {
@@ -247,7 +257,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 14
 
 "hello, world"
@@ -275,7 +285,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 76
 
 ArrayBuffer(12) [ 104, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100 ]
@@ -302,7 +312,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 9
 
 undefined
@@ -326,7 +336,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 9
 
 undefined

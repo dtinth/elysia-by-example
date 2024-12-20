@@ -1,5 +1,15 @@
 <!-- This file is automatically-generated. Do not edit. -->
 
+<template v-if="false">
+
+> [!CAUTION]
+> This file has been automatically generated from the [examples in the `examples/basic-routing` directory.](https://github.com/dtinth/elysia-by-example/tree/main/examples/basic-routing).
+> Do not directly edit this file, as it will be overwritten.
+> [[View the live site here.]](https://dtinth.github.io/elysia-by-example/examples/basic-routing.html)
+
+</template>
+
+
 # Basic Routing
 
 Define routes by calling the `.get`, `.post`, `.put`, `.patch`, and `.delete` methods on an Elysia app.
@@ -51,7 +61,7 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 14
 
 it is working!
@@ -72,7 +82,7 @@ curl -s -D- "http://localhost:3000/greeting"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 11
 
 hello world
@@ -93,7 +103,7 @@ curl -s -D- "http://localhost:3000/greeting?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 11
 
 hello alice
@@ -114,7 +124,7 @@ curl -s -D- "http://localhost:3000/nonexistent"
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 9
 
 NOT_FOUND
@@ -135,7 +145,7 @@ curl -s -D- "http://localhost:3000" -X POST
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 9
 
 NOT_FOUND
@@ -174,7 +184,7 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 14
 
 it is working!
@@ -211,7 +221,7 @@ curl -s -D- "http://localhost:3000/greeting"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 11
 
 hello world
@@ -232,7 +242,7 @@ curl -s -D- "http://localhost:3000/greeting?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:20:33 GMT
+Date: Fri, 20 Dec 2024 12:30:56 GMT
 Content-Length: 11
 
 hello alice
