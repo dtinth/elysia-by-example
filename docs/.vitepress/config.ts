@@ -30,7 +30,10 @@ export default defineConfig({
       },
       {
         text: "Understanding",
-        items: [{ text: "Hooks", link: "/examples/hooks" }],
+        items: [
+          { text: "Errors", link: "/examples/errors" },
+          { text: "Hooks", link: "/examples/hooks" },
+        ],
       },
       {
         text: "Bugs",

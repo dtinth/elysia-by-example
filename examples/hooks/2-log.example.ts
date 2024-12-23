@@ -8,7 +8,9 @@ const logContext = (name: string, context: any) => {
   );
 };
 
-export default new Elysia()
+// XXX: Temporarily enable `aot: false` to work around a bug introduced in Elysia v1.2.2
+// See: https://github.com/elysiajs/elysia/issues/965
+export default new Elysia({ aot: false })
   .onRequest((context) => logContext("onRequest", context))
   .onParse((context) => logContext("onParse", context))
   .onTransform((context) => logContext("onTransform", context))

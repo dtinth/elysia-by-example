@@ -1,5 +1,5 @@
 import AnsiToHtml from "ansi-to-html";
-import { $, type Server } from "bun";
+import { $, escapeHTML, type Server } from "bun";
 import { groupBy } from "lodash-es";
 import { randomUUID } from "node:crypto";
 import { dirname } from "node:path";
@@ -36,8 +36,9 @@ async function main() {
     const generatePlaceholder = () => ":" + randomUUID() + ":";
     const placeholders = new Map<string, string>();
     for (const file of exampleFiles) {
-      using consoleLog = new ConsoleLogCapture();
       const filePath = `examples/${file}`;
+      console.log("Running", filePath);
+      using consoleLog = new ConsoleLogCapture();
       const { default: app } = await import(`./${filePath}`);
       using tester = new Tester(app);
       const lines = new LineParseState(
@@ -126,7 +127,7 @@ async function main() {
                     "",
                     `<div style="margin-top: 0.5rem" class="language-ansi">` +
                       `<span class="lang">console output</span>` +
-                      `<pre style="background: black"><code style="color: white">${ansi.toHtml(consoleOutput.join("\n")).split("\n").join("<br>")}</code></pre>` +
+                      `<pre style="background: black"><code style="color: white">${renderHtml(ansi.toHtml(consoleOutput.join("\n")).split("\n").join("<br/>"))}</code></pre>` +
                       `</div>`,
                     "",
                   ]
@@ -148,6 +149,10 @@ async function main() {
     const outFile = `docs/examples/${group}.md`;
     await updateFile(outFile, outText.replace(/\r\n/g, "\n"));
   }
+}
+
+function renderHtml(html: string) {
+  return `<span v-html="${escapeHTML(JSON.stringify(html))}"></span>`;
 }
 
 async function updateFile(filePath: string, content: string) {
@@ -193,6 +198,7 @@ class ConsoleLogCapture {
   original = console.log;
   constructor() {
     console.log = (...args) => {
+      // this.original.apply(console, args);
       this.log.push(formatWithOptions({ colors: true }, ...args));
     };
   }

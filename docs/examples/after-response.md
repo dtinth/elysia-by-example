@@ -39,12 +39,12 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Mon, 23 Dec 2024 17:42:23 GMT
 Content-Length: 11
 
 {"ok":true}
 ```
 
-<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white">Response: { ok: <span style="color:#A50">true<span style="color:#FFF"> }</span></span></code></pre></div>
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;Response: { ok: &lt;span style=\&quot;color:#A50\&quot;&gt;true&lt;span style=\&quot;color:#FFF\&quot;&gt; }&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
 
 :::

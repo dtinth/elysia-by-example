@@ -40,7 +40,7 @@ curl -s -D- "http://localhost:3000/context"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Mon, 23 Dec 2024 18:42:46 GMT
 Content-Length: 593
 
 {
@@ -58,12 +58,12 @@ Content-Length: 593
   path: "/context",
   url: "http://localhost:3000/context",
   redirect: [Function: redirect],
+  error: [Function: error],
   set: {
     headers: {},
     status: 200,
     cookie: {},
   },
-  error: [Function: error],
   server: [Getter],
   headers: {
     host: "localhost:3000",
