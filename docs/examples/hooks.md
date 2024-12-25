@@ -64,9 +64,7 @@ const logContext = (name: string, context: any) => {
   );
 };
 
-// XXX: Temporarily enable `aot: false` to work around a bug introduced in Elysia v1.2.2
-// See: https://github.com/elysiajs/elysia/issues/965
-export default new Elysia({ aot: false })
+export default new Elysia()
   .onRequest((context) => logContext("onRequest", context))
   .onParse((context) => logContext("onParse", context))
   .onTransform((context) => logContext("onTransform", context))
@@ -100,13 +98,13 @@ curl -s -D- http://localhost:3000 -X POST -d x=1
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
+Date: Wed, 25 Dec 2024 09:57:47 GMT
 Content-Length: 2
 
 ok
 ```
 
-<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onRequest]       { path, qi, redirect, request, set, store }&lt;br/&gt;[onParse]         { contentType, path, qi, redirect, request, set, store }&lt;br/&gt;[onTransform]     { body, cookie, headers, params, path, qi, query, redirect, request, set, store }&lt;br/&gt;[onBeforeHandle]  { body, cookie, headers, params, path, qi, query, redirect, request, set, store }&lt;br/&gt;[handler]         { body, cookie, headers, params, path, qi, query, redirect, request, set, store }&lt;br/&gt;[onAfterHandle]   { body, cookie, headers, params, path, qi, query, redirect, request, response, set, store }&lt;br/&gt;[onAfterResponse] { body, cookie, headers, params, path, qi, query, redirect, request, response, set, store }&quot;"></span></code></pre></div>
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onRequest]       { error, path, qi, redirect, request, server, set, store, url }&lt;br/&gt;[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }&lt;br/&gt;[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }&lt;br/&gt;[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }&quot;"></span></code></pre></div>
 
 :::
 
@@ -124,13 +122,13 @@ curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1
 ```http
 HTTP/1.1 500 Internal Server Error
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
-Content-Length: 5
+Date: Wed, 25 Dec 2024 09:57:47 GMT
+Content-Length: 34
 
-crash
+{"name":"Error","message":"crash"}
 ```
 
-<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onRequest]       { path, qi, redirect, request, set, store }&lt;br/&gt;[onParse]         { contentType, path, qi, redirect, request, set, store }&lt;br/&gt;[onTransform]     { body, cookie, headers, params, path, qi, query, redirect, request, set, store }&lt;br/&gt;[onBeforeHandle]  { body, cookie, headers, params, path, qi, query, redirect, request, set, store }&lt;br/&gt;[handler]         { body, cookie, headers, params, path, qi, query, redirect, request, set, store }&lt;br/&gt;[onError]         { body, code, cookie, error, headers, params, path, qi, query, redirect, request, set, store }&lt;br/&gt;[onAfterResponse] { body, code, cookie, error, headers, params, path, qi, query, redirect, request, set, store }&quot;"></span></code></pre></div>
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onRequest]       { error, path, qi, redirect, request, server, set, store, url }&lt;br/&gt;[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }&lt;br/&gt;[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }&lt;br/&gt;[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }&lt;br/&gt;[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }&quot;"></span></code></pre></div>
 
 :::
 
