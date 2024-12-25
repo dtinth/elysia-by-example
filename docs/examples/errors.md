@@ -62,13 +62,13 @@ curl -s -D- http://localhost:3000/nonexistent
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:49:21 GMT
+Date: Wed, 25 Dec 2024 09:40:19 GMT
 Content-Length: 9
 
 NOT_FOUND
 ```
 
-<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: NotFoundError: NOT_FOUND&lt;br/&gt;      at new NotFoundError &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/error.ts:77:3&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at anonymous &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:11:33&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/index.ts:5970:6&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:222:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:221:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;NOT_FOUND&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    status: &lt;span style=\&quot;color:#A50\&quot;&gt;404&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;2&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;29444&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;NOT_FOUND&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: NotFoundError: NOT_FOUND&lt;br/&gt;      at new NotFoundError &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/error.ts:77:3&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at anonymous &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:11:33&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/index.ts:5970:6&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:239:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:238:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;NOT_FOUND&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    status: &lt;span style=\&quot;color:#A50\&quot;&gt;404&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;2&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;29444&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;NOT_FOUND&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
 
 :::
 
@@ -93,7 +93,7 @@ curl -s -D- http://localhost:3000/body -X POST -H "Content-Type: application/jso
 ```http
 HTTP/1.1 500 Internal Server Error
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:49:21 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 55
 
 {"name":"SyntaxError","message":"Failed to parse JSON"}
@@ -125,7 +125,7 @@ curl -s -D- http://localhost:3000/validate
 ```http
 HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json
-Date: Mon, 23 Dec 2024 18:49:21 GMT
+Date: Wed, 25 Dec 2024 09:40:19 GMT
 Content-Length: 682
 
 {
@@ -163,7 +163,7 @@ Content-Length: 682
 }
 ```
 
-<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: ValidationError: {&lt;br/&gt;    \&quot;type\&quot;: \&quot;validation\&quot;,&lt;br/&gt;    \&quot;on\&quot;: \&quot;query\&quot;,&lt;br/&gt;    \&quot;summary\&quot;: \&quot;Property &#x27;name&#x27; is missing\&quot;,&lt;br/&gt;    \&quot;property\&quot;: \&quot;/name\&quot;,&lt;br/&gt;    \&quot;message\&quot;: \&quot;Expected required property\&quot;,&lt;br/&gt;    \&quot;expected\&quot;: {&lt;br/&gt;      \&quot;name\&quot;: \&quot;\&quot;&lt;br/&gt;    },&lt;br/&gt;    \&quot;found\&quot;: {},&lt;br/&gt;    \&quot;errors\&quot;: [&lt;br/&gt;      {&lt;br/&gt;        \&quot;type\&quot;: 45,&lt;br/&gt;        \&quot;schema\&quot;: {&lt;br/&gt;          \&quot;type\&quot;: \&quot;string\&quot;&lt;br/&gt;        },&lt;br/&gt;        \&quot;path\&quot;: \&quot;/name\&quot;,&lt;br/&gt;        \&quot;message\&quot;: \&quot;Expected required property\&quot;,&lt;br/&gt;        \&quot;errors\&quot;: [],&lt;br/&gt;        \&quot;summary\&quot;: \&quot;Property &#x27;name&#x27; is missing\&quot;&lt;br/&gt;      },&lt;br/&gt;      {&lt;br/&gt;        \&quot;type\&quot;: 54,&lt;br/&gt;        \&quot;schema\&quot;: {&lt;br/&gt;          \&quot;type\&quot;: \&quot;string\&quot;&lt;br/&gt;        },&lt;br/&gt;        \&quot;path\&quot;: \&quot;/name\&quot;,&lt;br/&gt;        \&quot;message\&quot;: \&quot;Expected string\&quot;,&lt;br/&gt;        \&quot;errors\&quot;: [],&lt;br/&gt;        \&quot;summary\&quot;: \&quot;Expected  property &#x27;name&#x27; to be  string but found: undefined\&quot;&lt;br/&gt;      }&lt;br/&gt;    ]&lt;br/&gt;  }&lt;br/&gt;      at new ValidationError &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/error.ts:264:3&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:14:86&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at handle &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:80&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at map &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:26:102&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:222:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:221:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    type: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;query&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    validator: TypeCheck {&lt;br/&gt;      schema: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Object]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      references: [],&lt;br/&gt;      checkFunc: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function: check]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;return function check(value) {\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;  return (\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;\&quot;    (typeof value === &#x27;object&#x27; &amp;&amp; value !== null &amp;&amp; !Array.isArray(value)) &amp;&amp;\\n\&quot;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;\&quot;    (typeof value.name === &#x27;string&#x27;) &amp;&amp;\\n\&quot;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;    Object.getOwnPropertyNames(value).length === 1\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;  )\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;}&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      hasTransform: &lt;span style=\&quot;color:#A50\&quot;&gt;false&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      Clean: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function (anonymous)]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      parse: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function (anonymous)]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      safeParse: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function (anonymous)]&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;    },&lt;br/&gt;    value: {},&lt;br/&gt;    code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;VALIDATION&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    status: &lt;span style=\&quot;color:#A50\&quot;&gt;422&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;2&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;32076&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;VALIDATION&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: ValidationError: {&lt;br/&gt;    \&quot;type\&quot;: \&quot;validation\&quot;,&lt;br/&gt;    \&quot;on\&quot;: \&quot;query\&quot;,&lt;br/&gt;    \&quot;summary\&quot;: \&quot;Property &#x27;name&#x27; is missing\&quot;,&lt;br/&gt;    \&quot;property\&quot;: \&quot;/name\&quot;,&lt;br/&gt;    \&quot;message\&quot;: \&quot;Expected required property\&quot;,&lt;br/&gt;    \&quot;expected\&quot;: {&lt;br/&gt;      \&quot;name\&quot;: \&quot;\&quot;&lt;br/&gt;    },&lt;br/&gt;    \&quot;found\&quot;: {},&lt;br/&gt;    \&quot;errors\&quot;: [&lt;br/&gt;      {&lt;br/&gt;        \&quot;type\&quot;: 45,&lt;br/&gt;        \&quot;schema\&quot;: {&lt;br/&gt;          \&quot;type\&quot;: \&quot;string\&quot;&lt;br/&gt;        },&lt;br/&gt;        \&quot;path\&quot;: \&quot;/name\&quot;,&lt;br/&gt;        \&quot;message\&quot;: \&quot;Expected required property\&quot;,&lt;br/&gt;        \&quot;errors\&quot;: [],&lt;br/&gt;        \&quot;summary\&quot;: \&quot;Property &#x27;name&#x27; is missing\&quot;&lt;br/&gt;      },&lt;br/&gt;      {&lt;br/&gt;        \&quot;type\&quot;: 54,&lt;br/&gt;        \&quot;schema\&quot;: {&lt;br/&gt;          \&quot;type\&quot;: \&quot;string\&quot;&lt;br/&gt;        },&lt;br/&gt;        \&quot;path\&quot;: \&quot;/name\&quot;,&lt;br/&gt;        \&quot;message\&quot;: \&quot;Expected string\&quot;,&lt;br/&gt;        \&quot;errors\&quot;: [],&lt;br/&gt;        \&quot;summary\&quot;: \&quot;Expected  property &#x27;name&#x27; to be  string but found: undefined\&quot;&lt;br/&gt;      }&lt;br/&gt;    ]&lt;br/&gt;  }&lt;br/&gt;      at new ValidationError &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/error.ts:264:3&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:14:86&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at handle &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:80&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at map &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:26:102&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:239:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:238:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    type: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;query&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    validator: TypeCheck {&lt;br/&gt;      schema: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Object]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      references: [],&lt;br/&gt;      checkFunc: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function: check]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;return function check(value) {\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;  return (\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;\&quot;    (typeof value === &#x27;object&#x27; &amp;&amp; value !== null &amp;&amp; !Array.isArray(value)) &amp;&amp;\\n\&quot;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;\&quot;    (typeof value.name === &#x27;string&#x27;) &amp;&amp;\\n\&quot;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;    Object.getOwnPropertyNames(value).length === 1\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;  )\\n&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt; +&lt;br/&gt;        &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;}&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      hasTransform: &lt;span style=\&quot;color:#A50\&quot;&gt;false&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      Clean: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function (anonymous)]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      parse: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function (anonymous)]&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;      safeParse: &lt;span style=\&quot;color:#0AA\&quot;&gt;[Function (anonymous)]&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;    },&lt;br/&gt;    value: {},&lt;br/&gt;    code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;VALIDATION&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    status: &lt;span style=\&quot;color:#A50\&quot;&gt;422&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;2&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;32076&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;VALIDATION&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
 
 :::
 
@@ -188,13 +188,13 @@ curl -s -D- http://localhost:3000/crash/internal
 ```http
 HTTP/1.1 500 Internal Server Error
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:49:21 GMT
+Date: Wed, 25 Dec 2024 09:40:19 GMT
 Content-Length: 21
 
 Something went wrong!
 ```
 
-<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: InternalServerError: Something went wrong!&lt;br/&gt;      at new InternalServerError &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/error.ts:68:3&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:8:15&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:7:27&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:76&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at handle &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:80&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at map &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:20:95&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:222:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:221:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;INTERNAL_SERVER_ERROR&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    status: &lt;span style=\&quot;color:#A50\&quot;&gt;500&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;2&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;29320&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;INTERNAL_SERVER_ERROR&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: InternalServerError: Something went wrong!&lt;br/&gt;      at new InternalServerError &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/src/error.ts:68:3&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:8:15&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:7:27&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:76&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at handle &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:80&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at map &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:20:95&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:239:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:238:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;INTERNAL_SERVER_ERROR&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    status: &lt;span style=\&quot;color:#A50\&quot;&gt;500&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;2&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;29320&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;INTERNAL_SERVER_ERROR&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
 
 :::
 
@@ -218,13 +218,13 @@ curl -s -D- http://localhost:3000/crash/error
 ```http
 HTTP/1.1 500 Internal Server Error
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:49:21 GMT
+Date: Wed, 25 Dec 2024 09:40:19 GMT
 Content-Length: 50
 
 {"name":"Error","message":"Something went wrong!"}
 ```
 
-<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: Error: Something went wrong!&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:11:15&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:10:24&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:76&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at handle &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:80&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at map &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:22:108&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:222:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:221:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;7&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;18&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;UNKNOWN&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
+<div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] {&lt;br/&gt;  error: Error: Something went wrong!&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:11:15&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;examples/errors/built-in.example.ts:10:24&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:76&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at handle &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:5:80&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at map &lt;span style=\&quot;color:#555\&quot;&gt;(file:///Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;node_modules/&lt;u&gt;elysia&lt;/u&gt;/dist/bun/index.js:22:108&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at &lt;anonymous&gt; &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:239:26&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;      at fetch &lt;span style=\&quot;color:#555\&quot;&gt;(/Users/dtinth/Projects/elysia-by-example/&lt;span style=\&quot;color:#FFF\&quot;&gt;index.ts:238:21&lt;span style=\&quot;color:#555\&quot;&gt;)&lt;span style=\&quot;color:#FFF\&quot;&gt; {&lt;br/&gt;    originalLine: &lt;span style=\&quot;color:#A50\&quot;&gt;7&lt;span style=\&quot;color:#FFF\&quot;&gt;,&lt;br/&gt;    originalColumn: &lt;span style=\&quot;color:#A50\&quot;&gt;18&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;  },&lt;br/&gt;  code: &lt;span style=\&quot;color:#0A0\&quot;&gt;&#x27;UNKNOWN&#x27;&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;br/&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
 
 :::
 
@@ -263,7 +263,7 @@ curl -s -D- http://localhost:3000/return
 ```http
 HTTP/1.1 418 I'm a Teapot
 Content-Type: application/json;charset=utf-8
-Date: Mon, 23 Dec 2024 18:49:21 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 19
 
 {"message":"meow!"}
@@ -287,7 +287,7 @@ curl -s -D- http://localhost:3000/throw
 ```http
 HTTP/1.1 418 I'm a Teapot
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:49:21 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 15
 
 [object Object]
@@ -295,4 +295,223 @@ Content-Length: 15
 
 <div style="margin-top: 0.5rem" class="language-ansi"><span class="lang">console output</span><pre style="background: black"><code style="color: white"><span v-html="&quot;[onError] &lt;span style=\&quot;color:#A50\&quot;&gt;418&lt;span style=\&quot;color:#FFF\&quot;&gt;&lt;/span&gt;&lt;/span&gt;&quot;"></span></code></pre></div>
 
+:::
+
+## Error handling in validation schema
+A schema can define an error message which will be sent to the client if the validation fails on that key.
+
+```ts
+// examples/errors/error-in-schema.example.ts
+import Elysia, { t } from "elysia";
+
+export default new Elysia().post("/", () => "Hello World!", {
+  body: t.Object({ x: t.Number({ error: "x must be a number" }) }),
+});
+
+```
+
+
+::: details Example request: A successful request
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- -X POST "http://localhost:3000" -H "Content-Type: application/json" -d '{"x": 1}' 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+content-type: text/plain;charset=utf-8
+Date: Wed, 25 Dec 2024 09:38:44 GMT
+Content-Length: 12
+
+Hello World!
+```
+:::
+
+
+::: details Example request: A failing request with wrong inner type
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- -X POST "http://localhost:3000" -H "Content-Type: application/json" -d '{"x": "wat"}' 
+```
+
+</div>
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/json
+Date: Wed, 25 Dec 2024 09:38:44 GMT
+Content-Length: 18
+
+x must be a number
+```
+:::
+
+
+::: details Example request: A failing request with wrong outer type
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- -X POST "http://localhost:3000" -H "Content-Type: application/json" -d '42' 
+```
+
+</div>
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/json
+Date: Wed, 25 Dec 2024 09:38:44 GMT
+Content-Length: 626
+
+{
+  "type": "validation",
+  "on": "body",
+  "summary": "Expected object",
+  "property": "root",
+  "message": "Expected object",
+  "expected": {
+    "x": 0
+  },
+  "found": 42,
+  "errors": [
+    {
+      "summary": "Expected object",
+      "type": 46,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "error": "x must be a number",
+            "type": "number"
+          }
+        },
+        "required": [
+          "x"
+        ],
+        "additionalProperties": false
+      },
+      "path": "",
+      "value": 42,
+      "message": "Expected object",
+      "errors": []
+    }
+  ]
+}
+```
+:::
+
+## Providing a standard error model
+Combine `model`, `onError`, and a custom error handler to provide a standard error model.
+
+```ts
+// examples/errors/model.example.ts
+import Elysia, { t } from "elysia";
+import createHttpError from "http-errors";
+
+export default new Elysia()
+  .model({
+    error: t.Object({
+      error: t.Object({ message: t.String() }),
+    }),
+  })
+  .onError(({ error, set }) => {
+    if (createHttpError.isHttpError(error)) {
+      set.status = error.status;
+      return {
+        error: {
+          message: error.expose ? error.message : "Something went wrong...",
+        },
+      };
+    }
+  })
+  .get(
+    "/",
+    async ({ query: { crash } }) => {
+      if (crash === "418") {
+        throw createHttpError.ImATeapot("meow");
+      }
+      if (crash === "500") {
+        throw createHttpError.InternalServerError("woof");
+      }
+      return { ok: true };
+    },
+    {
+      query: t.Object({ crash: t.String() }),
+      response: {
+        200: t.Object({ ok: t.Literal(true) }),
+        418: "error",
+        500: "error",
+      },
+    },
+  );
+
+```
+
+
+::: details Example request: A successful request
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000?crash=no" 
+```
+
+</div>
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=utf-8
+Date: Wed, 25 Dec 2024 09:38:44 GMT
+Content-Length: 11
+
+{"ok":true}
+```
+:::
+
+
+::: details Example request: A failing request - 418
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000?crash=418" 
+```
+
+</div>
+
+```http
+HTTP/1.1 418 I'm a Teapot
+Content-Type: application/json;charset=utf-8
+Date: Wed, 25 Dec 2024 09:38:44 GMT
+Content-Length: 28
+
+{"error":{"message":"meow"}}
+```
+:::
+
+
+::: details Example request: A failing request - 500
+
+<div style="margin-bottom: 0.5rem">
+
+```sh
+curl -s -D- "http://localhost:3000?crash=500" 
+```
+
+</div>
+
+```http
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json;charset=utf-8
+Date: Wed, 25 Dec 2024 09:38:44 GMT
+Content-Length: 47
+
+{"error":{"message":"Something went wrong..."}}
+```
 :::

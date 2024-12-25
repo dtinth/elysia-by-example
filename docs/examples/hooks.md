@@ -45,7 +45,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 121
 
 ["start","request","parse","transform","beforeHandle","afterHandle","mapResponse","afterResponse","trace","error","stop"]
@@ -100,7 +100,7 @@ curl -s -D- http://localhost:3000 -X POST -d x=1
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 2
 
 ok
@@ -124,7 +124,7 @@ curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1
 ```http
 HTTP/1.1 500 Internal Server Error
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 5
 
 crash
@@ -165,7 +165,7 @@ curl -s -D- "http://localhost:3000/a"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 a
@@ -188,7 +188,7 @@ curl -s -D- "http://localhost:3000/b"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 b
@@ -244,7 +244,7 @@ curl -s -D- "http://localhost:3000/a"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 a
@@ -270,7 +270,7 @@ curl -s -D- "http://localhost:3000/b"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 b
@@ -310,7 +310,7 @@ curl -s -D- "http://localhost:3000/a"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 a
@@ -358,7 +358,7 @@ curl -s -D- "http://localhost:3000/a"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 a
@@ -382,7 +382,7 @@ curl -s -D- "http://localhost:3000/b"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 b
@@ -406,7 +406,7 @@ curl -s -D- "http://localhost:3000/c"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Mon, 23 Dec 2024 18:42:45 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 1
 
 c

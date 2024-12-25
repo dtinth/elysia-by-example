@@ -1,0 +1,12 @@
+"quirk Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000\""
+  result:
+    - "HTTP/1.1 200 OK"
+    - "Content-Type: application/json;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "{\"ok\":true}"
+  log:
+    - "Response: { ok: \u001b[33mtrue\u001b[39m }"

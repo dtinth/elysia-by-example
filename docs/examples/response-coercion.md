@@ -40,7 +40,7 @@ curl -s -D- "http://localhost:3000/json"
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 {"ok":true}
@@ -70,7 +70,7 @@ curl -s -D- "http://localhost:3000/text"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 2
 
 hi

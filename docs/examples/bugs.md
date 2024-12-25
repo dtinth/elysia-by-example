@@ -51,7 +51,7 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Fri, 20 Dec 2024 14:21:37 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 18
 
 {"keys":[{"a":1}]}
@@ -95,7 +95,7 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
-Date: Fri, 20 Dec 2024 14:21:37 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 37
 
 {"keys":[{"a":1,"b":2}],"extra":true}

@@ -1,8 +1,10 @@
 import AnsiToHtml from "ansi-to-html";
 import { $, escapeHTML, type Server } from "bun";
-import { groupBy } from "lodash-es";
+import indentString from "indent-string";
+import { load } from "js-yaml";
+import { groupBy, isEqual } from "lodash-es";
 import { randomUUID } from "node:crypto";
-import { dirname } from "node:path";
+import { basename, dirname } from "node:path";
 import { formatWithOptions } from "node:util";
 
 async function main() {
@@ -28,6 +30,8 @@ async function main() {
       "",
       "",
     ];
+    const snapshotPath = `snapshots/${group}.snapshot.yml`;
+    const snapshots = new SnapshotManager(snapshotPath);
     const readme = Bun.file(`examples/${group}/README.md`);
     if (await readme.exists()) {
       out.push(await readme.text());
@@ -106,6 +110,16 @@ async function main() {
           const showCmd = rawCmd.replaceAll("$SERVER", "http://localhost:3000");
           const result = await $`bash -c ${runCmd} 2>&1`.text();
           const consoleOutput = consoleLog.consume();
+          const newSnapshot: Snapshot = {
+            command: showCmd,
+            result: result.replaceAll(tester.server.url.host, "localhost:3000"),
+            log: consoleOutput.join("\n"),
+          };
+          const snapshotName = basename(file, ".example.ts") + " " + title;
+          const snapshot = await snapshots.resolveSnapshot(
+            snapshotName,
+            newSnapshot
+          );
           placeholders.set(
             placeholder,
             [
@@ -114,20 +128,20 @@ async function main() {
               '<div style="margin-bottom: 0.5rem">',
               "",
               "```sh",
-              showCmd,
+              snapshot.command,
               "```",
               "",
               "</div>",
               "",
               "```http",
-              result.replaceAll(tester.server.url.host, "localhost:3000"),
+              snapshot.result,
               "```",
               ...(consoleOutput.length > 0
                 ? [
                     "",
                     `<div style="margin-top: 0.5rem" class="language-ansi">` +
                       `<span class="lang">console output</span>` +
-                      `<pre style="background: black"><code style="color: white">${renderHtml(ansi.toHtml(consoleOutput.join("\n")).split("\n").join("<br/>"))}</code></pre>` +
+                      `<pre style="background: black"><code style="color: white">${renderHtml(ansi.toHtml(snapshot.log).split("\n").join("<br/>"))}</code></pre>` +
                       `</div>`,
                     "",
                   ]
@@ -148,6 +162,7 @@ async function main() {
     }
     const outFile = `docs/examples/${group}.md`;
     await updateFile(outFile, outText.replace(/\r\n/g, "\n"));
+    await snapshots.save();
   }
 }
 
@@ -155,13 +170,15 @@ function renderHtml(html: string) {
   return `<span v-html="${escapeHTML(JSON.stringify(html))}"></span>`;
 }
 
+const normalize = (s: string) =>
+  linesToArray(s.replaceAll(/^Date: .+ GMT/gm, "-"));
+
 async function updateFile(filePath: string, content: string) {
   const file = Bun.file(filePath);
   let shouldWrite = true;
   if (await file.exists()) {
     const existingContent = await file.text();
-    const normalize = (s: string) => s.replaceAll(/^Date: .+ GMT/gm, "-");
-    if (normalize(existingContent) === normalize(content)) {
+    if (existingContent === content) {
       shouldWrite = false;
     }
   }
@@ -225,6 +242,97 @@ class Tester {
   }
   [Symbol.dispose]() {
     this.server.stop(true);
+  }
+}
+
+interface Snapshot {
+  command: string;
+  result: string;
+  log: string;
+}
+
+const linesToArray = (s: string) =>
+  s
+    .split(/\r\n|\r|\n/)
+    .map((x) => "- " + JSON.stringify(x))
+    .join("\n");
+
+class SnapshotManager {
+  constructor(private filePath: string) {}
+  store?: Record<string, Snapshot>;
+  usedNames: Set<string> = new Set();
+  dirty = false;
+
+  async resolveSnapshot(snapshotName: string, newSnapshot: Snapshot) {
+    const store = await this.getStore();
+    if (this.usedNames.has(snapshotName)) {
+      const baseName = snapshotName;
+      let i = 2;
+      while (this.usedNames.has(baseName + " " + i)) i++;
+      snapshotName = baseName + " " + i;
+    }
+    this.usedNames.add(snapshotName);
+    const old: Snapshot | undefined = store[snapshotName];
+    const oldNormalized = old
+      ? {
+          command: normalize(old.command),
+          result: normalize(old.result),
+          log: normalize(old.log),
+        }
+      : undefined;
+    const newNormalized = {
+      command: normalize(newSnapshot.command),
+      result: normalize(newSnapshot.result),
+      log: normalize(newSnapshot.log),
+    };
+    if (isEqual(oldNormalized, newNormalized)) {
+      return old;
+    }
+    store[snapshotName] = newSnapshot;
+    this.dirty = true;
+    return newSnapshot;
+  }
+
+  async save() {
+    if (this.dirty) {
+      const file = Bun.file(this.filePath);
+      await Bun.write(file, this.serialize(await this.getStore()));
+      console.log("Snapshot updated:", this.filePath);
+    } else {
+      console.log("Snapshot up-to-date:", this.filePath);
+    }
+  }
+
+  serialize(store: Record<string, Snapshot>) {
+    const output: string[] = [];
+    for (const key of Object.keys(store).sort()) {
+      const snapshot = store[key];
+      output.push(JSON.stringify(key) + ":");
+      output.push("  command:");
+      output.push(indentString(linesToArray(snapshot.command), 4));
+      output.push("  result:");
+      output.push(indentString(linesToArray(snapshot.result), 4));
+      output.push("  log:");
+      output.push(indentString(linesToArray(snapshot.log), 4));
+    }
+    return output.map((x) => x + "\n").join("");
+  }
+
+  private async getStore() {
+    if (this.store) return this.store;
+    const file = Bun.file(this.filePath);
+    const text = (await file.exists()) ? await file.text() : "{}";
+    const store: Record<string, Snapshot> = {};
+    const data = load(text) as Record<string, any>;
+    for (const [key, value] of Object.entries(data)) {
+      store[key] = {
+        command: value.command.join("\n"),
+        result: value.result.join("\n"),
+        log: value.log.join("\n"),
+      };
+    }
+    this.store = store;
+    return store;
   }
 }
 

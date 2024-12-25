@@ -1,0 +1,120 @@
+"1-hello Example request":
+  command:
+    - "curl -s -D- http://localhost:3000"
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "hello world"
+  log:
+    - ""
+"2-query Example request: A request with arbitrary path":
+  command:
+    - "curl -s -D- -X PUT http://localhost:3000/this/is/irrelevant "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "hello world"
+  log:
+    - ""
+"2-query Example request: No query parameter":
+  command:
+    - "curl -s -D- http://localhost:3000 "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "hello world"
+  log:
+    - ""
+"2-query Example request: PUT request":
+  command:
+    - "curl -s -D- -X PUT http://localhost:3000 "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "hello world"
+  log:
+    - ""
+"2-query Example request: With a `name` query parameter":
+  command:
+    - "curl -s -D- \"http://localhost:3000?name=alice\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "hello alice"
+  log:
+    - ""
+"3-route Example request: `GET /`":
+  command:
+    - "curl -s -D- \"http://localhost:3000\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 14"
+    - ""
+    - "it is working!"
+  log:
+    - ""
+"3-route Example request: `GET /greeting?name=alice`":
+  command:
+    - "curl -s -D- \"http://localhost:3000/greeting?name=alice\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "hello alice"
+  log:
+    - ""
+"3-route Example request: `GET /greeting`":
+  command:
+    - "curl -s -D- \"http://localhost:3000/greeting\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 11"
+    - ""
+    - "hello world"
+  log:
+    - ""
+"3-route Example request: `GET /nonexistent`":
+  command:
+    - "curl -s -D- \"http://localhost:3000/nonexistent\" "
+  result:
+    - "HTTP/1.1 404 Not Found"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 9"
+    - ""
+    - "not found"
+  log:
+    - ""
+"3-route Example request: `POST /`":
+  command:
+    - "curl -s -D- \"http://localhost:3000\" -X POST "
+  result:
+    - "HTTP/1.1 404 Not Found"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:45 GMT"
+    - "Content-Length: 9"
+    - ""
+    - "not found"
+  log:
+    - ""

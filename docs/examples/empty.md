@@ -35,7 +35,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 9
 
 NOT_FOUND

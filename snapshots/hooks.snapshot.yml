@@ -1,0 +1,147 @@
+"1-list Example request":
+  command:
+    - "curl -s -D- http://localhost:3000"
+  result:
+    - "HTTP/1.1 200 OK"
+    - "Content-Type: application/json;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 121"
+    - ""
+    - "[\"start\",\"request\",\"parse\",\"transform\",\"beforeHandle\",\"afterHandle\",\"mapResponse\",\"afterResponse\",\"trace\",\"error\",\"stop\"]"
+  log:
+    - ""
+"2-log Example request: A crashing request":
+  command:
+    - "curl -s -D- \"http://localhost:3000?crash=1\" -X POST -d x=1 "
+  result:
+    - "HTTP/1.1 500 Internal Server Error"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 5"
+    - ""
+    - "crash"
+  log:
+    - "[onRequest]       { path, qi, redirect, request, set, store }"
+    - "[onParse]         { contentType, path, qi, redirect, request, set, store }"
+    - "[onTransform]     { body, cookie, headers, params, path, qi, query, redirect, request, set, store }"
+    - "[onBeforeHandle]  { body, cookie, headers, params, path, qi, query, redirect, request, set, store }"
+    - "[handler]         { body, cookie, headers, params, path, qi, query, redirect, request, set, store }"
+    - "[onError]         { body, code, cookie, error, headers, params, path, qi, query, redirect, request, set, store }"
+    - "[onAfterResponse] { body, code, cookie, error, headers, params, path, qi, query, redirect, request, set, store }"
+"2-log Example request: A successful request":
+  command:
+    - "curl -s -D- http://localhost:3000 -X POST -d x=1 "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 2"
+    - ""
+    - "ok"
+  log:
+    - "[onRequest]       { path, qi, redirect, request, set, store }"
+    - "[onParse]         { contentType, path, qi, redirect, request, set, store }"
+    - "[onTransform]     { body, cookie, headers, params, path, qi, query, redirect, request, set, store }"
+    - "[onBeforeHandle]  { body, cookie, headers, params, path, qi, query, redirect, request, set, store }"
+    - "[handler]         { body, cookie, headers, params, path, qi, query, redirect, request, set, store }"
+    - "[onAfterHandle]   { body, cookie, headers, params, path, qi, query, redirect, request, response, set, store }"
+    - "[onAfterResponse] { body, cookie, headers, params, path, qi, query, redirect, request, response, set, store }"
+"3-order Example request: GET /a":
+  command:
+    - "curl -s -D- \"http://localhost:3000/a\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "a"
+  log:
+    - ""
+"3-order Example request: GET /b":
+  command:
+    - "curl -s -D- \"http://localhost:3000/b\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "b"
+  log:
+    - "onBeforeHandle"
+"4-request Example request: GET /a":
+  command:
+    - "curl -s -D- \"http://localhost:3000/a\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "a"
+  log:
+    - "onRequest"
+"4-request Example request: GET /b":
+  command:
+    - "curl -s -D- \"http://localhost:3000/b\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "b"
+  log:
+    - "onRequest"
+"5-local-intro Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000/a\""
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "a"
+  log:
+    - "[local] onBeforeHandle"
+"6-local Example request: GET /a":
+  command:
+    - "curl -s -D- \"http://localhost:3000/a\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "a"
+  log:
+    - "[interceptor] onRequest"
+"6-local Example request: GET /b":
+  command:
+    - "curl -s -D- \"http://localhost:3000/b\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "b"
+  log:
+    - "[interceptor] onRequest"
+    - "[interceptor] onBeforeHandle"
+    - "[local] onBeforeHandle"
+"6-local Example request: GET /c":
+  command:
+    - "curl -s -D- \"http://localhost:3000/c\" "
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Wed, 25 Dec 2024 09:38:44 GMT"
+    - "Content-Length: 1"
+    - ""
+    - "c"
+  log:
+    - "[interceptor] onRequest"
+    - "[interceptor] onBeforeHandle"

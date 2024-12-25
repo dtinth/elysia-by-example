@@ -100,7 +100,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 hello world
@@ -145,7 +145,7 @@ curl -s -D- http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 hello world
@@ -166,7 +166,7 @@ curl -s -D- "http://localhost:3000?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 hello alice
@@ -190,7 +190,7 @@ curl -s -D- -X PUT http://localhost:3000
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 hello world
@@ -211,7 +211,7 @@ curl -s -D- -X PUT http://localhost:3000/this/is/irrelevant
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 hello world
@@ -265,7 +265,7 @@ curl -s -D- "http://localhost:3000"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 14
 
 it is working!
@@ -286,7 +286,7 @@ curl -s -D- "http://localhost:3000/greeting"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 hello world
@@ -307,7 +307,7 @@ curl -s -D- "http://localhost:3000/greeting?name=alice"
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 11
 
 hello alice
@@ -328,7 +328,7 @@ curl -s -D- "http://localhost:3000/nonexistent"
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 9
 
 not found
@@ -349,7 +349,7 @@ curl -s -D- "http://localhost:3000" -X POST
 ```http
 HTTP/1.1 404 Not Found
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 14:03:46 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 9
 
 not found

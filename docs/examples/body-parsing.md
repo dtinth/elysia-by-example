@@ -42,7 +42,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 68
 
 {
@@ -77,7 +77,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 33
 
 {
@@ -105,7 +105,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 35
 
 {
@@ -132,7 +132,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 33
 
 {
@@ -162,7 +162,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 63
 
 {
@@ -191,11 +191,11 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 102
 
 {
-  file: File (0.70 KB) {
+  file: File (0.85 KB) {
     name: "package.json",
     type: "application/json;charset=utf-8"
   },
@@ -221,12 +221,12 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:44 GMT
 Content-Length: 217
 
 {
   file: [
-    File (0.70 KB) {
+    File (0.85 KB) {
       name: "package.json",
       type: "application/json;charset=utf-8"
     }, File (45 bytes) {
@@ -257,7 +257,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 14
 
 "hello, world"
@@ -285,7 +285,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 76
 
 ArrayBuffer(12) [ 104, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100 ]
@@ -312,7 +312,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 9
 
 undefined
@@ -336,7 +336,7 @@ curl -s -D- "http://localhost:3000/parse" -X POST \
 ```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Fri, 20 Dec 2024 12:30:56 GMT
+Date: Wed, 25 Dec 2024 09:38:45 GMT
 Content-Length: 9
 
 undefined
