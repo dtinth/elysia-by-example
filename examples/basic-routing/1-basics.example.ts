@@ -28,7 +28,18 @@ export default new Elysia()
 //    - In this example, we don’t specify any options, but they will be useful in future examples.
 
 //$ curl -s -D- "$SERVER" # `GET /`
+//# expect 200 "it is working!"
 //$ curl -s -D- "$SERVER/greeting" # `GET /greeting`
+//# expect 200 "hello world"
 //$ curl -s -D- "$SERVER/greeting?name=alice" # `GET /greeting?name=alice`
+//# expect 200 "hello alice"
 //$ curl -s -D- "$SERVER/nonexistent" # `GET /nonexistent`
+//# expect 404
+
+// ### 405 Method Not Allowed is not supported
+// When a route is defined on the same path but different method,
+// Elysia will return a 404 Not Found instead of 405 Method Not Allowed
+// as they are treated as entirely separate routes.
+// [This is by design](https://github.com/elysiajs/elysia/issues/682).
 //$ curl -s -D- "$SERVER" -X POST # `POST /`
+//# expect 404

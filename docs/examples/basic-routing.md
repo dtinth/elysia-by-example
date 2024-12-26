@@ -132,6 +132,12 @@ NOT_FOUND
 :::
 
 
+### 405 Method Not Allowed is not supported
+When a route is defined on the same path but different method,
+Elysia will return a 404 Not Found instead of 405 Method Not Allowed
+as they are treated as entirely separate routes.
+[This is by design](https://github.com/elysiajs/elysia/issues/682).
+
 ::: details Example request: `POST /`
 
 <div style="margin-bottom: 0.5rem">

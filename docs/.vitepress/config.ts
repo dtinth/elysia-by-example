@@ -26,6 +26,10 @@ export default defineConfig({
           { text: "The Smallest Server", link: "/examples/empty" },
           { text: "Basic Routing", link: "/examples/basic-routing" },
           { text: "Response Coercion", link: "/examples/response-coercion" },
+          {
+            text: "Response Validation",
+            link: "/examples/response-validation",
+          },
         ],
       },
       {
@@ -34,6 +38,10 @@ export default defineConfig({
           { text: "Errors", link: "/examples/errors" },
           { text: "Hooks", link: "/examples/hooks" },
         ],
+      },
+      {
+        text: "Plugins",
+        items: [{ text: "http-errors", link: "/examples/plugin-http-errors" }],
       },
       {
         text: "Bugs",

@@ -95,6 +95,7 @@ async function main() {
           command.push(line);
           if (!line.endsWith("\\")) break;
         }
+        const expectations = parseExpectations();
         const placeholder = generatePlaceholder();
         out.push("", placeholder, "");
         actions.push(async () => {
@@ -120,6 +121,16 @@ async function main() {
             snapshotName,
             newSnapshot
           );
+          for (const expectation of expectations.positive) {
+            if (!snapshot.result.includes(expectation)) {
+              console.error(`❌ Positive expectation failed: ${expectation}`);
+            }
+          }
+          for (const expectation of expectations.negative) {
+            if (snapshot.result.includes(expectation)) {
+              console.error(`❌ Negative expectation failed: ${expectation}`);
+            }
+          }
           placeholders.set(
             placeholder,
             [
@@ -150,6 +161,29 @@ async function main() {
             ].join("\n")
           );
         });
+      };
+      const parseExpectations = (): Expectations => {
+        const expectations: Expectations = {
+          positive: [],
+          negative: [],
+        };
+        while (!lines.ended) {
+          const line = lines.next.trim();
+          if (line.startsWith("//# expect ")) {
+            const text = lines.consume().slice("//# expect ".length).trim();
+            for (const m of text.matchAll(/"([^"]+)"|(\S+)/g)) {
+              expectations.positive.push(m[1] || m[2]);
+            }
+          } else if (line.startsWith("//# expect-not ")) {
+            const text = lines.consume().slice("//# expect-not ".length).trim();
+            for (const m of text.matchAll(/"([^"]+)"|(\S+)/g)) {
+              expectations.negative.push(m[1] || m[2]);
+            }
+          } else {
+            break;
+          }
+        }
+        return expectations;
       };
       parseProse();
       for (const action of actions) {
@@ -334,6 +368,11 @@ class SnapshotManager {
     this.store = store;
     return store;
   }
+}
+
+interface Expectations {
+  positive: string[];
+  negative: string[];
 }
 
 await main();

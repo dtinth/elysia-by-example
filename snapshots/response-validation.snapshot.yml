@@ -1,0 +1,97 @@
+"basic Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000/\""
+  result:
+    - "HTTP/1.1 200 OK"
+    - "Content-Type: application/json;charset=utf-8"
+    - "Date: Thu, 26 Dec 2024 08:31:25 GMT"
+    - "Content-Length: 7"
+    - ""
+    - "{\"a\":1}"
+  log:
+    - ""
+"extra Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000/\""
+  result:
+    - "HTTP/1.1 200 OK"
+    - "Content-Type: application/json;charset=utf-8"
+    - "Date: Thu, 26 Dec 2024 08:33:47 GMT"
+    - "Content-Length: 7"
+    - ""
+    - "{\"a\":1}"
+  log:
+    - ""
+"extra-basic Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000/\""
+  result:
+    - "HTTP/1.1 200 OK"
+    - "Content-Type: application/json;charset=utf-8"
+    - "Date: Thu, 26 Dec 2024 08:44:18 GMT"
+    - "Content-Length: 7"
+    - ""
+    - "{\"a\":1}"
+  log:
+    - ""
+"extra-with-additional Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000/\""
+  result:
+    - "HTTP/1.1 200 OK"
+    - "Content-Type: application/json;charset=utf-8"
+    - "Date: Thu, 26 Dec 2024 08:44:18 GMT"
+    - "Content-Length: 13"
+    - ""
+    - "{\"a\":1,\"b\":2}"
+  log:
+    - ""
+"fail Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000/\""
+  result:
+    - "HTTP/1.1 422 Unprocessable Entity"
+    - "Content-Type: application/json"
+    - "Date: Thu, 26 Dec 2024 08:34:52 GMT"
+    - "Content-Length: 425"
+    - ""
+    - "{"
+    - "  \"type\": \"validation\","
+    - "  \"on\": \"response\","
+    - "  \"summary\": \"Expected number\","
+    - "  \"property\": \"/a\","
+    - "  \"message\": \"Expected number\","
+    - "  \"expected\": {"
+    - "    \"a\": 0"
+    - "  },"
+    - "  \"found\": {"
+    - "    \"a\": \"x\""
+    - "  },"
+    - "  \"errors\": ["
+    - "    {"
+    - "      \"summary\": \"Expected number\","
+    - "      \"type\": 41,"
+    - "      \"schema\": {"
+    - "        \"type\": \"number\""
+    - "      },"
+    - "      \"path\": \"/a\","
+    - "      \"value\": \"x\","
+    - "      \"message\": \"Expected number\","
+    - "      \"errors\": []"
+    - "    }"
+    - "  ]"
+    - "}"
+  log:
+    - "[onError] VALIDATION"
+"non-json Example request":
+  command:
+    - "curl -s -D- \"http://localhost:3000/\""
+  result:
+    - "HTTP/1.1 200 OK"
+    - "content-type: text/plain;charset=utf-8"
+    - "Date: Thu, 26 Dec 2024 08:40:54 GMT"
+    - "Content-Length: 3"
+    - ""
+    - "wat"
+  log:
+    - ""
