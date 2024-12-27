@@ -29,6 +29,8 @@ export default new Elysia()
 // - Error class: `NotFoundError`
 // - Code: `NOT_FOUND`
 //$ curl -s -D- $SERVER/nonexistent # `GET /nonexistent`
+//# expect 404
+//# expect-not 200
 
 // ### Body parsing error
 // This happens when the request body cannot be parsed.

@@ -1,0 +1,44 @@
+"test1_command":
+  - "curl -s -D- http://localhost:3000 # No query parameter"
+"test1_output":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Fri, 27 Dec 2024 20:24:33 GMT"
+  - "Content-Length: 11"
+  - ""
+  - "hello world"
+"test1_stdout":
+  - "Started development server: http://localhost:3000"
+"test2_command":
+  - "curl -s -D- \"http://localhost:3000?name=alice\" # With a `name` query parameter"
+"test2_output":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Fri, 27 Dec 2024 20:24:33 GMT"
+  - "Content-Length: 11"
+  - ""
+  - "hello alice"
+"test2_stdout":
+  - "Started development server: http://localhost:3000"
+"test3_command":
+  - "curl -s -D- -X PUT http://localhost:3000 # PUT request"
+"test3_output":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Fri, 27 Dec 2024 20:24:33 GMT"
+  - "Content-Length: 11"
+  - ""
+  - "hello world"
+"test3_stdout":
+  - "Started development server: http://localhost:3000"
+"test4_command":
+  - "curl -s -D- -X PUT http://localhost:3000/this/is/irrelevant # A request with arbitrary path"
+"test4_output":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Fri, 27 Dec 2024 20:24:33 GMT"
+  - "Content-Length: 11"
+  - ""
+  - "hello world"
+"test4_stdout":
+  - "Started development server: http://localhost:3000"

@@ -1,0 +1,36 @@
+"test1_command":
+  - "curl -s -D- http://localhost:3000 -X POST -d x=1 # A successful request"
+"test1_output":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Fri, 27 Dec 2024 20:24:32 GMT"
+  - "Content-Length: 2"
+  - ""
+  - "ok"
+"test1_stdout":
+  - "Started development server: http://localhost:3000"
+  - "[onRequest]       { error, path, qi, redirect, request, server, set, store, url }"
+  - "[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
+  - "[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
+"test2_command":
+  - "curl -s -D- \"http://localhost:3000?crash=1\" -X POST -d x=1 # A crashing request"
+"test2_output":
+  - "HTTP/1.1 500 Internal Server Error"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Fri, 27 Dec 2024 20:24:32 GMT"
+  - "Content-Length: 5"
+  - ""
+  - "crash"
+"test2_stdout":
+  - "Started development server: http://localhost:3000"
+  - "[onRequest]       { error, path, qi, redirect, request, server, set, store, url }"
+  - "[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
+  - "[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"

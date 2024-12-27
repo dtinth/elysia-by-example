@@ -18,14 +18,18 @@
   },
   "dependencies": {
     "ansi-to-html": "^0.7.2",
+    "consola": "^3.3.3",
     "elysia": "^1.2.8",
     "execa": "^9.5.2",
     "http-errors": "^2.0.0",
     "indent-string": "^5.0.0",
     "js-yaml": "^4.1.0",
     "lodash-es": "^4.17.21",
+    "p-defer": "^4.0.1",
+    "p-limit": "^6.2.0",
     "statuses": "^2.0.1",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "why-is-node-running": "^3.2.1"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
