@@ -21,3 +21,4 @@ export default new Elysia()
 // As `ElysiaCustomStatusResponse` is not an instance of `Error`, you should not `throw` it.
 // Otherwise, the response body will not be formatted correctly.
 //$ curl -s -D- $SERVER/throw # `GET /throw`
+//# expect meow

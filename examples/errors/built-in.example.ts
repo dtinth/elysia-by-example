@@ -47,6 +47,15 @@ export default new Elysia()
 // - Code: `VALIDATION`
 //$ curl -s -D- $SERVER/validate # `GET /validate`
 
+// ### Validation error
+// This happens when the request can be parsed, but does not match the schema.
+// It also happens when you specify a response schema and the response from your application does not match it.
+//
+// - Status: 422 Unprocessable Entity
+// - Error class: `ValidationError`
+// - Code: `VALIDATION`
+//$ curl -s -D- $SERVER/cookie -H "Cookie: name=unsigned" # `GET /cookie`
+
 // ### Internal server error
 // This happens when your application code explicitly throws a new `InternalServerError`.
 //

@@ -14,10 +14,10 @@ export default new Elysia()
   .onTransform((context) => logContext("onTransform", context))
   .onBeforeHandle((context) => logContext("onBeforeHandle", context))
   .onAfterHandle((context) => logContext("onAfterHandle", context))
-  .mapResponse((context) => {
-    logContext("mapResponse", context);
-    return context.response;
-  })
+  // .mapResponse((context) => {
+  //   logContext("mapResponse", context);
+  //   return context.response;
+  // })
   .onAfterResponse((context) => logContext("onAfterResponse", context))
   .onError((context) => logContext("onError", context))
   .post("/", async (context) => {

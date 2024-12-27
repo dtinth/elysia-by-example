@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "ansi-to-html": "^0.7.2",
-    "elysia": "^1.2.6",
+    "elysia": "^1.2.8",
     "execa": "^9.5.2",
     "http-errors": "^2.0.0",
     "indent-string": "^5.0.0",

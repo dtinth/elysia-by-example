@@ -16,10 +16,10 @@
   result:
     - "HTTP/1.1 500 Internal Server Error"
     - "content-type: text/plain;charset=utf-8"
-    - "Date: Wed, 25 Dec 2024 09:57:47 GMT"
-    - "Content-Length: 34"
+    - "Date: Fri, 27 Dec 2024 18:14:57 GMT"
+    - "Content-Length: 5"
     - ""
-    - "{\"name\":\"Error\",\"message\":\"crash\"}"
+    - "crash"
   log:
     - "[onRequest]       { error, path, qi, redirect, request, server, set, store, url }"
     - "[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
@@ -27,16 +27,14 @@
     - "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
     - "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
     - "[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
-    - "[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
-    - "[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
-    - "[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
+    - "[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
 "2-log Example request: A successful request":
   command:
     - "curl -s -D- http://localhost:3000 -X POST -d x=1 "
   result:
     - "HTTP/1.1 200 OK"
     - "content-type: text/plain;charset=utf-8"
-    - "Date: Wed, 25 Dec 2024 09:57:47 GMT"
+    - "Date: Fri, 27 Dec 2024 18:14:57 GMT"
     - "Content-Length: 2"
     - ""
     - "ok"
@@ -47,7 +45,6 @@
     - "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
     - "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, store, url }"
     - "[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
-    - "[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
     - "[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, store, url }"
 "3-order Example request: GET /a":
   command:
