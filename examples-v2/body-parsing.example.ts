@@ -13,7 +13,7 @@ export default new Elysia().post("/parse", async ({ body }) => {
 //$ curl -s -D- "$SERVER/parse" -X POST \
 //    -d x=1 -d y=2 -d z=3
 
-//# test urlencoded_php_arrays_unsupported
+//# test urlencoded_php_arrays_are_unsupported
 //$ curl -s -D- "$SERVER/parse" -X POST \
 //    -d o[b][j]=k -d a[]=1
 
@@ -45,12 +45,12 @@ export default new Elysia().post("/parse", async ({ body }) => {
 //    -H "Content-Type: application/octet-stream" \
 //    -d "hello, world"
 
-//# test xml_unsupported
+//# test xml_is_unsupported
 //$ curl -s -D- "$SERVER/parse" -X POST \
 //    -H "Content-Type: application/xml" \
 //    -d "<hello>world</hello>"
 
-//# test ndjson_unsupported
+//# test ndjson_is_unsupported
 //$ curl -s -D- "$SERVER/parse" -X POST \
 //    -H "Content-Type: application/x-ndjson" \
 //    -d $'{"hello":"world"}\n{"foo":"bar"}\n'

@@ -77,18 +77,18 @@
   - "}"
 "multipart:stdout":
   - "Started development server: http://localhost:3000"
-"ndjson_unsupported:command1":
+"ndjson_is_unsupported:command1":
   - "curl -s -D- \"http://localhost:3000/parse\" -X POST \\"
   - "  -H \"Content-Type: application/x-ndjson\" \\"
   - "  -d $'{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n'"
-"ndjson_unsupported:output1":
+"ndjson_is_unsupported:output1":
   - "HTTP/1.1 200 OK"
   - "content-type: text/plain;charset=utf-8"
-  - "Date: Sat, 28 Dec 2024 18:20:21 GMT"
+  - "Date: Sat, 28 Dec 2024 18:22:50 GMT"
   - "Content-Length: 9"
   - ""
   - "undefined"
-"ndjson_unsupported:stdout":
+"ndjson_is_unsupported:stdout":
   - "Started development server: http://localhost:3000"
 "octet_stream:command1":
   - "curl -s -D- \"http://localhost:3000/parse\" -X POST \\"
@@ -146,31 +146,31 @@
   - "}"
 "urlencoded_duplicate_keys_become_array:stdout":
   - "Started development server: http://localhost:3000"
-"urlencoded_php_arrays_unsupported:command1":
+"urlencoded_php_arrays_are_unsupported:command1":
   - "curl -s -D- \"http://localhost:3000/parse\" -X POST \\"
   - "  -d o[b][j]=k -d a[]=1"
-"urlencoded_php_arrays_unsupported:output1":
+"urlencoded_php_arrays_are_unsupported:output1":
   - "HTTP/1.1 200 OK"
   - "content-type: text/plain;charset=utf-8"
-  - "Date: Sat, 28 Dec 2024 18:20:21 GMT"
+  - "Date: Sat, 28 Dec 2024 18:22:50 GMT"
   - "Content-Length: 35"
   - ""
   - "{"
   - "  \"o[b][j]\": \"k\","
   - "  \"a[]\": \"1\","
   - "}"
-"urlencoded_php_arrays_unsupported:stdout":
+"urlencoded_php_arrays_are_unsupported:stdout":
   - "Started development server: http://localhost:3000"
-"xml_unsupported:command1":
+"xml_is_unsupported:command1":
   - "curl -s -D- \"http://localhost:3000/parse\" -X POST \\"
   - "  -H \"Content-Type: application/xml\" \\"
   - "  -d \"<hello>world</hello>\""
-"xml_unsupported:output1":
+"xml_is_unsupported:output1":
   - "HTTP/1.1 200 OK"
   - "content-type: text/plain;charset=utf-8"
-  - "Date: Sat, 28 Dec 2024 18:20:21 GMT"
+  - "Date: Sat, 28 Dec 2024 18:22:50 GMT"
   - "Content-Length: 9"
   - ""
   - "undefined"
-"xml_unsupported:stdout":
+"xml_is_unsupported:stdout":
   - "Started development server: http://localhost:3000"
