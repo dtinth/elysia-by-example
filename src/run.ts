@@ -1,5 +1,6 @@
 import { $ } from "bun";
 import consola from "consola";
+import { groupBy } from "lodash-es";
 import { spawn } from "node:child_process";
 import { createInterface } from "node:readline";
 import pDefer from "p-defer";
@@ -12,14 +13,19 @@ export async function run(filePath: string) {
   const sourceCode = await Bun.file(filePath).text();
   const { testCommands, source } = getTestCommands(sourceCode);
   const results = await Promise.all(
-    testCommands.map((testCommand) =>
-      limiter(() => runTest(filePath, [testCommand]))
+    Object.entries(groupBy(testCommands, (c) => c.testName)).map(
+      ([testName, testCommands]) =>
+        limiter(() => runTest(filePath, testName, testCommands))
     )
   );
   return { source, results };
 }
 
-async function runTest(filePath: string, testCommands: TestCommand[]) {
+async function runTest(
+  filePath: string,
+  testName: string,
+  testCommands: TestCommand[]
+) {
   const child = spawn(`exec env PORT=0 bun run ${$.escape(filePath)} 2>&1`, {
     shell: true,
     stdio: ["ignore", "pipe", "inherit"],
@@ -59,6 +65,7 @@ async function runTest(filePath: string, testCommands: TestCommand[]) {
   const runResult: RunResult = {
     commands: [],
     stdout: "",
+    testName,
   };
   for (const command of testCommands) {
     const rawCmd = command.script;
@@ -81,6 +88,7 @@ async function runTest(filePath: string, testCommands: TestCommand[]) {
 interface RunResult {
   commands: CommandResult[];
   stdout: string;
+  testName: string;
 }
 
 interface CommandResult {

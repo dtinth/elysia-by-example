@@ -1,4 +1,5 @@
 export interface TestCommand {
+  testName: string;
   script: string;
   expectations: Expectation[];
 }
@@ -12,6 +13,18 @@ export function getTestCommands(text: string) {
   const lines = text.split("\n").map((x) => x.trimEnd());
   const parser = new LineBasedParser(lines);
   const source: string[] = [];
+
+  const usedTestNames = new Set<string>([]);
+  const ensureUnique = (name: string) => {
+    let nextSuffix = 2;
+    let suffix = "";
+    while (usedTestNames.has(name + suffix)) {
+      suffix = String(nextSuffix++);
+    }
+    usedTestNames.add(name + suffix);
+    return name + suffix;
+  };
+  let nextTestName: string | undefined;
 
   const parseCommand = (): TestCommand | undefined => {
     if (!parser.next?.startsWith("//$")) return;
@@ -41,7 +54,9 @@ export function getTestCommands(text: string) {
         break;
       }
     }
-    return { script: command.join("\n"), expectations };
+    if (!nextTestName) nextTestName = ensureUnique("test");
+    const testName = nextTestName;
+    return { testName, script: command.join("\n"), expectations };
   };
 
   const commands: TestCommand[] = [];
@@ -50,7 +65,13 @@ export function getTestCommands(text: string) {
     if (command) {
       commands.push(command);
     } else {
-      source.push(parser.consume());
+      if (parser.next?.startsWith("//# test")) {
+        nextTestName = ensureUnique(
+          parser.consume().slice("//# test".length).trim() || "test"
+        );
+      } else {
+        source.push(parser.consume());
+      }
     }
   }
 

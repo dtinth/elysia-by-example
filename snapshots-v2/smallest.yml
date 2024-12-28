@@ -1,11 +1,11 @@
-"test1_command":
+"test:command1":
   - "curl -s -D- http://localhost:3000"
-"test1_output":
+"test:output1":
   - "HTTP/1.1 404 Not Found"
   - "content-type: text/plain;charset=utf-8"
-  - "Date: Fri, 27 Dec 2024 20:24:33 GMT"
+  - "Date: Sat, 28 Dec 2024 18:16:17 GMT"
   - "Content-Length: 9"
   - ""
   - "NOT_FOUND"
-"test1_stdout":
+"test:stdout":
   - "Started development server: http://localhost:3000"

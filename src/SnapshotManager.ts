@@ -8,9 +8,11 @@ const normalize = (s: string) =>
 export class SnapshotManager {
   constructor(private filePath: string) {}
   store?: Record<string, string>;
+  usedKeys: Set<string> = new Set();
   dirty = false;
 
   async resolveSnapshot(key: string, value: string) {
+    this.usedKeys.add(key);
     const store = await this.getStore();
     const before = store[key] ? normalize(store[key]) : undefined;
     const after = normalize(value);
@@ -33,6 +35,7 @@ export class SnapshotManager {
   serialize(store: Record<string, string>) {
     const output: string[] = [];
     for (const key of Object.keys(store).sort()) {
+      if (!this.usedKeys.has(key)) continue;
       const snapshot = store[key];
       output.push(JSON.stringify(key) + ":");
       output.push(indentString(linesToArray(snapshot), 2));
