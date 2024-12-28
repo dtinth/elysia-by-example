@@ -1,0 +1,33 @@
+"200:command1":
+  - "curl -s -D- \"http://localhost:3000?crash=no\""
+"200:output1":
+  - "HTTP/1.1 200 OK"
+  - "Content-Type: application/json;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:37:10 GMT"
+  - "Content-Length: 11"
+  - ""
+  - "{\"ok\":true}"
+"200:stdout":
+  - "Started development server: http://localhost:3000"
+"418:command1":
+  - "curl -s -D- \"http://localhost:3000?crash=418\""
+"418:output1":
+  - "HTTP/1.1 418 I'm a Teapot"
+  - "Content-Type: application/json;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:37:10 GMT"
+  - "Content-Length: 28"
+  - ""
+  - "{\"error\":{\"message\":\"meow\"}}"
+"418:stdout":
+  - "Started development server: http://localhost:3000"
+"500:command1":
+  - "curl -s -D- \"http://localhost:3000?crash=500\""
+"500:output1":
+  - "HTTP/1.1 500 Internal Server Error"
+  - "Content-Type: application/json;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:37:10 GMT"
+  - "Content-Length: 47"
+  - ""
+  - "{\"error\":{\"message\":\"Something went wrong...\"}}"
+"500:stdout":
+  - "Started development server: http://localhost:3000"
