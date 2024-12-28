@@ -1,0 +1,12 @@
+"test:command1":
+  - "curl -s -D- \"http://localhost:3000\""
+"test:output1":
+  - "HTTP/1.1 200 OK"
+  - "x-foo: baz, bar"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:43:32 GMT"
+  - "Content-Length: 2"
+  - ""
+  - "hi"
+"test:stdout":
+  - "Started development server: http://localhost:3000"
