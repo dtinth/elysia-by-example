@@ -1,0 +1,39 @@
+"a:command1":
+  - "curl -s -D- \"http://localhost:3000/a\""
+"a:output1":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:36:02 GMT"
+  - "Content-Length: 1"
+  - ""
+  - "a"
+"a:stdout":
+  - "Started development server: http://localhost:3000"
+  - "[interceptor] onRequest"
+"b:command1":
+  - "curl -s -D- \"http://localhost:3000/b\""
+"b:output1":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:36:02 GMT"
+  - "Content-Length: 1"
+  - ""
+  - "b"
+"b:stdout":
+  - "Started development server: http://localhost:3000"
+  - "[interceptor] onRequest"
+  - "[interceptor] onBeforeHandle"
+  - "[local] onBeforeHandle"
+"c:command1":
+  - "curl -s -D- \"http://localhost:3000/c\""
+"c:output1":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:36:02 GMT"
+  - "Content-Length: 1"
+  - ""
+  - "c"
+"c:stdout":
+  - "Started development server: http://localhost:3000"
+  - "[interceptor] onRequest"
+  - "[interceptor] onBeforeHandle"

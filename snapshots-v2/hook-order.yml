@@ -1,0 +1,23 @@
+"a:command1":
+  - "curl -s -D- \"http://localhost:3000/a\""
+"a:output1":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:34:05 GMT"
+  - "Content-Length: 1"
+  - ""
+  - "a"
+"a:stdout":
+  - "Started development server: http://localhost:3000"
+"b:command1":
+  - "curl -s -D- \"http://localhost:3000/b\""
+"b:output1":
+  - "HTTP/1.1 200 OK"
+  - "content-type: text/plain;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:34:05 GMT"
+  - "Content-Length: 1"
+  - ""
+  - "b"
+"b:stdout":
+  - "Started development server: http://localhost:3000"
+  - "onBeforeHandle called"

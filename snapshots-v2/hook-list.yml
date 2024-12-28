@@ -1,0 +1,11 @@
+"test:command1":
+  - "curl -s -D- http://localhost:3000"
+"test:output1":
+  - "HTTP/1.1 200 OK"
+  - "Content-Type: application/json;charset=utf-8"
+  - "Date: Sat, 28 Dec 2024 18:33:04 GMT"
+  - "Content-Length: 121"
+  - ""
+  - "[\"start\",\"request\",\"parse\",\"transform\",\"beforeHandle\",\"afterHandle\",\"mapResponse\",\"afterResponse\",\"trace\",\"error\",\"stop\"]"
+"test:stdout":
+  - "Started development server: http://localhost:3000"
