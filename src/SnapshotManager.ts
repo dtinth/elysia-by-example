@@ -17,6 +17,7 @@ export class SnapshotManager {
     const before = store[key] ? normalize(store[key]) : undefined;
     const after = normalize(value);
     if (before !== after) {
+      consola.info("changed:", this.filePath, ">", key);
       store[key] = value;
       this.dirty = true;
     }
@@ -26,7 +27,7 @@ export class SnapshotManager {
     if (this.dirty) {
       const file = Bun.file(this.filePath);
       await Bun.write(file, this.serialize(await this.getStore()));
-      consola.info("Snapshot updated:", this.filePath);
+      consola.debug("Snapshot updated:", this.filePath);
     } else {
       consola.debug("Snapshot up-to-date:", this.filePath);
     }
