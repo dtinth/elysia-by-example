@@ -65,7 +65,10 @@ async function runTest(filePath: string, testCommands: TestCommand[]) {
     const runCmd = rawCmd.replaceAll("$SERVER", `http://localhost:${port}`);
     const showCmd = rawCmd.replaceAll("$SERVER", "http://localhost:3000");
     const result = await $`bash -c ${runCmd} 2>&1`.text();
-    runResult.commands.push({ script: showCmd, output: result });
+    runResult.commands.push({
+      script: showCmd,
+      output: result.replaceAll(`:${port}`, ":3000"),
+    });
   }
   child.kill("SIGINT");
   finishDefer.resolve();
