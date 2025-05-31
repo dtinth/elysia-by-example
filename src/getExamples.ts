@@ -1,11 +1,11 @@
 import { join } from "node:path";
 
-export interface Task {
+export interface Example {
   examplePath: string;
   snapshotPath: string;
 }
 
-export async function* getTasks(): AsyncIterable<Task> {
+export async function* getExamples(): AsyncIterable<Example> {
   const examplesBasePath = "examples-v2";
   const snapshotsBasePath = "snapshots-v2";
   const glob = new Bun.Glob("**/*.example.ts");
