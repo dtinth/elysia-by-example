@@ -1,0 +1,2 @@
+#!/bin/bash -e
+docker run -ti --rm -v "$PWD:/app" elysia-by-example "$@"
