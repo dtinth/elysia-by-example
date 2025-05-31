@@ -1,31 +1,23 @@
 import { $ } from "bun";
 import consola from "consola";
-import { groupBy } from "lodash-es";
 import { spawn } from "node:child_process";
 import { createInterface } from "node:readline";
 import pDefer from "p-defer";
 import pLimit from "p-limit";
-import { getTestCommands, type TestCommand } from "./getTestCommands";
+import { getTests, type Test } from "./getTests";
 
 const limiter = pLimit(16);
 
 export async function run(filePath: string) {
   const sourceCode = await Bun.file(filePath).text();
-  const { testCommands, source } = getTestCommands(sourceCode);
+  const { tests, source } = getTests(sourceCode);
   const results = await Promise.all(
-    Object.entries(groupBy(testCommands, (c) => c.testName)).map(
-      ([testName, testCommands]) =>
-        limiter(() => runTest(filePath, testName, testCommands))
-    )
+    tests.map((test) => limiter(() => runTest(filePath, test)))
   );
   return { source, results };
 }
 
-async function runTest(
-  filePath: string,
-  testName: string,
-  testCommands: TestCommand[]
-) {
+async function runTest(filePath: string, test: Test) {
   const child = spawn(`exec env PORT=0 bun run ${$.escape(filePath)} 2>&1`, {
     shell: true,
     stdio: ["ignore", "pipe", "inherit"],
@@ -63,19 +55,51 @@ async function runTest(
   const port = await portDefer.promise;
   consola.debug(`[${filePath}] running on port ${port}`);
   const runResult: RunResult = {
-    commands: [],
+    actions: [],
     stdout: "",
-    testName,
+    testName: test.testName,
   };
-  for (const command of testCommands) {
-    const rawCmd = command.script;
-    const runCmd = rawCmd.replaceAll("$SERVER", `http://localhost:${port}`);
-    const showCmd = rawCmd.replaceAll("$SERVER", "http://localhost:3000");
-    const result = await $`bash -c ${runCmd} 2>&1`.text();
-    runResult.commands.push({
-      script: showCmd,
-      output: result.replaceAll(`:${port}`, ":3000"),
-    });
+  let lastCommandOutput: string | undefined;
+  for (const action of test.actions) {
+    if (action.type === "command") {
+      const rawCmd = action.script;
+      const runCmd = rawCmd.replaceAll("$SERVER", `http://localhost:${port}`);
+      const showCmd = rawCmd.replaceAll("$SERVER", "http://localhost:3000");
+      const result = await $`bash -c ${runCmd} 2>&1`.text();
+      lastCommandOutput = result.replaceAll(`:${port}`, ":3000");
+      runResult.actions.push({
+        type: "command",
+        script: showCmd,
+        output: lastCommandOutput,
+      });
+    } else if (action.type === "expect" || action.type === "expect-not") {
+      if (lastCommandOutput === undefined) {
+        runResult.actions.push({
+          type: action.type,
+          texts: action.texts,
+          output: "Error: expect/expect-not called before a command",
+          passed: false,
+        });
+        continue;
+      }
+      let allPassed = true;
+      for (const text of action.texts) {
+        const passed =
+          action.type === "expect"
+            ? lastCommandOutput.includes(text)
+            : !lastCommandOutput.includes(text);
+        if (!passed) {
+          allPassed = false;
+          break;
+        }
+      }
+      runResult.actions.push({
+        type: action.type,
+        texts: action.texts,
+        output: lastCommandOutput,
+        passed: allPassed,
+      });
+    }
   }
   child.kill("SIGINT");
   finishDefer.resolve();
@@ -86,12 +110,22 @@ async function runTest(
 }
 
 interface RunResult {
-  commands: CommandResult[];
+  actions: ActionResult[];
   stdout: string;
   testName: string;
 }
 
 interface CommandResult {
+  type: "command";
   script: string;
   output: string;
 }
+
+interface ExpectResult {
+  type: "expect" | "expect-not";
+  texts: string[];
+  output: string;
+  passed: boolean;
+}
+
+type ActionResult = CommandResult | ExpectResult;

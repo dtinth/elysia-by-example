@@ -1,12 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { getExamples } from "../getExamples";
-import { getTestCommands } from "../getTestCommands";
+import { getTests } from "../getTests";
 
 (async () => {
   for await (const example of getExamples()) {
     const content = await readFile(example.examplePath, "utf8");
-    const { testCommands } = getTestCommands(content);
-    const testNames = testCommands.map((tc) => tc.testName);
+    const { tests } = getTests(content);
+    const testNames = tests.map((t) => t.testName);
     console.log(`Example: ${example.examplePath}`);
     if (testNames.length > 0) {
       for (const name of testNames) {
