@@ -1,4 +1,4 @@
-import { getExamples } from "../getTasks";
+import { getExamples } from "../getExamples";
 
 (async () => {
   for await (const example of getExamples()) {
