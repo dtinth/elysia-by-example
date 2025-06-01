@@ -14,6 +14,10 @@ function normalizeTesterOutput(output: string | undefined): string | undefined {
   );
 }
 
+function normalizeRuntimeLog(logContent: string): string {
+  return logContent.replace(/\(node:\d+\)/g, "(node:[PID])");
+}
+
 function normalizeSnapshot(snapshot: TaskRunResult): TaskRunResult {
   return {
     ...snapshot,
@@ -21,7 +25,9 @@ function normalizeSnapshot(snapshot: TaskRunResult): TaskRunResult {
     runtimeLogs: [
       {
         type: "stdout",
-        contents: snapshot.runtimeLogs.map((log) => log.contents).join(""),
+        contents: normalizeRuntimeLog(
+          snapshot.runtimeLogs.map((log) => log.contents).join("")
+        ),
       },
     ],
     // Normalize tester logs by removing timestamps and date headers
