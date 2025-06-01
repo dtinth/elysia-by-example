@@ -26,6 +26,7 @@ export default defineConfig({
       },
       {
         text: "Examples",
+        link: "/examples/",
         items: examples.exampleNames.map((example) => ({
           text: example,
           link: `/examples/${example}`,
