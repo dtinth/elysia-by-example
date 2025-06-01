@@ -2,18 +2,8 @@ import { consola } from "consola";
 import { getRunnableTasks } from "../getRunnableTasks";
 import type { RunnableTask } from "../runnableTask";
 import { Runtime } from "../Runtime";
-import { Tester, type ActionLogEntry } from "../Tester";
-
-interface TaskRunResult {
-  taskId: string;
-  success: boolean;
-  runtimeLogs: Array<{
-    type: "stderr" | "stdout";
-    contents: string;
-  }>;
-  testerLogs: ActionLogEntry[];
-  error?: string;
-}
+import type { TaskRunResult } from "../TaskRunResult";
+import { Tester } from "../Tester";
 
 async function findTaskById(taskId: string): Promise<RunnableTask | null> {
   for await (const task of getRunnableTasks()) {

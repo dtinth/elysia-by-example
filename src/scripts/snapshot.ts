@@ -1,69 +1,66 @@
+import { $ } from "bun";
 import consola from "consola";
-import { unlinkSync } from "node:fs";
-import { join, normalize } from "node:path";
-import { run } from "../run";
-import { SnapshotManager } from "../SnapshotManager";
+import pLimit from "p-limit";
+import { getRunnableTasks } from "../getRunnableTasks";
+import type { RunnableTask } from "../runnableTask";
+import type { TaskRunResult } from "../TaskRunResult";
 
-const promises: Promise<void>[] = [];
+async function updateSnapshot(
+  task: RunnableTask,
+  taskRunResult: TaskRunResult
+): Promise<string> {
+  const snapshotPath = `snapshots-v2/${task.id}.json`;
+  const snapshotContent = JSON.stringify(taskRunResult, null, 2);
 
-const examplesBasePath = "examples-v2";
-const snapshotsBasePath = "snapshots-v2";
+  const file = Bun.file(snapshotPath);
+  const exists = await file.exists();
 
-interface Task {
-  examplePath: string;
-  snapshotPath: string;
-}
-
-async function* tasks(): AsyncIterable<Task> {
-  const glob = new Bun.Glob("**/*.example.ts");
-  const exampleFiles = glob.scan(examplesBasePath);
-  for await (const match of exampleFiles) {
-    const examplePath = join(examplesBasePath, match);
-    const snapshotPath = join(
-      snapshotsBasePath,
-      match.replace(/\.example\.ts$/, ".yml")
-    );
-    yield { examplePath, snapshotPath };
-  }
-}
-
-const runAndUpdate = async (task: Task) => {
-  const runResult = await run(task.examplePath);
-
-  const snapshots = new SnapshotManager(task.snapshotPath);
-  for (const result of runResult.results) {
-    const prefix = `${result.testName}:`;
-    await snapshots.resolveSnapshot(`${prefix}stdout`, result.stdout);
-    for (const [index, command] of result.commands.entries()) {
-      const n = index + 1;
-      await snapshots.resolveSnapshot(`${prefix}command${n}`, command.script);
-      await snapshots.resolveSnapshot(`${prefix}output${n}`, command.output);
+  if (exists) {
+    const existingContent = await file.text();
+    if (existingContent === snapshotContent) {
+      return "unchanged";
     }
   }
-  await snapshots.save();
-  consola.success(task.examplePath);
+
+  await Bun.write(file, snapshotContent);
+  return exists ? "updated" : "created";
+}
+
+const runAndUpdate = async (task: RunnableTask) => {
+  const taskId = task.id;
+  consola.start(`${taskId}`);
+  const started = Date.now();
+  try {
+    const result = await $`bin/run-task ${taskId}`.text();
+    const finished = Date.now();
+
+    // Parse TaskRunResult from the output
+    const resultMatch = result.match(
+      /<task-run-result>\s*([^]*?)\s*<\/task-run-result>/
+    );
+    if (!resultMatch) {
+      consola.error(
+        `${taskId} no result found in output`,
+        JSON.stringify(result, null, 2)
+      );
+      throw new Error(`no result found in output`);
+    }
+    const taskRunResult: TaskRunResult = JSON.parse(resultMatch[1]);
+    const snapshotStatus = await updateSnapshot(task, taskRunResult);
+    consola.success(
+      `${taskId} snapshot ${snapshotStatus}`,
+      `(${finished - started}ms)`
+    );
+  } catch (error) {
+    consola.error(`${taskId}`, error);
+  }
 };
 
-const targetSnapshotPaths = new Set<string>();
+const promises: Promise<void>[] = [];
+const limit = pLimit(4);
 
-for await (const task of tasks()) {
-  targetSnapshotPaths.add(normalize(task.snapshotPath));
-  promises.push(runAndUpdate(task));
+for await (const task of getRunnableTasks()) {
+  promises.push(limit(() => runAndUpdate(task)));
 }
 
-try {
-  await Promise.all(promises);
-
-  const snapshotGlob = new Bun.Glob("**/*.snapshot.yml");
-  for (const match of snapshotGlob.scanSync(snapshotsBasePath)) {
-    const snapshotPath = join(snapshotsBasePath, match);
-    if (!targetSnapshotPaths.has(normalize(snapshotPath))) {
-      consola.warn("Removing unused snapshot:", snapshotPath);
-      unlinkSync(snapshotPath);
-    }
-  }
-} catch (error) {
-  process.exitCode = 1;
-} finally {
-  process.exit();
-}
+await Promise.all(promises);
