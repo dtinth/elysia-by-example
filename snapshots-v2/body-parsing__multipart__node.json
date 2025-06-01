@@ -1,0 +1,24 @@
+{
+  "taskId": "body-parsing__multipart__node",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stderr",
+      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "type": "stdout",
+      "contents": "[runtime] Node v22.16.0\n🦊 Elysia is running at :::3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:23:58.785Z",
+      "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F x=1 -F y=2 -F z=3 \\\n  -F a=foo -F a=bar -F a=baz",
+      "success": true,
+      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 18\r\nDate: Sun, 01 Jun 2025 06:23:58 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBun is not defined",
+      "error": ""
+    }
+  ]
+}

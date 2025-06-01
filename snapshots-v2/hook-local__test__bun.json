@@ -1,0 +1,28 @@
+{
+  "taskId": "hook-local__test__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[local] onBeforeHandle called"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:15.223Z",
+      "command": "curl -s -D- \"http://localhost:3000/a\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:15 GMT\r\nContent-Length: 1\r\n\r\na",
+      "error": ""
+    }
+  ]
+}

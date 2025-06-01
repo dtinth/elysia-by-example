@@ -1,0 +1,24 @@
+{
+  "taskId": "response-string__test__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:23:53.748Z",
+      "command": "curl -s -D- \"http://localhost:3000/string\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:53 GMT\r\nContent-Length: 2\r\n\r\nhi",
+      "error": ""
+    }
+  ]
+}

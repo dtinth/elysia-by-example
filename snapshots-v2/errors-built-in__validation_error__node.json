@@ -1,0 +1,36 @@
+{
+  "taskId": "errors-built-in__validation_error__node",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stderr",
+      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "type": "stdout",
+      "contents": "[runtime] Node v22.16.0"
+    },
+    {
+      "type": "stdout",
+      "contents": "🦊 Elysia is running at :::3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError] {\n  error: _ValidationError: {\n    \"type\": \"validation\",\n    \"on\": \"query\",\n    \"summary\": \"Property 'name' is missing\",\n    \"property\": \"/name\",\n    \"message\": \"Expected required property\",\n    \"expected\": {\n      \"name\": \"\"\n    },\n    \"found\": {},\n    \"errors\": [\n      {\n        \"type\": 45,\n        \"schema\": {\n          \"type\": \"string\"\n        },\n        \"path\": \"/name\",\n        \"message\": \"Expected required property\",\n        \"errors\": [],\n        \"summary\": \"Property 'name' is missing\"\n      },\n      {\n        \"type\": 54,\n        \"schema\": {\n          \"type\": \"string\"\n        },\n        \"path\": \"/name\",\n        \"message\": \"Expected string\",\n        \"errors\": [],\n        \"summary\": \"Expected property 'name' to be string but found: undefined\"\n      }\n    ]\n  }\n      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:14:67)\n      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)\n      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:29:76)\n      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)\n      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)\n      at Server.emit (node:events:518:28)\n      at parserOnIncoming (node:_http_server:1153:12)\n      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {\n    type: 'query',\n    validator: TypeCheck {\n      schema: [Object],\n      references: [],\n      checkFunc: [Function: check],\n      code: 'return function check(value) {\\n' +\n        '  return (\\n' +\n        \"    (typeof value === 'object' && value !== null && !Array.isArray(value)) &&\\n\" +\n        \"    (typeof value.name === 'string') &&\\n\" +\n        '    Object.getOwnPropertyNames(value).length === 1\\n' +\n        '  )\\n' +\n        '}',\n      hasTransform: false,\n      Clean: [Function (anonymous)],\n      parse: [Function (anonymous)],\n      safeParse: [Function (anonymous)],\n      hasAdditionalProperties: false,\n      hasDefault: false,\n      isOptional: false,\n      hasRef: undefined,\n      '~hasRef': undefined\n    },\n    value: {},\n    code: 'VALIDATION',\n    status: 422\n  },\n  code: 'VALIDATION'\n}"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError] {\n  error: _ValidationError: {\n    \"type\": \"validation\",\n    \"on\": \"query\",\n    \"summary\": \"Property 'name' is missing\",\n    \"property\": \"/name\",\n    \"message\": \"Expected required property\",\n    \"expected\": {\n      \"name\": \"\"\n    },\n    \"found\": {},\n    \"errors\": [\n      {\n        \"type\": 45,\n        \"schema\": {\n          \"type\": \"string\"\n        },\n        \"path\": \"/name\",\n        \"message\": \"Expected required property\",\n        \"errors\": [],\n        \"summary\": \"Property 'name' is missing\"\n      },\n      {\n        \"type\": 54,\n        \"schema\": {\n          \"type\": \"string\"\n        },\n        \"path\": \"/name\",\n        \"message\": \"Expected string\",\n        \"errors\": [],\n        \"summary\": \"Expected property 'name' to be string but found: undefined\"\n      }\n    ]\n  }\n      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:14:67)\n      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)\n      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:29:76)\n      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)\n      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)\n      at Server.emit (node:events:518:28)\n      at parserOnIncoming (node:_http_server:1153:12)\n      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {\n    type: 'query',\n    validator: TypeCheck {\n      schema: [Object],\n      references: [],\n      checkFunc: [Function: check],\n      code: 'return function check(value) {\\n' +\n        '  return (\\n' +\n        \"    (typeof value === 'object' && value !== null && !Array.isArray(value)) &&\\n\" +\n        \"    (typeof value.name === 'string') &&\\n\" +\n        '    Object.getOwnPropertyNames(value).length === 1\\n' +\n        '  )\\n' +\n        '}',\n      hasTransform: false,\n      Clean: [Function (anonymous)],\n      parse: [Function (anonymous)],\n      safeParse: [Function (anonymous)],\n      hasAdditionalProperties: false,\n      hasDefault: false,\n      isOptional: false,\n      hasRef: undefined,\n      '~hasRef': undefined\n    },\n    value: {},\n    code: 'VALIDATION',\n    status: 422\n  },\n  code: 'VALIDATION'\n}"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:20.422Z",
+      "command": "curl -s -D- http://localhost:3000/validate",
+      "success": true,
+      "output": "HTTP/1.1 400 Bad Request\r\ncontent-type: application/json\r\nContent-Length: 680\r\nDate: Sun, 01 Jun 2025 06:24:20 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"query\",\n  \"summary\": \"Property 'name' is missing\",\n  \"property\": \"/name\",\n  \"message\": \"Expected required property\",\n  \"expected\": {\n    \"name\": \"\"\n  },\n  \"found\": {},\n  \"errors\": [\n    {\n      \"type\": 45,\n      \"schema\": {\n        \"type\": \"string\"\n      },\n      \"path\": \"/name\",\n      \"message\": \"Expected required property\",\n      \"errors\": [],\n      \"summary\": \"Property 'name' is missing\"\n    },\n    {\n      \"type\": 54,\n      \"schema\": {\n        \"type\": \"string\"\n      },\n      \"path\": \"/name\",\n      \"message\": \"Expected string\",\n      \"errors\": [],\n      \"summary\": \"Expected property 'name' to be string but found: undefined\"\n    }\n  ]\n}",
+      "error": ""
+    }
+  ]
+}

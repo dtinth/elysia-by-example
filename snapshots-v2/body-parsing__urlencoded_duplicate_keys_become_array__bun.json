@@ -1,0 +1,24 @@
+{
+  "taskId": "body-parsing__urlencoded_duplicate_keys_become_array__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:23:57.120Z",
+      "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -d a=foo -d a=bar -d a=baz",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:56 GMT\r\nContent-Length: 58\r\n\r\n[Object: null prototype] {\n  a: [ \"foo\", \"bar\", \"baz\" ],\n}",
+      "error": ""
+    }
+  ]
+}

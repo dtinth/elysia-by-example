@@ -1,0 +1,36 @@
+{
+  "taskId": "basic-routing__greeting_with_query__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:10.488Z",
+      "command": "curl -s -D- \"http://localhost:3000/greeting?name=alice\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:10 GMT\r\nContent-Length: 11\r\n\r\nhello alice",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T06:24:10.523Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T06:24:10.524Z",
+      "expectation": "hello alice",
+      "success": true
+    }
+  ]
+}

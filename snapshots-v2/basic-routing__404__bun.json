@@ -1,0 +1,30 @@
+{
+  "taskId": "basic-routing__404__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:10.748Z",
+      "command": "curl -s -D- \"http://localhost:3000/nonexistent\"",
+      "success": true,
+      "output": "HTTP/1.1 404 Not Found\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:10 GMT\r\nContent-Length: 9\r\n\r\nNOT_FOUND",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T06:24:10.772Z",
+      "expectation": "404",
+      "success": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "taskId": "context__test__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:23.362Z",
+      "command": "curl -s -D- \"http://localhost:3000/context\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:23 GMT\r\nContent-Length: 647\r\n\r\n{\n  request: Request (0 KB) {\n    method: \"GET\",\n    url: \"http://localhost:3000/context\",\n    headers: Headers {\n      \"host\": \"localhost:3000\",\n      \"user-agent\": \"curl/7.88.1\",\n      \"accept\": \"*/*\",\n    }\n  },\n  store: {},\n  qi: -1,\n  path: \"/context\",\n  url: \"http://localhost:3000/context\",\n  redirect: [Function: redirect],\n  error: [Function: status],\n  status: [Function: status],\n  set: {\n    headers: [Object: null prototype] {},\n    status: 200,\n    cookie: {},\n  },\n  server: [Getter],\n  headers: {\n    host: \"localhost:3000\",\n    \"user-agent\": \"curl/7.88.1\",\n    accept: \"*/*\",\n  },\n  cookie: {},\n  query: {},\n  route: \"/context\",\n}",
+      "error": ""
+    }
+  ]
+}

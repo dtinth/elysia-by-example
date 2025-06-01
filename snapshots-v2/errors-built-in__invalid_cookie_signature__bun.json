@@ -1,0 +1,28 @@
+{
+  "taskId": "errors-built-in__invalid_cookie_signature__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError] {\n  error: 105 | \n106 | \tconstructor(\n107 | \t\tpublic key: string,\n108 | \t\tmessage?: string\n109 | \t) {\n110 | \t\tsuper(message ?? `\"${key}\" has invalid cookie signature`)\n        ^\nerror: \"name\" has invalid cookie signature\n    key: \"name\",\n status: 400,\n   code: \"INVALID_COOKIE_SIGNATURE\"\n\n      at new InvalidCookieSignature (/app/node_modules/elysia/src/error.ts:110:3)\n      at <anonymous> (/app/node_modules/elysia/src/cookies.ts:337:31)\n,\n  code: \"INVALID_COOKIE_SIGNATURE\",\n}"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:20.203Z",
+      "command": "curl -s -D- http://localhost:3000/cookie -H \"Cookie: name=unsigned\"",
+      "success": true,
+      "output": "HTTP/1.1 400 Bad Request\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:19 GMT\r\nContent-Length: 35\r\n\r\n\"name\" has invalid cookie signature",
+      "error": ""
+    }
+  ]
+}

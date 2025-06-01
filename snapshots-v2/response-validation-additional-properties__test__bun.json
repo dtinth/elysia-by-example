@@ -1,0 +1,36 @@
+{
+  "taskId": "response-validation-additional-properties__test__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:23:50.726Z",
+      "command": "curl -s -D- \"http://localhost:3000/\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 06:23:50 GMT\r\nContent-Length: 13\r\n\r\n{\"a\":1,\"b\":2}",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T06:23:50.775Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T06:23:50.775Z",
+      "expectation": "b",
+      "success": true
+    }
+  ]
+}

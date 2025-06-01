@@ -1,0 +1,28 @@
+{
+  "taskId": "errors-built-in__validation_error__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError] {\n  error: 323 | \t\t\t\tnull,\n324 | \t\t\t\t2\n325 | \t\t\t)\n326 | \t\t}\n327 | \n328 | \t\tsuper(message)\n        ^\nerror: {\n  \"type\": \"validation\",\n  \"on\": \"query\",\n  \"summary\": \"Property 'name' is missing\",\n  \"property\": \"/name\",\n  \"message\": \"Expected required property\",\n  \"expected\": {\n    \"name\": \"\"\n  },\n  \"found\": {},\n  \"errors\": [\n    {\n      \"type\": 45,\n      \"schema\": {\n        \"type\": \"string\"\n      },\n      \"path\": \"/name\",\n      \"message\": \"Expected required property\",\n      \"errors\": [],\n      \"summary\": \"Property 'name' is missing\"\n    },\n    {\n      \"type\": 54,\n      \"schema\": {\n        \"type\": \"string\"\n      },\n      \"path\": \"/name\",\n      \"message\": \"Expected string\",\n      \"errors\": [],\n      \"summary\": \"Expected property 'name' to be string but found: undefined\"\n    }\n  ]\n}\n      type: \"query\",\n validator: [Object ...],\n     value: [Object ...],\n    status: 422,\n      code: \"VALIDATION\"\n\n      at new ValidationError (/app/node_modules/elysia/src/error.ts:328:3)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:14:67)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:80)\n,\n  code: \"VALIDATION\",\n}"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:19.951Z",
+      "command": "curl -s -D- http://localhost:3000/validate",
+      "success": true,
+      "output": "HTTP/1.1 422 Unprocessable Entity\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 06:24:19 GMT\r\nContent-Length: 680\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"query\",\n  \"summary\": \"Property 'name' is missing\",\n  \"property\": \"/name\",\n  \"message\": \"Expected required property\",\n  \"expected\": {\n    \"name\": \"\"\n  },\n  \"found\": {},\n  \"errors\": [\n    {\n      \"type\": 45,\n      \"schema\": {\n        \"type\": \"string\"\n      },\n      \"path\": \"/name\",\n      \"message\": \"Expected required property\",\n      \"errors\": [],\n      \"summary\": \"Property 'name' is missing\"\n    },\n    {\n      \"type\": 54,\n      \"schema\": {\n        \"type\": \"string\"\n      },\n      \"path\": \"/name\",\n      \"message\": \"Expected string\",\n      \"errors\": [],\n      \"summary\": \"Expected property 'name' to be string but found: undefined\"\n    }\n  ]\n}",
+      "error": ""
+    }
+  ]
+}

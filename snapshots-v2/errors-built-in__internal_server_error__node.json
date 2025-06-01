@@ -1,0 +1,32 @@
+{
+  "taskId": "errors-built-in__internal_server_error__node",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stderr",
+      "contents": "(node:29) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "type": "stdout",
+      "contents": "[runtime] Node v22.16.0"
+    },
+    {
+      "type": "stdout",
+      "contents": "🦊 Elysia is running at :::3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError] {\n  error: InternalServerError: Something went wrong!\n      at <anonymous> (/app/examples-v2/errors-built-in.example.ts:7:11)\n      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:6:69)\n      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)\n      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:23:87)\n      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)\n      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)\n      at Server.emit (node:events:518:28)\n      at parserOnIncoming (node:_http_server:1153:12)\n      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {\n    code: 'INTERNAL_SERVER_ERROR',\n    status: 500\n  },\n  code: 'INTERNAL_SERVER_ERROR'\n}\n[onError] {\n  error: InternalServerError: Something went wrong!\n      at <anonymous> (/app/examples-v2/errors-built-in.example.ts:7:11)\n      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:6:69)\n      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)\n      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:23:87)\n      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)\n      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)\n      at Server.emit (node:events:518:28)\n      at parserOnIncoming (node:_http_server:1153:12)\n      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {\n    code: 'INTERNAL_SERVER_ERROR',\n    status: 500\n  },\n  code: 'INTERNAL_SERVER_ERROR'\n}"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:22.077Z",
+      "command": "curl -s -D- http://localhost:3000/crash/internal",
+      "success": true,
+      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 21\r\nDate: Sun, 01 Jun 2025 06:24:22 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nSomething went wrong!",
+      "error": ""
+    }
+  ]
+}

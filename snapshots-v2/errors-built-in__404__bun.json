@@ -1,0 +1,40 @@
+{
+  "taskId": "errors-built-in__404__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError] {\n  error: error: NOT_FOUND\n status: 404,\n   code: \"NOT_FOUND\"\n\n      at NotFoundError (/app/node_modules/elysia/src/error.ts:87:3)\n,\n  code: \"NOT_FOUND\",\n}"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:18.391Z",
+      "command": "curl -s -D- http://localhost:3000/nonexistent",
+      "success": true,
+      "output": "HTTP/1.1 404 Not Found\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:18 GMT\r\nContent-Length: 9\r\n\r\nNOT_FOUND",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T06:24:18.428Z",
+      "expectation": "404",
+      "success": true
+    },
+    {
+      "type": "expect-not",
+      "timestamp": "2025-06-01T06:24:18.429Z",
+      "expectation": "200",
+      "success": true
+    }
+  ]
+}

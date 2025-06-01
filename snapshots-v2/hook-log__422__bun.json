@@ -1,0 +1,48 @@
+{
+  "taskId": "hook-log__422__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onRequest]       { error, path, qi, redirect, request, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:13.699Z",
+      "command": "curl -s -D- \"http://localhost:3000?validate=fail\" -X POST -d x=1",
+      "success": true,
+      "output": "HTTP/1.1 422 Unprocessable Entity\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 06:24:13 GMT\r\nContent-Length: 460\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"query\",\n  \"summary\": \"Expected 'pass'\",\n  \"property\": \"/validate\",\n  \"message\": \"Expected 'pass'\",\n  \"expected\": {},\n  \"found\": {\n    \"validate\": \"fail\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected 'pass'\",\n      \"type\": 32,\n      \"schema\": {\n        \"const\": \"pass\",\n        \"type\": \"string\"\n      },\n      \"path\": \"/validate\",\n      \"value\": \"fail\",\n      \"message\": \"Expected 'pass'\",\n      \"errors\": []\n    }\n  ]\n}",
+      "error": ""
+    }
+  ]
+}

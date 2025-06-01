@@ -1,0 +1,28 @@
+{
+  "taskId": "response-string__test__node",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stderr",
+      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "type": "stdout",
+      "contents": "[runtime] Node v22.16.0"
+    },
+    {
+      "type": "stdout",
+      "contents": "🦊 Elysia is running at :::3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:23:54.872Z",
+      "command": "curl -s -D- \"http://localhost:3000/string\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 2\r\nDate: Sun, 01 Jun 2025 06:23:54 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nhi",
+      "error": ""
+    }
+  ]
+}

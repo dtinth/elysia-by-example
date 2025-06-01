@@ -1,0 +1,32 @@
+{
+  "taskId": "hook-interceptor-vs-local__b__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[interceptor] onRequest"
+    },
+    {
+      "type": "stdout",
+      "contents": "[interceptor] onBeforeHandle\n[local] onBeforeHandle"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:04.299Z",
+      "command": "curl -s -D- \"http://localhost:3000/b\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:04 GMT\r\nContent-Length: 1\r\n\r\nb",
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "taskId": "plugin-http-errors__500__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:23:49.928Z",
+      "command": "curl -s -D- \"http://localhost:3000?crash=500\"",
+      "success": true,
+      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 06:23:49 GMT\r\nContent-Length: 47\r\n\r\n{\"error\":{\"message\":\"Something went wrong...\"}}",
+      "error": ""
+    }
+  ]
+}

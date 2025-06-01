@@ -1,0 +1,32 @@
+{
+  "taskId": "errors-built-in__parse_error__node",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stderr",
+      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "type": "stdout",
+      "contents": "[runtime] Node v22.16.0"
+    },
+    {
+      "type": "stdout",
+      "contents": "🦊 Elysia is running at :::3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onError] {\n  error: ParseError: Bad Request\n      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:25:22)\n      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n      at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n      at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14) {\n    code: 'PARSE',\n    status: 400,\n    [cause]: SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)\n        at JSON.parse (<anonymous>)\n        at parseJSONFromBytes (node:internal/deps/undici/undici:5738:19)\n        at successSteps (node:internal/deps/undici/undici:5719:27)\n        at fullyReadBody (node:internal/deps/undici/undici:4609:9)\n        at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n        at async consumeBody (node:internal/deps/undici/undici:5728:7)\n        at async handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:10:17)\n        at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n        at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14)\n  },\n  code: 'PARSE'\n}\n[onError] {\n  error: ParseError: Bad Request\n      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:25:22)\n      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n      at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n      at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14) {\n    code: 'PARSE',\n    status: 400,\n    [cause]: SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)\n        at JSON.parse (<anonymous>)\n        at parseJSONFromBytes (node:internal/deps/undici/undici:5738:19)\n        at successSteps (node:internal/deps/undici/undici:5719:27)\n        at fullyReadBody (node:internal/deps/undici/undici:4609:9)\n        at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n        at async consumeBody (node:internal/deps/undici/undici:5728:7)\n        at async handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:10:17)\n        at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n        at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14)\n  },\n  code: 'PARSE'\n}"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T06:24:20.168Z",
+      "command": "curl -s -D- http://localhost:3000/body -X POST -H \"Content-Type: application/json\" -d '{'",
+      "success": true,
+      "output": "HTTP/1.1 400 Bad Request\r\nContent-Length: 11\r\nDate: Sun, 01 Jun 2025 06:24:20 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBad Request",
+      "error": ""
+    }
+  ]
+}
