@@ -21,13 +21,10 @@ export async function* getRunnableTasks(): AsyncIterable<RunnableTask> {
     for (const test of tests) {
       const runtimes: Runtime[] = ["bun", "node"];
       for (const runtime of runtimes) {
-        const fileName = example.examplePath
-          .replace("examples-v2/", "")
-          .replace(".example.ts", "");
-        const slugifiedFileName = slugify(fileName);
+        const slugifiedExampleName = slugify(example.exampleName);
         const slugifiedTestName = slugify(test.testName);
         yield {
-          id: `${slugifiedFileName}__${slugifiedTestName}__${runtime}`,
+          id: `${slugifiedExampleName}__${slugifiedTestName}__${runtime}`,
           example,
           test,
           runtime,

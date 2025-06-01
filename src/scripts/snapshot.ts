@@ -49,7 +49,7 @@ async function updateSnapshot(
   task: RunnableTask,
   taskRunResult: TaskRunResult
 ): Promise<string> {
-  const snapshotPath = `snapshots-v2/${task.id}.json`;
+  const snapshotPath = `snapshots/${task.id}.json`;
   const snapshotContent = JSON.stringify(taskRunResult, null, 2);
 
   const file = Bun.file(snapshotPath);

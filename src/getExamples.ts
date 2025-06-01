@@ -6,7 +6,7 @@ export interface Example {
 }
 
 export async function* getExamples(): AsyncIterable<Example> {
-  const examplesBasePath = "examples-v2";
+  const examplesBasePath = "examples";
   const glob = new Bun.Glob("**/*.example.ts");
   const exampleFiles = glob.scan(examplesBasePath);
   for await (const match of exampleFiles) {

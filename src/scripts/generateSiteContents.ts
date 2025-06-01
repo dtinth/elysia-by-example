@@ -42,7 +42,7 @@ interface RuntimeResult {
 
 async function loadSnapshot(taskId: string): Promise<TaskRunResult | null> {
   try {
-    const snapshotPath = `snapshots-v2/${taskId}.json`;
+    const snapshotPath = `snapshots/${taskId}.json`;
     const content = await readFile(snapshotPath, "utf8");
     return JSON.parse(content) as TaskRunResult;
   } catch {
