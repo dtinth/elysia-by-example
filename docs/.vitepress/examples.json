@@ -1,0 +1,27 @@
+{
+  "exampleNames": [
+    "basic-query-parsing",
+    "basic-return",
+    "basic-routing",
+    "body-parsing",
+    "context",
+    "errors-built-in",
+    "hook-interceptor-vs-local",
+    "hook-list",
+    "hook-local",
+    "hook-log",
+    "hook-onrequest",
+    "hook-order",
+    "issue-0859-bug1",
+    "issue-0859-bug2",
+    "plugin-http-errors",
+    "response-json",
+    "response-string",
+    "response-validation",
+    "response-validation-additional-properties",
+    "response-validation-failed",
+    "set-headers-vs-response",
+    "set-status-vs-response",
+    "smallest"
+  ]
+}

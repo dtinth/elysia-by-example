@@ -2,6 +2,7 @@ import { join } from "node:path";
 
 export interface Example {
   examplePath: string;
+  exampleName: string;
 }
 
 export async function* getExamples(): AsyncIterable<Example> {
@@ -10,6 +11,7 @@ export async function* getExamples(): AsyncIterable<Example> {
   const exampleFiles = glob.scan(examplesBasePath);
   for await (const match of exampleFiles) {
     const examplePath = join(examplesBasePath, match);
-    yield { examplePath };
+    const exampleName = match.replace(".example.ts", "");
+    yield { examplePath, exampleName };
   }
 }

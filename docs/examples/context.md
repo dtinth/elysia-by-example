@@ -1,47 +1,33 @@
-<!-- This file is automatically-generated. Do not edit. -->
+# context
 
-<template v-if="false">
+## Example Code
 
-> [!CAUTION]
-> This file has been automatically generated from the [examples in the `examples/context` directory.](https://github.com/dtinth/elysia-by-example/tree/main/examples/context).
-> Do not directly edit this file, as it will be overwritten.
-> [[View the live site here.]](https://dtinth.github.io/elysia-by-example/examples/context.html)
-
-</template>
-
-
-# Context
-
-::: warning Not idiomatic
-This example is just to show what the context object looks like.
-It is not idiomatic Elysia code — you should not use the context object directly in your code, but instead destructure it to extract the properties you need.
-:::
-
-```ts
-// examples/context/context.example.ts
+```typescript
 import { Elysia } from "elysia";
 export default new Elysia().get("/context", async (context) => {
   return Bun.inspect(context);
 });
 
+
 ```
 
+## Tests
 
-::: details Example request
+### test
 
-<div style="margin-bottom: 0.5rem">
+::: code-group
 
-```sh
-curl -s -D- "http://localhost:3000/context"
-```
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-</div>
-
-```http
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/context"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:45 GMT
-Content-Length: 593
+Date: Sun, 01 Jun 2025 06:24:23 GMT
+Content-Length: 647
 
 {
   request: Request (0 KB) {
@@ -49,7 +35,7 @@ Content-Length: 593
     url: "http://localhost:3000/context",
     headers: Headers {
       "host": "localhost:3000",
-      "user-agent": "curl/8.7.1",
+      "user-agent": "curl/7.88.1",
       "accept": "*/*",
     }
   },
@@ -58,21 +44,43 @@ Content-Length: 593
   path: "/context",
   url: "http://localhost:3000/context",
   redirect: [Function: redirect],
-  error: [Function: error],
+  error: [Function: status],
+  status: [Function: status],
   set: {
-    headers: {},
+    headers: [Object: null prototype] {},
     status: 200,
     cookie: {},
   },
   server: [Getter],
   headers: {
     host: "localhost:3000",
-    "user-agent": "curl/8.7.1",
+    "user-agent": "curl/7.88.1",
     accept: "*/*",
   },
   cookie: {},
   query: {},
   route: "/context",
 }
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/context"
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:24:24 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::

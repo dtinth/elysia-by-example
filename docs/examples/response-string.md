@@ -1,16 +1,10 @@
-# response-validation
+# response-string
 
 ## Example Code
 
 ```typescript
-import { Elysia, t } from "elysia";
-export default new Elysia().get(
-  "/",
-  async () => {
-    return { a: 1, b: 2 };
-  },
-  { response: t.Object({ a: t.Number() }) }
-);
+import { Elysia } from "elysia";
+export default new Elysia().get("/string", async () => "hi");
 
 
 ```
@@ -27,15 +21,13 @@ export default new Elysia().get(
 Started development server: http://localhost:3000
 
 === Test Execution ===
-$ curl -s -D- "http://localhost:3000/"
+$ curl -s -D- "http://localhost:3000/string"
 HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Sun, 01 Jun 2025 06:24:24 GMT
-Content-Length: 7
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:23:53 GMT
+Content-Length: 2
 
-{"a":1}
-✓ expect: 200
-✓ expect-not: b
+hi
 
 ```
 
@@ -47,17 +39,15 @@ Content-Length: 7
 🦊 Elysia is running at :::3000
 
 === Test Execution ===
-$ curl -s -D- "http://localhost:3000/"
+$ curl -s -D- "http://localhost:3000/string"
 HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 7
-Date: Sun, 01 Jun 2025 06:24:25 GMT
+Content-Type: text/plain
+Content-Length: 2
+Date: Sun, 01 Jun 2025 06:23:54 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"a":1}
-✓ expect: 200
-✓ expect-not: b
+hi
 
 ```
 

@@ -1,48 +1,62 @@
-<!-- This file is automatically-generated. Do not edit. -->
+# body-parsing
 
-<template v-if="false">
+## Example Code
 
-> [!CAUTION]
-> This file has been automatically generated from the [examples in the `examples/body-parsing` directory.](https://github.com/dtinth/elysia-by-example/tree/main/examples/body-parsing).
-> Do not directly edit this file, as it will be overwritten.
-> [[View the live site here.]](https://dtinth.github.io/elysia-by-example/examples/body-parsing.html)
-
-</template>
-
-
-# Body Parsing
-By default, Elysia is able to parse request body of various formats.
-
-```ts
-// examples/body-parsing/builtin.example.ts
+```typescript
 import { Elysia } from "elysia";
 export default new Elysia().post("/parse", async ({ body }) => {
   return Bun.inspect(body);
 });
 
+//    -H "Content-Type: application/json" \
+//    -d '{"x":1,"a":[2,3],"o":{"b":{"j":"k"}}}'
+
+//    -d x=1 -d y=2 -d z=3
+
+//    -d o[b][j]=k -d a[]=1
+
+//    -d a=foo -d a=bar -d a=baz
+
+//    -F x=1 -F y=2 -F z=3 \
+//    -F a=foo -F a=bar -F a=baz
+
+//    -F file=@package.json
+
+//    -F file=@package.json \
+//    -F file=@tsconfig.json
+
+//    -H "Content-Type: text/plain" \
+//    -d "hello, world"
+
+//    -H "Content-Type: application/octet-stream" \
+//    -d "hello, world"
+
+//    -H "Content-Type: application/xml" \
+//    -d "<hello>world</hello>"
+
+//    -H "Content-Type: application/x-ndjson" \
+//    -d $'{"hello":"world"}\n{"foo":"bar"}\n'
+
 ```
 
-## Built-in
-### JSON
-**Mime type:** `application/json`
+## Tests
 
+### json
 
-::: details Example request
+::: code-group
 
-<div style="margin-bottom: 0.5rem">
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/json" \
   -d '{"x":1,"a":[2,3],"o":{"b":{"j":"k"}}}'
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
+Date: Sun, 01 Jun 2025 06:23:54 GMT
 Content-Length: 68
 
 {
@@ -54,115 +68,198 @@ Content-Length: 68
     },
   },
 }
+✓ expect: 200
+✓ expect: a: [ 2, 3 ]
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"x":1,"a":[2,3],"o":{"b":{"j":"k"}}}'
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:23:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+✗ expect: 200
+
+=== Error ===
+Expected "200" but got: "HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:23:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined"
+
+```
+
 :::
 
+### urlencoded
 
-### URL-encoded form
-Mime type: `application/x-www-form-urlencoded`
+::: code-group
 
-Elysia doesn’t automatically convert numeric strings to numbers by default.
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-::: details Example request
-
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d x=1 -d y=2 -d z=3
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
-Content-Length: 33
+Date: Sun, 01 Jun 2025 06:23:55 GMT
+Content-Length: 58
 
-{
+[Object: null prototype] {
   x: "1",
   y: "2",
   z: "3",
 }
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -d x=1 -d y=2 -d z=3
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:23:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### urlencoded_php_arrays_are_unsupported
 
-Elysia doesn’t support PHP-style nested arrays in URL-encoded forms.
+::: code-group
 
-::: details Example request
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d o[b][j]=k -d a[]=1
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
-Content-Length: 35
+Date: Sun, 01 Jun 2025 06:23:56 GMT
+Content-Length: 60
 
-{
+[Object: null prototype] {
   "o[b][j]": "k",
   "a[]": "1",
 }
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -d o[b][j]=k -d a[]=1
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:23:57 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### urlencoded_duplicate_keys_become_array
 
-However, upon receiving a duplicate key, Elysia will return an array of values.
+::: code-group
 
-::: details Example request
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d a=foo -d a=bar -d a=baz
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
-Content-Length: 33
+Date: Sun, 01 Jun 2025 06:23:56 GMT
+Content-Length: 58
 
-{
+[Object: null prototype] {
   a: [ "foo", "bar", "baz" ],
 }
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -d a=foo -d a=bar -d a=baz
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:23:57 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### multipart
 
-### Multipart form
-Mime type: `multipart/form-data`
+::: code-group
 
-Same parsing logic as URL-encoded form.
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-::: details Example request
-
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F x=1 -F y=2 -F z=3 \
   -F a=foo -F a=bar -F a=baz
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
+Date: Sun, 01 Jun 2025 06:23:57 GMT
 Content-Length: 63
 
 {
@@ -171,62 +268,101 @@ Content-Length: 63
   z: "3",
   a: [ "foo", "bar", "baz" ],
 }
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -F x=1 -F y=2 -F z=3 \
+  -F a=foo -F a=bar -F a=baz
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:23:58 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### file_upload
 
-File uploads are supported.
+::: code-group
 
-::: details Example request
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F file=@package.json
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
-Content-Length: 102
+Date: Sun, 01 Jun 2025 06:23:58 GMT
+Content-Length: 101
 
 {
-  file: File (0.85 KB) {
+  file: File (1.1 KB) {
     name: "package.json",
     type: "application/json;charset=utf-8"
   },
 }
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -F file=@package.json
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:23:59 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### file_upload_multiple
 
-Multiple file uploads are supported.
+::: code-group
 
-::: details Example request
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F file=@package.json \
   -F file=@tsconfig.json
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:44 GMT
-Content-Length: 217
+Date: Sun, 01 Jun 2025 06:23:59 GMT
+Content-Length: 216
 
 {
   file: [
-    File (0.85 KB) {
+    File (1.1 KB) {
       name: "package.json",
       type: "application/json;charset=utf-8"
     }, File (45 bytes) {
@@ -235,110 +371,212 @@ Content-Length: 217
     }
   ],
 }
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -F file=@package.json \
+  -F file=@tsconfig.json
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:24:00 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### plain_text
 
-### Plain text
-Mime type: `text/plain`
+::: code-group
 
-::: details Example request
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: text/plain" \
   -d "hello, world"
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:45 GMT
+Date: Sun, 01 Jun 2025 06:24:00 GMT
 Content-Length: 14
 
 "hello, world"
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -H "Content-Type: text/plain" \
+  -d "hello, world"
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:24:01 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### octet_stream
 
-### Binary data
-Mime type: `application/octet-stream`
+::: code-group
 
-When the content type is `application/octet-stream`, Elysia will provide an `ArrayBuffer` object in the `body` context.
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-::: details Example request
-
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/octet-stream" \
   -d "hello, world"
-```
-
-</div>
-
-```http
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:45 GMT
+Date: Sun, 01 Jun 2025 06:24:00 GMT
 Content-Length: 76
 
 ArrayBuffer(12) [ 104, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100 ]
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -H "Content-Type: application/octet-stream" \
+  -d "hello, world"
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:24:01 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### xml_is_unsupported
 
-### Unknown type
-When a type is unknown to Elysia, the raw body will be `undefined`.
+::: code-group
 
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-::: details Example request: application/xml
-
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/xml" \
-  -d "<hello>world</hello>" 
-```
-
-</div>
-
-```http
+  -d "<hello>world</hello>"
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:45 GMT
-Content-Length: 9
+Date: Sun, 01 Jun 2025 06:24:01 GMT
+Content-Length: 58
 
-undefined
+[Object: null prototype] {
+  "<hello>world</hello>": "",
+}
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -H "Content-Type: application/xml" \
+  -d "<hello>world</hello>"
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:24:02 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::
 
+### ndjson_is_unsupported
 
+::: code-group
 
-::: details Example request: application/x-ndjson
+```text [bun]
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 
-<div style="margin-bottom: 0.5rem">
-
-```sh
-curl -s -D- "http://localhost:3000/parse" -X POST \
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/x-ndjson" \
-  -d $'{"hello":"world"}\n{"foo":"bar"}\n' 
-```
-
-</div>
-
-```http
+  -d $'{"hello":"world"}\n{"foo":"bar"}\n'
 HTTP/1.1 200 OK
 content-type: text/plain;charset=utf-8
-Date: Wed, 25 Dec 2024 09:38:45 GMT
-Content-Length: 9
+Date: Sun, 01 Jun 2025 06:24:02 GMT
+Content-Length: 80
 
-undefined
+[Object: null prototype] {
+  "{\"hello\":\"world\"}\n{\"foo\":\"bar\"}\n": "",
+}
+
 ```
+
+```text [node]
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000/parse" -X POST \
+  -H "Content-Type: application/x-ndjson" \
+  -d $'{"hello":"world"}\n{"foo":"bar"}\n'
+HTTP/1.1 500 Internal Server Error
+Content-Length: 18
+Date: Sun, 01 Jun 2025 06:24:03 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bun is not defined
+
+```
+
 :::

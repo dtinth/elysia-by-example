@@ -1,16 +1,15 @@
-# response-validation
+# hook-local
 
 ## Example Code
 
 ```typescript
-import { Elysia, t } from "elysia";
-export default new Elysia().get(
-  "/",
-  async () => {
-    return { a: 1, b: 2 };
-  },
-  { response: t.Object({ a: t.Number() }) }
-);
+import { Elysia } from "elysia";
+
+export default new Elysia()
+  .get("/a", () => "a", {
+    beforeHandle: () => console.log("[local] onBeforeHandle called"),
+  })
+  .get("/b", () => "b");
 
 
 ```
@@ -25,17 +24,16 @@ export default new Elysia().get(
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
+[local] onBeforeHandle called
 
 === Test Execution ===
-$ curl -s -D- "http://localhost:3000/"
+$ curl -s -D- "http://localhost:3000/a"
 HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Sun, 01 Jun 2025 06:24:24 GMT
-Content-Length: 7
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:15 GMT
+Content-Length: 1
 
-{"a":1}
-✓ expect: 200
-✓ expect-not: b
+a
 
 ```
 
@@ -45,19 +43,18 @@ Content-Length: 7
 (Use `node --trace-warnings ...` to show where the warning was created)
 [runtime] Node v22.16.0
 🦊 Elysia is running at :::3000
+[local] onBeforeHandle called
 
 === Test Execution ===
-$ curl -s -D- "http://localhost:3000/"
+$ curl -s -D- "http://localhost:3000/a"
 HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 7
-Date: Sun, 01 Jun 2025 06:24:25 GMT
+Content-Type: text/plain
+Content-Length: 1
+Date: Sun, 01 Jun 2025 06:24:15 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"a":1}
-✓ expect: 200
-✓ expect-not: b
+a
 
 ```
 

@@ -1,16 +1,13 @@
-# response-validation
+# set-status-vs-response
 
 ## Example Code
 
 ```typescript
-import { Elysia, t } from "elysia";
-export default new Elysia().get(
-  "/",
-  async () => {
-    return { a: 1, b: 2 };
-  },
-  { response: t.Object({ a: t.Number() }) }
-);
+import { Elysia } from "elysia";
+export default new Elysia().get("/", async ({ set }) => {
+  set.status = "Conflict";
+  return new Response("hi", { status: 402 });
+});
 
 
 ```
@@ -27,15 +24,13 @@ export default new Elysia().get(
 Started development server: http://localhost:3000
 
 === Test Execution ===
-$ curl -s -D- "http://localhost:3000/"
-HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Sun, 01 Jun 2025 06:24:24 GMT
-Content-Length: 7
+$ curl -s -D- "http://localhost:3000"
+HTTP/1.1 409 Conflict
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:15 GMT
+Content-Length: 2
 
-{"a":1}
-✓ expect: 200
-✓ expect-not: b
+hi
 
 ```
 
@@ -47,17 +42,15 @@ Content-Length: 7
 🦊 Elysia is running at :::3000
 
 === Test Execution ===
-$ curl -s -D- "http://localhost:3000/"
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 7
-Date: Sun, 01 Jun 2025 06:24:25 GMT
+$ curl -s -D- "http://localhost:3000"
+HTTP/1.1 409 Conflict
+content-type: text/plain;charset=UTF-8
+Content-Length: 2
+Date: Sun, 01 Jun 2025 06:24:17 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"a":1}
-✓ expect: 200
-✓ expect-not: b
+hi
 
 ```
 

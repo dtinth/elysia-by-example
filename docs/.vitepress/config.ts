@@ -1,5 +1,6 @@
 import elysiaJs from "elysia/package.json" with { type: "json" };
 import { defineConfig } from "vitepress";
+import examples from "./examples.json" with { type: "json" };
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -24,32 +25,11 @@ export default defineConfig({
         link: "/about",
       },
       {
-        text: "Learning",
-        items: [
-          { text: "Introduction", link: "/examples/intro" },
-          { text: "The Smallest Server", link: "/examples/empty" },
-          { text: "Basic Routing", link: "/examples/basic-routing" },
-          { text: "Response Coercion", link: "/examples/response-coercion" },
-          {
-            text: "Response Validation",
-            link: "/examples/response-validation",
-          },
-        ],
-      },
-      {
-        text: "Understanding",
-        items: [
-          { text: "Errors", link: "/examples/errors" },
-          { text: "Hooks", link: "/examples/hooks" },
-        ],
-      },
-      {
-        text: "Plugins",
-        items: [{ text: "http-errors", link: "/examples/plugin-http-errors" }],
-      },
-      {
-        text: "Bugs",
-        items: [{ text: "Bugs", link: "/examples/bugs" }],
+        text: "Examples",
+        items: examples.exampleNames.map((example) => ({
+          text: example,
+          link: `/examples/${example}`,
+        })),
       },
     ],
     outline: { level: [2, 3] },
