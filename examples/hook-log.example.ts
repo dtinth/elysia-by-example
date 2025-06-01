@@ -32,11 +32,11 @@ export default new Elysia()
     }
   );
 
-//# test 200
-//$ curl -s -D- $SERVER -X POST -d x=1
+// @test 200
+// @curl -s -D- $SERVER -X POST -d x=1
 
-//# test 422
-//$ curl -s -D- "$SERVER?validate=fail" -X POST -d x=1
+// @test 422
+// @curl -s -D- "$SERVER?validate=fail" -X POST -d x=1
 
-//# test 500
-//$ curl -s -D- "$SERVER?crash=1" -X POST -d x=1
+// @test 500
+// @curl -s -D- "$SERVER?crash=1" -X POST -d x=1

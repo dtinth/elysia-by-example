@@ -20,22 +20,22 @@ export default new Elysia()
     ),
   });
 
-//# test 404
-//$ curl -s -D- $SERVER/nonexistent # `GET /nonexistent`
-//# expect 404
-//# expect-not 200
+// @test 404
+// @curl -s -D- $SERVER/nonexistent # `GET /nonexistent`
+// @expect 404
+// @expect-not 200
 
-//# test parse_error
-//$ curl -s -D- $SERVER/body -X POST -H "Content-Type: application/json" -d '{' # `POST /body`
+// @test parse_error
+// @curl -s -D- $SERVER/body -X POST -H "Content-Type: application/json" -d '{' # `POST /body`
 
-//# test validation_error
-//$ curl -s -D- $SERVER/validate # `GET /validate`
+// @test validation_error
+// @curl -s -D- $SERVER/validate # `GET /validate`
 
-//# test invalid_cookie_signature
-//$ curl -s -D- $SERVER/cookie -H "Cookie: name=unsigned" # `GET /cookie`
+// @test invalid_cookie_signature
+// @curl -s -D- $SERVER/cookie -H "Cookie: name=unsigned" # `GET /cookie`
 
-//# test internal_server_error
-//$ curl -s -D- $SERVER/crash/internal # `GET /crash/internal`
+// @test internal_server_error
+// @curl -s -D- $SERVER/crash/internal # `GET /crash/internal`
 
-//# test generic_error
-//$ curl -s -D- $SERVER/crash/error # `GET /crash/error`
+// @test generic_error
+// @curl -s -D- $SERVER/crash/error # `GET /crash/error`

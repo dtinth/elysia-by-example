@@ -34,22 +34,22 @@ import { Elysia } from "elysia";
 
 export default new Elysia().get("/", () => "Hello World");
 
-//# test basic_functionality
-//$ curl -s -D- "$SERVER/"
-//# expect 200 "Hello World"
+// @test basic_functionality
+// @curl -s -D- "$SERVER/"
+// @expect 200 "Hello World"
 
-//# test another_case
-//$ curl -s -D- "$SERVER/nonexistent"
-//# expect 404
-//# expect-not 200
+// @test another_case
+// @curl -s -D- "$SERVER/nonexistent"
+// @expect 404
+// @expect-not 200
 ```
 
 ### Test Directives
 
-- **`//# test <name>`** - Defines a new test case
-- **`//$`** - Marks the start of a command (can span multiple lines with `\`)
-- **`//# expect <text>`** - Asserts the presence of text in response
-- **`//# expect-not <text>`** - Asserts the absence of text in response
+- **`// @test <name>`** - Defines a new test case
+- **`// @curl <args>`** - Defines a curl command to test endpoint (can span multiple lines with `\`)
+- **`// @expect <text>`** - Asserts the presence of text in response
+- **`// @expect-not <text>`** - Asserts the absence of text in response
 
 ### Special Variables
 

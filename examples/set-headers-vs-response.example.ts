@@ -8,5 +8,5 @@ export default new Elysia().get("/", async ({ set }) => {
   });
 });
 
-//# test
-//$ curl -s -D- "$SERVER"
+// @test
+// @curl -s -D- "$SERVER"

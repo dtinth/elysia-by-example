@@ -11,6 +11,6 @@ export default new Elysia()
     { response: t.Object({ a: t.Number() }) }
   );
 
-//# test
-//$ curl -s -D- "$SERVER/"
-//# expect 422
+// @test
+// @curl -s -D- "$SERVER/"
+// @expect 422

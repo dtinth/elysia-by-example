@@ -7,7 +7,7 @@ export default new Elysia().get(
   { response: t.Object({ a: t.Number() }, { additionalProperties: true }) }
 );
 
-//# test
-//$ curl -s -D- "$SERVER/"
-//# expect 200
-//# expect "b"
+// @test
+// @curl -s -D- "$SERVER/"
+// @expect 200
+// @expect "b"

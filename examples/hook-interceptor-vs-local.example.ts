@@ -9,11 +9,11 @@ export default new Elysia()
   .get("/c", () => "c")
   .onRequest(() => console.log("[interceptor] onRequest"));
 
-//# test a
-//$ curl -s -D- "$SERVER/a"
+// @test a
+// @curl -s -D- "$SERVER/a"
 
-//# test b
-//$ curl -s -D- "$SERVER/b"
+// @test b
+// @curl -s -D- "$SERVER/b"
 
-//# test c
-//$ curl -s -D- "$SERVER/c"
+// @test c
+// @curl -s -D- "$SERVER/c"

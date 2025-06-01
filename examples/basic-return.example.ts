@@ -9,14 +9,14 @@ export default new Elysia()
     return `hello ${name}`; // [!code highlight]
   });
 
-//# test root
-//$ curl -s -D- "$SERVER" # `GET /`
-//# expect 200 "it is working!"
+// @test root
+// @curl -s -D- "$SERVER" # `GET /`
+// @expect 200 "it is working!"
 
-//# test greeting_without_query
-//$ curl -s -D- "$SERVER/greeting" # `GET /greeting`
-//# expect 200 "hello world"
+// @test greeting_without_query
+// @curl -s -D- "$SERVER/greeting" # `GET /greeting`
+// @expect 200 "hello world"
 
-//# test greeting_with_query
-//$ curl -s -D- "$SERVER/greeting?name=alice" # `GET /greeting?name=alice`
-//# expect 200 "hello alice"
+// @test greeting_with_query
+// @curl -s -D- "$SERVER/greeting?name=alice" # `GET /greeting?name=alice`
+// @expect 200 "hello alice"

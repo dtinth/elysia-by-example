@@ -13,5 +13,5 @@ export default new Elysia().get(
   }
 );
 
-//# test
-//$ curl -s -D- "$SERVER" # `GET /`
+// @test
+// @curl -s -D- "$SERVER" # `GET /`

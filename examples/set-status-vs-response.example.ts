@@ -4,5 +4,5 @@ export default new Elysia().get("/", async ({ set }) => {
   return new Response("hi", { status: 402 });
 });
 
-//# test
-//$ curl -s -D- "$SERVER"
+// @test
+// @curl -s -D- "$SERVER"

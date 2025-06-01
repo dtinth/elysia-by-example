@@ -8,5 +8,5 @@ for (const [eventName, handlers] of Object.entries(app.event)) {
 
 export default app;
 
-//# test
-//$ curl -s -D- $SERVER
+// @test
+// @curl -s -D- $SERVER

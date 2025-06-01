@@ -6,5 +6,5 @@ export default new Elysia()
   })
   .get("/b", () => "b");
 
-//# test
-//$ curl -s -D- "$SERVER/a"
+// @test
+// @curl -s -D- "$SERVER/a"

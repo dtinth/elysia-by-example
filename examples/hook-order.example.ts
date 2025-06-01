@@ -5,8 +5,8 @@ export default new Elysia()
   .onBeforeHandle(() => console.log("onBeforeHandle called"))
   .get("/b", () => "b");
 
-//# test a
-//$ curl -s -D- "$SERVER/a"
+// @test a
+// @curl -s -D- "$SERVER/a"
 
-//# test b
-//$ curl -s -D- "$SERVER/b"
+// @test b
+// @curl -s -D- "$SERVER/b"

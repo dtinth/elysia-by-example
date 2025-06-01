@@ -40,11 +40,11 @@ export default new Elysia().use(httpErrorsPlugin).get(
   }
 );
 
-//# test 200
-//$ curl -s -D- "$SERVER?crash=no"
+// @test 200
+// @curl -s -D- "$SERVER?crash=no"
 
-//# test 418
-//$ curl -s -D- "$SERVER?crash=418"
+// @test 418
+// @curl -s -D- "$SERVER?crash=418"
 
-//# test 500
-//$ curl -s -D- "$SERVER?crash=500"
+// @test 500
+// @curl -s -D- "$SERVER?crash=500"

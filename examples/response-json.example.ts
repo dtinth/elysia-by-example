@@ -3,5 +3,5 @@ export default new Elysia().get("/json", async () => {
   return { ok: true };
 });
 
-//# test
-//$ curl -s -D- "$SERVER/json"
+// @test
+// @curl -s -D- "$SERVER/json"

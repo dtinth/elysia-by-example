@@ -49,12 +49,12 @@ export function getTests(text: string): { tests: Test[]; source: string[] } {
 
   while (!parser.ended) {
     const line = parser.next?.trim();
-    if (line?.startsWith("//# test")) {
+    if (line?.startsWith("// @test")) {
       finalizeCurrentTest();
       currentTestName = ensureUnique(
-        parser.consume().slice("//# test".length).trim() || "test"
+        parser.consume().slice("// @test".length).trim() || "test"
       );
-    } else if (line?.startsWith("//$")) {
+    } else if (line?.startsWith("// @curl")) {
       if (!currentTestName) {
         currentTestName = ensureUnique("test");
       }
@@ -63,7 +63,7 @@ export function getTests(text: string): { tests: Test[]; source: string[] } {
         const cmdLine = parser
           .consume()
           .trim()
-          .replace(/^\/\/[$\s]?\s?/, "");
+          .replace(/^\/\/ @/, "");
         commandLines.push(cmdLine);
         if (!cmdLine.endsWith("\\")) break;
       }
@@ -73,16 +73,16 @@ export function getTests(text: string): { tests: Test[]; source: string[] } {
         expectations: [],
       }); // Expectations will be handled by expect/expect-not
     } else if (
-      line?.startsWith("//# expect ") ||
-      line?.startsWith("//# expect-not ")
+      line?.startsWith("// @expect ") ||
+      line?.startsWith("// @expect-not ")
     ) {
       if (!currentTestName) {
         currentTestName = ensureUnique("test");
       }
-      const isNegative = line.startsWith("//# expect-not ");
+      const isNegative = line.startsWith("// @expect-not ");
       const textToParse = parser
         .consume()
-        .slice(isNegative ? "//# expect-not ".length : "//# expect ".length)
+        .slice(isNegative ? "// @expect-not ".length : "// @expect ".length)
         .trim();
       const texts: string[] = [];
       for (const m of textToParse.matchAll(/"([^"]+)"|(\S+)/g)) {
