@@ -1,9 +1,41 @@
 import { $ } from "bun";
 import consola from "consola";
+import { isEqual } from "lodash-es";
 import pLimit from "p-limit";
 import { getRunnableTasks } from "../getRunnableTasks";
 import type { RunnableTask } from "../runnableTask";
 import type { TaskRunResult } from "../TaskRunResult";
+
+function normalizeTesterOutput(output: string | undefined): string | undefined {
+  if (!output) return output;
+  return output.replace(
+    /Date: [A-Za-z]{3}, \d{2} [A-Za-z]{3} \d{4} \d{2}:\d{2}:\d{2} GMT/g,
+    "Date: [NORMALIZED]"
+  );
+}
+
+function normalizeSnapshot(snapshot: TaskRunResult): TaskRunResult {
+  return {
+    ...snapshot,
+    // Normalize runtime logs by combining contents into a single string
+    runtimeLogs: [
+      {
+        type: "stdout",
+        contents: snapshot.runtimeLogs.map((log) => log.contents).join(""),
+      },
+    ],
+    // Normalize tester logs by removing timestamps and date headers
+    testerLogs: snapshot.testerLogs.map((log) => ({
+      ...log,
+      timestamp: new Date(0), // Reset timestamp to epoch
+      output: normalizeTesterOutput(log.output),
+    })),
+  };
+}
+
+function areSnapshotsEqual(a: TaskRunResult, b: TaskRunResult): boolean {
+  return isEqual(normalizeSnapshot(a), normalizeSnapshot(b));
+}
 
 async function updateSnapshot(
   task: RunnableTask,
@@ -17,7 +49,8 @@ async function updateSnapshot(
 
   if (exists) {
     const existingContent = await file.text();
-    if (existingContent === snapshotContent) {
+    const existingSnapshot: TaskRunResult = JSON.parse(existingContent);
+    if (areSnapshotsEqual(existingSnapshot, taskRunResult)) {
       return "unchanged";
     }
   }
