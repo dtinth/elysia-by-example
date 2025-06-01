@@ -59,11 +59,11 @@ export function getTests(text: string): { tests: Test[]; source: string[] } {
         currentTestName = ensureUnique("test");
       }
       const commandLines: string[] = [];
-      while (parser.next?.startsWith("//")) {
+      while (parser.next?.startsWith("// ")) {
         const cmdLine = parser
           .consume()
           .trim()
-          .replace(/^\/\/ @/, "");
+          .replace(/^\/\/ [@ ]/, "");
         commandLines.push(cmdLine);
         if (!cmdLine.endsWith("\\")) break;
       }
