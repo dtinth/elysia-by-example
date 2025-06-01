@@ -121,12 +121,8 @@ function generateIndexPage(exampleGroups: ExampleGroup[]): string {
     sections.push("");
   } else {
     // Table header
-    sections.push(
-      "| Example | Description | " + allRuntimes.join(" | ") + " |"
-    );
-    sections.push(
-      "| --- | --- | " + allRuntimes.map(() => "---").join(" | ") + " |"
-    );
+    sections.push("| Example | " + allRuntimes.join(" | ") + " |");
+    sections.push("| --- | " + allRuntimes.map(() => "---").join(" | ") + " |");
 
     // Sort examples alphabetically
     const sortedExamples = [...exampleGroups].sort((a, b) =>
@@ -135,10 +131,7 @@ function generateIndexPage(exampleGroups: ExampleGroup[]): string {
 
     // Table rows
     for (const example of sortedExamples) {
-      const row = [
-        `[${example.exampleName}](./${example.exampleName}.md)`,
-        getExampleDescription(example),
-      ];
+      const row = [`[${example.exampleName}](./${example.exampleName}.md)`];
 
       // Calculate overall status for each runtime
       for (const runtime of allRuntimes) {
@@ -177,17 +170,6 @@ function generateIndexPage(exampleGroups: ExampleGroup[]): string {
   sections.push("");
 
   return sections.join("\n");
-}
-
-function getExampleDescription(example: ExampleGroup): string {
-  return formatExampleName(example.exampleName);
-}
-
-function formatExampleName(name: string): string {
-  return name
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
 }
 
 function calculateRuntimeStatus(

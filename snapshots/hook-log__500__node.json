@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -28,19 +28,11 @@
     },
     {
       "type": "stdout",
-      "contents": "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
+      "contents": "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
     },
     {
       "type": "stdout",
-      "contents": "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+      "contents": "[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
     },
     {
       "type": "stdout",
@@ -48,16 +40,20 @@
     },
     {
       "type": "stdout",
-      "contents": "[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+      "contents": "[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:15.497Z",
+      "timestamp": "2025-06-01T08:00:39.336Z",
       "command": "curl -s -D- \"http://localhost:3000?crash=1\" -X POST -d x=1",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 5\r\nDate: Sun, 01 Jun 2025 06:24:15 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\ncrash",
+      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 5\r\nDate: Sun, 01 Jun 2025 08:00:39 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\ncrash",
       "error": ""
     }
   ]

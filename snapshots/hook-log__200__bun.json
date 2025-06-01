@@ -20,24 +20,16 @@
     },
     {
       "type": "stdout",
-      "contents": "[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+      "contents": "[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:12.306Z",
+      "timestamp": "2025-06-01T08:00:36.887Z",
       "command": "curl -s -D- http://localhost:3000 -X POST -d x=1",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 06:24:12 GMT\r\nContent-Length: 11\r\n\r\n{\"ok\":true}",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 08:00:36 GMT\r\nContent-Length: 11\r\n\r\n{\"ok\":true}",
       "error": ""
     }
   ]

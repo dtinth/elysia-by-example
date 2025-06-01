@@ -18,10 +18,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:01.115Z",
+      "timestamp": "2025-06-01T08:00:25.367Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: text/plain\" \\\n  -d \"hello, world\"",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 18\r\nDate: Sun, 01 Jun 2025 06:24:01 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBun is not defined",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 14\r\nDate: Sun, 01 Jun 2025 08:00:25 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n'hello, world'",
       "error": ""
     }
   ]

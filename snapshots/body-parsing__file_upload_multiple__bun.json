@@ -14,10 +14,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:59.394Z",
+      "timestamp": "2025-06-01T08:00:23.760Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json \\\n  -F file=@tsconfig.json",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:59 GMT\r\nContent-Length: 216\r\n\r\n{\n  file: [\n    File (1.1 KB) {\n      name: \"package.json\",\n      type: \"application/json;charset=utf-8\"\n    }, File (45 bytes) {\n      name: \"tsconfig.json\",\n      type: \"application/json;charset=utf-8\"\n    }\n  ],\n}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:23 GMT\r\nContent-Length: 30\r\n\r\n{ file: [ Blob {}, Blob {} ] }",
       "error": ""
     }
   ]

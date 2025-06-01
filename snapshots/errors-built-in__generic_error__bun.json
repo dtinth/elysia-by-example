@@ -12,16 +12,16 @@
     },
     {
       "type": "stdout",
-      "contents": "[onError] {\n  error:  5 |   })\n 6 |   .get(\"/crash/internal\", async () => {\n 7 |     throw new InternalServerError(\"Something went wrong!\");\n 8 |   })\n 9 |   .get(\"/crash/error\", async () => {\n10 |     throw new Error(\"Something went wrong!\");\n               ^\nerror: Something went wrong!\n      at <anonymous> (/app/examples-v2/errors-built-in.example.ts:10:11)\n      at <anonymous> (/app/examples-v2/errors-built-in.example.ts:9:24)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:76)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:80)\n,\n  code: \"UNKNOWN\",\n}"
+      "contents": "[onError] {\n  error:  5 |   })\n 6 |   .get(\"/crash/internal\", async () => {\n 7 |     throw new InternalServerError(\"Something went wrong!\");\n 8 |   })\n 9 |   .get(\"/crash/error\", async () => {\n10 |     throw new Error(\"Something went wrong!\");\n               ^\nerror: Something went wrong!\n      at <anonymous> (/app/examples/errors-built-in.example.ts:10:11)\n      at <anonymous> (/app/examples/errors-built-in.example.ts:9:24)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:76)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:80)\n,\n  code: \"UNKNOWN\",\n}"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:21.751Z",
+      "timestamp": "2025-06-01T08:00:46.415Z",
       "command": "curl -s -D- http://localhost:3000/crash/error",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:21 GMT\r\nContent-Length: 21\r\n\r\nSomething went wrong!",
+      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:46 GMT\r\nContent-Length: 21\r\n\r\nSomething went wrong!",
       "error": ""
     }
   ]

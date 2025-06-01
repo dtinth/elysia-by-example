@@ -14,10 +14,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:02.540Z",
+      "timestamp": "2025-06-01T08:00:26.686Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/x-ndjson\" \\\n  -d $'{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n'",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:02 GMT\r\nContent-Length: 80\r\n\r\n[Object: null prototype] {\n  \"{\\\"hello\\\":\\\"world\\\"}\\n{\\\"foo\\\":\\\"bar\\\"}\\n\": \"\",\n}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:26 GMT\r\nContent-Length: 69\r\n\r\n[Object: null prototype] { '{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n': '' }",
       "error": ""
     }
   ]

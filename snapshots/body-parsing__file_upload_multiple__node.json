@@ -18,10 +18,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:00.162Z",
+      "timestamp": "2025-06-01T08:00:24.208Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json \\\n  -F file=@tsconfig.json",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 18\r\nDate: Sun, 01 Jun 2025 06:24:00 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBun is not defined",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 291\r\nDate: Sun, 01 Jun 2025 08:00:24 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: [\n    File {\n      size: 1172,\n      type: 'application/octet-stream',\n      name: 'package.json',\n      lastModified: 1748764824247\n    },\n    File {\n      size: 45,\n      type: 'application/octet-stream',\n      name: 'tsconfig.json',\n      lastModified: 1748764824248\n    }\n  ]\n}",
       "error": ""
     }
   ]

@@ -14,10 +14,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:56.343Z",
+      "timestamp": "2025-06-01T08:00:19.350Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -d o[b][j]=k -d a[]=1",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:56 GMT\r\nContent-Length: 60\r\n\r\n[Object: null prototype] {\n  \"o[b][j]\": \"k\",\n  \"a[]\": \"1\",\n}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:19 GMT\r\nContent-Length: 55\r\n\r\n[Object: null prototype] { 'o[b][j]': 'k', 'a[]': '1' }",
       "error": ""
     }
   ]

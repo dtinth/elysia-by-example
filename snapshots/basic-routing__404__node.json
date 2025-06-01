@@ -8,25 +8,21 @@
     },
     {
       "type": "stdout",
-      "contents": "[runtime] Node v22.16.0"
-    },
-    {
-      "type": "stdout",
-      "contents": "🦊 Elysia is running at :::3000"
+      "contents": "[runtime] Node v22.16.0\n🦊 Elysia is running at :::3000"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:12.312Z",
+      "timestamp": "2025-06-01T08:00:36.258Z",
       "command": "curl -s -D- \"http://localhost:3000/nonexistent\"",
       "success": true,
-      "output": "HTTP/1.1 404 Not Found\r\ncontent-type: text/plain;charset=UTF-8\r\ncontent-length: 9\r\nDate: Sun, 01 Jun 2025 06:24:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nNOT_FOUND",
+      "output": "HTTP/1.1 404 Not Found\r\ncontent-type: text/plain;charset=UTF-8\r\ncontent-length: 9\r\nDate: Sun, 01 Jun 2025 08:00:36 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nNOT_FOUND",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:24:12.344Z",
+      "timestamp": "2025-06-01T08:00:36.295Z",
       "expectation": "404",
       "success": true
     }

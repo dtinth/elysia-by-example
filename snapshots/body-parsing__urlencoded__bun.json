@@ -14,10 +14,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:55.333Z",
+      "timestamp": "2025-06-01T08:00:18.530Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -d x=1 -d y=2 -d z=3",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:55 GMT\r\nContent-Length: 58\r\n\r\n[Object: null prototype] {\n  x: \"1\",\n  y: \"2\",\n  z: \"3\",\n}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:18 GMT\r\nContent-Length: 51\r\n\r\n[Object: null prototype] { x: '1', y: '2', z: '3' }",
       "error": ""
     }
   ]

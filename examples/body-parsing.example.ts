@@ -1,6 +1,7 @@
 import { Elysia } from "elysia";
+import { inspect } from "node:util";
 export default new Elysia().post("/parse", async ({ body }) => {
-  return Bun.inspect(body);
+  return inspect(body);
 });
 
 //# test json

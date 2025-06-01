@@ -20,20 +20,16 @@
     },
     {
       "type": "stdout",
-      "contents": "[interceptor] onBeforeHandle"
-    },
-    {
-      "type": "stdout",
-      "contents": "[local] onBeforeHandle"
+      "contents": "[interceptor] onBeforeHandle\n[local] onBeforeHandle"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:04.767Z",
+      "timestamp": "2025-06-01T08:00:29.025Z",
       "command": "curl -s -D- \"http://localhost:3000/b\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 1\r\nDate: Sun, 01 Jun 2025 06:24:04 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nb",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 1\r\nDate: Sun, 01 Jun 2025 08:00:29 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nb",
       "error": ""
     }
   ]

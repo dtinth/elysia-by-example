@@ -12,16 +12,16 @@
     },
     {
       "type": "stdout",
-      "contents": "[onError] {\n  error: 73 | export class InternalServerError extends Error {\n74 | \tcode = 'INTERNAL_SERVER_ERROR'\n75 | \tstatus = 500\n76 | \n77 | \tconstructor(message?: string) {\n78 | \t\tsuper(message ?? 'INTERNAL_SERVER_ERROR')\n       ^\nerror: Something went wrong!\n status: 500,\n   code: \"INTERNAL_SERVER_ERROR\"\n\n      at new InternalServerError (/app/node_modules/elysia/src/error.ts:78:3)\n      at <anonymous> (/app/examples-v2/errors-built-in.example.ts:7:11)\n      at <anonymous> (/app/examples-v2/errors-built-in.example.ts:6:27)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:76)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:80)\n,\n  code: \"INTERNAL_SERVER_ERROR\",\n}"
+      "contents": "[onError] {\n  error: 73 | export class InternalServerError extends Error {\n74 | \tcode = 'INTERNAL_SERVER_ERROR'\n75 | \tstatus = 500\n76 | \n77 | \tconstructor(message?: string) {\n78 | \t\tsuper(message ?? 'INTERNAL_SERVER_ERROR')\n       ^\nerror: Something went wrong!\n status: 500,\n   code: \"INTERNAL_SERVER_ERROR\"\n\n      at new InternalServerError (/app/node_modules/elysia/src/error.ts:78:3)\n      at <anonymous> (/app/examples/errors-built-in.example.ts:7:11)\n      at <anonymous> (/app/examples/errors-built-in.example.ts:6:27)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:76)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:6:80)\n,\n  code: \"INTERNAL_SERVER_ERROR\",\n}"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:21.575Z",
+      "timestamp": "2025-06-01T08:00:45.604Z",
       "command": "curl -s -D- http://localhost:3000/crash/internal",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:21 GMT\r\nContent-Length: 21\r\n\r\nSomething went wrong!",
+      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:45 GMT\r\nContent-Length: 21\r\n\r\nSomething went wrong!",
       "error": ""
     }
   ]

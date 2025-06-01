@@ -14,21 +14,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:54.813Z",
+      "timestamp": "2025-06-01T08:00:18.005Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"x\":1,\"a\":[2,3],\"o\":{\"b\":{\"j\":\"k\"}}}'",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:54 GMT\r\nContent-Length: 68\r\n\r\n{\n  x: 1,\n  a: [ 2, 3 ],\n  o: {\n    b: {\n      j: \"k\",\n    },\n  },\n}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:17 GMT\r\nContent-Length: 43\r\n\r\n{ x: 1, a: [ 2, 3 ], o: { b: { j: 'k' } } }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:23:54.855Z",
+      "timestamp": "2025-06-01T08:00:18.037Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:23:54.855Z",
+      "timestamp": "2025-06-01T08:00:18.037Z",
       "expectation": "a: [ 2, 3 ]",
       "success": true
     }

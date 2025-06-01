@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "contents": "(node:29) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,10 +18,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:01.791Z",
+      "timestamp": "2025-06-01T08:00:25.915Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/octet-stream\" \\\n  -d \"hello, world\"",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 18\r\nDate: Sun, 01 Jun 2025 06:24:01 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBun is not defined",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 90\r\nDate: Sun, 01 Jun 2025 08:00:25 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nArrayBuffer {\n  [Uint8Contents]: <68 65 6c 6c 6f 2c 20 77 6f 72 6c 64>,\n  byteLength: 12\n}",
       "error": ""
     }
   ]

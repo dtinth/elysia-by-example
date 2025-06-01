@@ -1,10 +1,10 @@
 {
   "taskId": "body-parsing__json__node",
-  "success": false,
+  "success": true,
   "runtimeLogs": [
     {
       "type": "stderr",
-      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,19 +18,23 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:55.733Z",
+      "timestamp": "2025-06-01T08:00:18.830Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"x\":1,\"a\":[2,3],\"o\":{\"b\":{\"j\":\"k\"}}}'",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Length: 18\r\nDate: Sun, 01 Jun 2025 06:23:55 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBun is not defined",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 43\r\nDate: Sun, 01 Jun 2025 08:00:18 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{ x: 1, a: [ 2, 3 ], o: { b: { j: 'k' } } }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:23:55.791Z",
+      "timestamp": "2025-06-01T08:00:18.915Z",
       "expectation": "200",
-      "success": false,
-      "error": "Expected \"200\" but got: \"HTTP/1.1 500 Internal Server Error\r\nContent-Length: 18\r\nDate: Sun, 01 Jun 2025 06:23:55 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBun is not defined\""
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T08:00:18.916Z",
+      "expectation": "a: [ 2, 3 ]",
+      "success": true
     }
-  ],
-  "error": "Expected \"200\" but got: \"HTTP/1.1 500 Internal Server Error\r\nContent-Length: 18\r\nDate: Sun, 01 Jun 2025 06:23:55 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nBun is not defined\""
+  ]
 }

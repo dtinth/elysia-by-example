@@ -14,10 +14,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:58.413Z",
+      "timestamp": "2025-06-01T08:00:22.462Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:58 GMT\r\nContent-Length: 101\r\n\r\n{\n  file: File (1.1 KB) {\n    name: \"package.json\",\n    type: \"application/json;charset=utf-8\"\n  },\n}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:22 GMT\r\nContent-Length: 17\r\n\r\n{ file: Blob {} }",
       "error": ""
     }
   ]
