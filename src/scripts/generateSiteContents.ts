@@ -229,7 +229,7 @@ function generateMarkdownPage(exampleGroup: ExampleGroup): string {
   // Table rows
   for (const test of exampleGroup.tests) {
     const row = [
-      `[${test.testName}](#${test.testName.toLowerCase().replace(/\s+/g, "-")})`,
+      `[${test.testName}](#${test.testName.toLowerCase().replace(/[\s_]+/g, "-")})`,
     ];
     for (const runtime of allRuntimes) {
       const runtimeResult = test.runtimes.find((r) => r.runtime === runtime);
