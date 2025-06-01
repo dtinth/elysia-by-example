@@ -6,5 +6,5 @@ hero:
   actions:
     - theme: brand
       text: Introduction
-      link: /examples/intro
+      link: /examples/
 ---

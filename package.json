@@ -35,6 +35,7 @@
     "why-is-node-running": "^3.2.1"
   },
   "scripts": {
+    "snapshot": "bun src/scripts/snapshot.ts",
     "generate": "bun src/scripts/generateSiteContents.ts",
     "docs:dev": "vitepress dev docs",
     "docs:build": "bun generate && vitepress build docs",

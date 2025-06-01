@@ -2,18 +2,11 @@ import consola from "consola";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { getRunnableTasks } from "../getRunnableTasks";
-import type { Test } from "../getTests";
+import { getTests, type Test } from "../getTests";
 import type { TaskRunResult } from "../TaskRunResult";
 
 function cleanExampleCode(content: string): string {
-  return content
-    .split("\n")
-    .filter((line) => {
-      const trimmedLine = line.trim();
-      // Filter out directive comments that start with //# or //$
-      return !trimmedLine.startsWith("//#") && !trimmedLine.startsWith("//$");
-    })
-    .join("\n");
+  return getTests(content).source.join("\n");
 }
 
 function hasExpectations(test: Test): boolean {
@@ -26,6 +19,7 @@ interface ExampleGroup {
   exampleName: string;
   examplePath: string;
   content: string;
+  rawContent: string;
   tests: TestGroup[];
 }
 
@@ -87,6 +81,137 @@ function formatRuntimeOutput(result: TaskRunResult): string {
   }
 
   return sections.join("\n");
+}
+
+function generateIndexPage(exampleGroups: ExampleGroup[]): string {
+  const sections: string[] = [];
+
+  // Title and introduction
+  sections.push("# Examples");
+  sections.push("");
+  sections.push(
+    "A collection of practical examples and edge cases for Elysia.js. Each example includes runnable code and comprehensive tests executed in both Bun and Node.js runtimes."
+  );
+  sections.push("");
+
+  // Test result legend
+  sections.push("## Legend");
+  sections.push("");
+  sections.push("- ✅ Test with expectations passed");
+  sections.push("- ❌ Test failed or had errors");
+  sections.push("- 🏃 Test executed successfully (no specific expectations)");
+  sections.push("- N/A Test not available for this runtime");
+  sections.push("");
+
+  // Get all unique runtimes across all examples
+  const allRuntimes = Array.from(
+    new Set(
+      exampleGroups.flatMap((example) =>
+        example.tests.flatMap((test) => test.runtimes.map((r) => r.runtime))
+      )
+    )
+  ).sort();
+
+  // Examples overview table
+  sections.push("## Examples Overview");
+  sections.push("");
+
+  if (exampleGroups.length === 0) {
+    sections.push("No examples found.");
+    sections.push("");
+  } else {
+    // Table header
+    sections.push(
+      "| Example | Description | " + allRuntimes.join(" | ") + " |"
+    );
+    sections.push(
+      "| --- | --- | " + allRuntimes.map(() => "---").join(" | ") + " |"
+    );
+
+    // Sort examples alphabetically
+    const sortedExamples = [...exampleGroups].sort((a, b) =>
+      a.exampleName.localeCompare(b.exampleName)
+    );
+
+    // Table rows
+    for (const example of sortedExamples) {
+      const row = [
+        `[${example.exampleName}](./${example.exampleName}.md)`,
+        getExampleDescription(example),
+      ];
+
+      // Calculate overall status for each runtime
+      for (const runtime of allRuntimes) {
+        const runtimeStatus = calculateRuntimeStatus(example, runtime);
+        row.push(runtimeStatus);
+      }
+
+      sections.push("| " + row.join(" | ") + " |");
+    }
+    sections.push("");
+  }
+
+  // Summary statistics
+  sections.push("## Summary");
+  sections.push("");
+  sections.push(`- **Total Examples**: ${exampleGroups.length}`);
+
+  const totalTests = exampleGroups.reduce(
+    (sum, example) => sum + example.tests.length,
+    0
+  );
+  sections.push(`- **Total Tests**: ${totalTests}`);
+
+  const totalTestRuns = exampleGroups.reduce(
+    (sum, example) =>
+      sum +
+      example.tests.reduce(
+        (testSum, test) => testSum + test.runtimes.length,
+        0
+      ),
+    0
+  );
+  sections.push(`- **Total Test Runs**: ${totalTestRuns}`);
+
+  sections.push(`- **Supported Runtimes**: ${allRuntimes.join(", ")}`);
+  sections.push("");
+
+  return sections.join("\n");
+}
+
+function getExampleDescription(example: ExampleGroup): string {
+  return formatExampleName(example.exampleName);
+}
+
+function formatExampleName(name: string): string {
+  return name
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function calculateRuntimeStatus(
+  example: ExampleGroup,
+  runtime: string
+): string {
+  const runtimeTests = example.tests.flatMap((test) =>
+    test.runtimes.filter((r) => r.runtime === runtime)
+  );
+
+  if (runtimeTests.length === 0) {
+    return "N/A";
+  }
+
+  const hasFailures = runtimeTests.some((r) => !r.result.success);
+  if (hasFailures) {
+    return "❌";
+  }
+
+  // Check if any tests have expectations
+  const hasExpectedTests = example.tests.some((test) =>
+    hasExpectations(test.originalTest)
+  );
+  return hasExpectedTests ? "✅" : "🏃";
 }
 
 function generateMarkdownPage(exampleGroup: ExampleGroup): string {
@@ -183,6 +308,7 @@ async function main() {
         exampleName: example.exampleName,
         examplePath: example.examplePath,
         content,
+        rawContent,
         tests: [],
       });
     }
@@ -244,8 +370,14 @@ async function main() {
   );
   consola.success(`Generated: ${examplesJsonPath}`);
 
+  // Generate index page
+  const indexContent = generateIndexPage(Array.from(exampleMap.values()));
+  const indexPath = join("docs", "examples", "index.md");
+  await writeFile(indexPath, indexContent, "utf8");
+  consola.success(`Generated: ${indexPath}`);
+
   consola.success(
-    `Generated ${generatedCount} example pages and examples.json`
+    `Generated ${generatedCount} example pages, examples.json, and index page`
   );
 }
 
