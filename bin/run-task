@@ -1,0 +1,2 @@
+#!/bin/bash -e
+bin/run bun src/scripts/runTask.ts "$1"
