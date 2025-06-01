@@ -44,11 +44,26 @@ export default new Elysia()
 
 ## Tests
 
+| Test | bun | node |
+| --- | --- | --- |
+| [200](#200) | 🏃 | 🏃 |
+| [422](#422) | 🏃 | 🏃 |
+| [500](#500) | 🏃 | 🏃 |
+
 ### 200
 
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000 -X POST -d x=1
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Sun, 01 Jun 2025 06:24:12 GMT
+Content-Length: 11
+
+{"ok":true}
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -61,18 +76,20 @@ Started development server: http://localhost:3000
 [mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 [onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000 -X POST -d x=1
-HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Sun, 01 Jun 2025 06:24:12 GMT
-Content-Length: 11
-
-{"ok":true}
-
 ```
 
 ```text [node]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000 -X POST -d x=1
+HTTP/1.1 200 OK
+content-type: application/json
+Content-Length: 11
+Date: Sun, 01 Jun 2025 06:24:13 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"ok":true}
+
 === Runtime Output ===
 (node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -87,17 +104,6 @@ Content-Length: 11
 [mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 [onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000 -X POST -d x=1
-HTTP/1.1 200 OK
-content-type: application/json
-Content-Length: 11
-Date: Sun, 01 Jun 2025 06:24:13 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-{"ok":true}
-
 ```
 
 :::
@@ -107,16 +113,6 @@ Keep-Alive: timeout=5
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-[onRequest]       { error, path, qi, redirect, request, server, set, status, store, url }
-[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
-[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
-[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
-[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
-[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?validate=fail" -X POST -d x=1
 HTTP/1.1 422 Unprocessable Entity
@@ -150,23 +146,19 @@ Content-Length: 460
   ]
 }
 
-```
-
-```text [node]
 === Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
 [onRequest]       { error, path, qi, redirect, request, server, set, status, store, url }
 [onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
 [onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
 [onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
 [mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
-[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
-[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 [onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 
+```
+
+```text [node]
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?validate=fail" -X POST -d x=1
 HTTP/1.1 400 Bad Request
@@ -202,6 +194,20 @@ Keep-Alive: timeout=5
   ]
 }
 
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+[onRequest]       { error, path, qi, redirect, request, server, set, status, store, url }
+[onParse]         { contentType, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
+[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
+[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }
+[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
+[onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
+[mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
+[onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
+
 ```
 
 :::
@@ -211,6 +217,15 @@ Keep-Alive: timeout=5
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1
+HTTP/1.1 500 Internal Server Error
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:13 GMT
+Content-Length: 5
+
+crash
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -223,18 +238,19 @@ Started development server: http://localhost:3000
 [mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 [onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 
-=== Test Execution ===
-$ curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1
-HTTP/1.1 500 Internal Server Error
-content-type: text/plain;charset=utf-8
-Date: Sun, 01 Jun 2025 06:24:13 GMT
-Content-Length: 5
-
-crash
-
 ```
 
 ```text [node]
+=== Test Execution ===
+$ curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1
+HTTP/1.1 500 Internal Server Error
+Content-Length: 5
+Date: Sun, 01 Jun 2025 06:24:15 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+crash
+
 === Runtime Output ===
 (node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -250,16 +266,6 @@ crash
 [onError]         { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 [mapResponse]     { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
 [onAfterResponse] { body, code, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }
-
-=== Test Execution ===
-$ curl -s -D- "http://localhost:3000?crash=1" -X POST -d x=1
-HTTP/1.1 500 Internal Server Error
-Content-Length: 5
-Date: Sun, 01 Jun 2025 06:24:15 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-crash
 
 ```
 

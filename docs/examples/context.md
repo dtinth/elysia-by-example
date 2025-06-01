@@ -13,15 +13,15 @@ export default new Elysia().get("/context", async (context) => {
 
 ## Tests
 
+| Test | bun | node |
+| --- | --- | --- |
+| [test](#test) | 🏃 | 🏃 |
+
 ### test
 
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/context"
 HTTP/1.1 200 OK
@@ -62,15 +62,13 @@ Content-Length: 647
   route: "/context",
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/context"
 HTTP/1.1 500 Internal Server Error
@@ -80,6 +78,12 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 Bun is not defined
+
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
 
 ```
 

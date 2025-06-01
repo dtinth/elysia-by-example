@@ -2,6 +2,7 @@ import consola from "consola";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { getRunnableTasks } from "../getRunnableTasks";
+import type { Test } from "../getTests";
 import type { TaskRunResult } from "../TaskRunResult";
 
 function cleanExampleCode(content: string): string {
@@ -15,6 +16,12 @@ function cleanExampleCode(content: string): string {
     .join("\n");
 }
 
+function hasExpectations(test: Test): boolean {
+  return test.actions.some(
+    (action) => action.type === "expect" || action.type === "expect-not"
+  );
+}
+
 interface ExampleGroup {
   exampleName: string;
   examplePath: string;
@@ -24,6 +31,7 @@ interface ExampleGroup {
 
 interface TestGroup {
   testName: string;
+  originalTest: Test;
   runtimes: RuntimeResult[];
 }
 
@@ -45,15 +53,6 @@ async function loadSnapshot(taskId: string): Promise<TaskRunResult | null> {
 function formatRuntimeOutput(result: TaskRunResult): string {
   const sections: string[] = [];
 
-  // Add runtime logs
-  if (result.runtimeLogs.length > 0) {
-    sections.push("=== Runtime Output ===");
-    for (const log of result.runtimeLogs) {
-      sections.push(log.contents);
-    }
-    sections.push("");
-  }
-
   // Add test execution logs
   if (result.testerLogs.length > 0) {
     sections.push("=== Test Execution ===");
@@ -67,6 +66,15 @@ function formatRuntimeOutput(result: TaskRunResult): string {
         const status = log.success ? "✓" : "✗";
         sections.push(`${status} ${log.type}: ${log.expectation}`);
       }
+    }
+    sections.push("");
+  }
+
+  // Add runtime logs
+  if (result.runtimeLogs.length > 0) {
+    sections.push("=== Runtime Output ===");
+    for (const log of result.runtimeLogs) {
+      sections.push(log.contents);
     }
     sections.push("");
   }
@@ -98,6 +106,42 @@ function generateMarkdownPage(exampleGroup: ExampleGroup): string {
 
   // Tests
   sections.push("## Tests");
+  sections.push("");
+
+  // Get all unique runtimes
+  const allRuntimes = Array.from(
+    new Set(
+      exampleGroup.tests.flatMap((test) => test.runtimes.map((r) => r.runtime))
+    )
+  ).sort();
+
+  // Table header
+  sections.push("| Test | " + allRuntimes.join(" | ") + " |");
+  sections.push("| --- | " + allRuntimes.map(() => "---").join(" | ") + " |");
+
+  // Table rows
+  for (const test of exampleGroup.tests) {
+    const row = [
+      `[${test.testName}](#${test.testName.toLowerCase().replace(/\s+/g, "-")})`,
+    ];
+    for (const runtime of allRuntimes) {
+      const runtimeResult = test.runtimes.find((r) => r.runtime === runtime);
+      if (runtimeResult) {
+        if (hasExpectations(test.originalTest)) {
+          // Test with expectations - use success/fail icons
+          const status = runtimeResult.result.success ? "✅" : "❌";
+          row.push(status);
+        } else {
+          // Test without expectations (just execution) - use run icon
+          const status = runtimeResult.result.success ? "🏃" : "❌";
+          row.push(status);
+        }
+      } else {
+        row.push("N/A");
+      }
+    }
+    sections.push("| " + row.join(" | ") + " |");
+  }
   sections.push("");
 
   for (const test of exampleGroup.tests) {
@@ -152,6 +196,7 @@ async function main() {
     if (!testGroup) {
       testGroup = {
         testName: test.testName,
+        originalTest: test,
         runtimes: [],
       };
       exampleGroup.tests.push(testGroup);

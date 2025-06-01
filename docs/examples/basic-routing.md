@@ -23,15 +23,18 @@ export default new Elysia()
 
 ## Tests
 
+| Test | bun | node |
+| --- | --- | --- |
+| [root](#root) | ✅ | ✅ |
+| [greeting_without_query](#greeting_without_query) | ✅ | ✅ |
+| [greeting_with_query](#greeting_with_query) | ✅ | ✅ |
+| [404](#404) | ✅ | ✅ |
+
 ### root
 
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000"
 HTTP/1.1 200 OK
@@ -43,15 +46,13 @@ it is working!
 ✓ expect: 200
 ✓ expect: it is working!
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000"
 HTTP/1.1 200 OK
@@ -65,6 +66,12 @@ it is working!
 ✓ expect: 200
 ✓ expect: it is working!
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -74,10 +81,6 @@ it is working!
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/greeting"
 HTTP/1.1 200 OK
@@ -89,15 +92,13 @@ hello world
 ✓ expect: 200
 ✓ expect: hello world
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:26) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/greeting"
 HTTP/1.1 200 OK
@@ -111,6 +112,12 @@ hello world
 ✓ expect: 200
 ✓ expect: hello world
 
+=== Runtime Output ===
+(node:26) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -120,10 +127,6 @@ hello world
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/greeting?name=alice"
 HTTP/1.1 200 OK
@@ -135,15 +138,13 @@ hello alice
 ✓ expect: 200
 ✓ expect: hello alice
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/greeting?name=alice"
 HTTP/1.1 200 OK
@@ -157,6 +158,12 @@ hello alice
 ✓ expect: 200
 ✓ expect: hello alice
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -166,10 +173,6 @@ hello alice
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/nonexistent"
 HTTP/1.1 404 Not Found
@@ -180,15 +183,13 @@ Content-Length: 9
 NOT_FOUND
 ✓ expect: 404
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/nonexistent"
 HTTP/1.1 404 Not Found
@@ -200,6 +201,12 @@ Keep-Alive: timeout=5
 
 NOT_FOUND
 ✓ expect: 404
+
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
 
 ```
 

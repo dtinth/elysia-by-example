@@ -16,16 +16,16 @@ export default new Elysia()
 
 ## Tests
 
+| Test | bun | node |
+| --- | --- | --- |
+| [a](#a) | 🏃 | 🏃 |
+| [b](#b) | 🏃 | 🏃 |
+
 ### a
 
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-onRequest
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/a"
 HTTP/1.1 200 OK
@@ -35,16 +35,14 @@ Content-Length: 1
 
 a
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+onRequest
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-onRequest
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/a"
 HTTP/1.1 200 OK
@@ -55,6 +53,13 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 a
+
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+onRequest
 
 ```
 
@@ -65,11 +70,6 @@ a
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-onRequest
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/b"
 HTTP/1.1 200 OK
@@ -79,16 +79,14 @@ Content-Length: 1
 
 b
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+onRequest
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-onRequest
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/b"
 HTTP/1.1 200 OK
@@ -99,6 +97,13 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 b
+
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+onRequest
 
 ```
 

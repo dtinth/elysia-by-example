@@ -41,15 +41,25 @@ export default new Elysia().post("/parse", async ({ body }) => {
 
 ## Tests
 
+| Test | bun | node |
+| --- | --- | --- |
+| [json](#json) | ✅ | ❌ |
+| [urlencoded](#urlencoded) | 🏃 | 🏃 |
+| [urlencoded_php_arrays_are_unsupported](#urlencoded_php_arrays_are_unsupported) | 🏃 | 🏃 |
+| [urlencoded_duplicate_keys_become_array](#urlencoded_duplicate_keys_become_array) | 🏃 | 🏃 |
+| [multipart](#multipart) | 🏃 | 🏃 |
+| [file_upload](#file_upload) | 🏃 | 🏃 |
+| [file_upload_multiple](#file_upload_multiple) | 🏃 | 🏃 |
+| [plain_text](#plain_text) | 🏃 | 🏃 |
+| [octet_stream](#octet_stream) | 🏃 | 🏃 |
+| [xml_is_unsupported](#xml_is_unsupported) | 🏃 | 🏃 |
+| [ndjson_is_unsupported](#ndjson_is_unsupported) | 🏃 | 🏃 |
+
 ### json
 
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/json" \
@@ -71,15 +81,13 @@ Content-Length: 68
 ✓ expect: 200
 ✓ expect: a: [ 2, 3 ]
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/json" \
@@ -92,6 +100,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 ✗ expect: 200
+
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
 
 === Error ===
 Expected "200" but got: "HTTP/1.1 500 Internal Server Error
@@ -111,10 +125,6 @@ Bun is not defined"
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d x=1 -d y=2 -d z=3
@@ -129,15 +139,13 @@ Content-Length: 58
   z: "3",
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d x=1 -d y=2 -d z=3
@@ -149,6 +157,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -158,10 +172,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d o[b][j]=k -d a[]=1
@@ -175,15 +185,13 @@ Content-Length: 60
   "a[]": "1",
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d o[b][j]=k -d a[]=1
@@ -195,6 +203,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -204,10 +218,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d a=foo -d a=bar -d a=baz
@@ -220,15 +230,13 @@ Content-Length: 58
   a: [ "foo", "bar", "baz" ],
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -d a=foo -d a=bar -d a=baz
@@ -240,6 +248,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -249,10 +263,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F x=1 -F y=2 -F z=3 \
@@ -269,15 +279,13 @@ Content-Length: 63
   a: [ "foo", "bar", "baz" ],
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F x=1 -F y=2 -F z=3 \
@@ -290,6 +298,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -299,10 +313,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F file=@package.json
@@ -318,15 +328,13 @@ Content-Length: 101
   },
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F file=@package.json
@@ -338,6 +346,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -347,10 +361,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F file=@package.json \
@@ -372,15 +382,13 @@ Content-Length: 216
   ],
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -F file=@package.json \
@@ -393,6 +401,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -402,10 +416,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: text/plain" \
@@ -417,15 +427,13 @@ Content-Length: 14
 
 "hello, world"
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: text/plain" \
@@ -438,6 +446,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -447,10 +461,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/octet-stream" \
@@ -462,15 +472,13 @@ Content-Length: 76
 
 ArrayBuffer(12) [ 104, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100 ]
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/octet-stream" \
@@ -483,6 +491,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -492,10 +506,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/xml" \
@@ -509,15 +519,13 @@ Content-Length: 58
   "<hello>world</hello>": "",
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/xml" \
@@ -530,6 +538,12 @@ Keep-Alive: timeout=5
 
 Bun is not defined
 
+=== Runtime Output ===
+(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -539,10 +553,6 @@ Bun is not defined
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/x-ndjson" \
@@ -556,15 +566,13 @@ Content-Length: 80
   "{\"hello\":\"world\"}\n{\"foo\":\"bar\"}\n": "",
 }
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000/parse" -X POST \
   -H "Content-Type: application/x-ndjson" \
@@ -576,6 +584,12 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 Bun is not defined
+
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
 
 ```
 

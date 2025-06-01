@@ -52,15 +52,17 @@ export default new Elysia().use(httpErrorsPlugin).get(
 
 ## Tests
 
+| Test | bun | node |
+| --- | --- | --- |
+| [200](#200) | 🏃 | 🏃 |
+| [418](#418) | 🏃 | 🏃 |
+| [500](#500) | 🏃 | 🏃 |
+
 ### 200
 
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?crash=no"
 HTTP/1.1 200 OK
@@ -70,15 +72,13 @@ Content-Length: 11
 
 {"ok":true}
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?crash=no"
 HTTP/1.1 200 OK
@@ -89,6 +89,12 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 {"ok":true}
+
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
 
 ```
 
@@ -99,10 +105,6 @@ Keep-Alive: timeout=5
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?crash=418"
 HTTP/1.1 418 I'm a Teapot
@@ -112,15 +114,13 @@ Content-Length: 28
 
 {"error":{"message":"meow"}}
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:26) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?crash=418"
 HTTP/1.1 418 I'm a Teapot
@@ -131,6 +131,12 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 {"error":{"message":"meow"}}
+
+=== Runtime Output ===
+(node:26) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
 
 ```
 
@@ -141,10 +147,6 @@ Keep-Alive: timeout=5
 ::: code-group
 
 ```text [bun]
-=== Runtime Output ===
-[runtime] Bun 1.2.15
-Started development server: http://localhost:3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?crash=500"
 HTTP/1.1 500 Internal Server Error
@@ -154,15 +156,13 @@ Content-Length: 47
 
 {"error":{"message":"Something went wrong..."}}
 
+=== Runtime Output ===
+[runtime] Bun 1.2.15
+Started development server: http://localhost:3000
+
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- "http://localhost:3000?crash=500"
 HTTP/1.1 500 Internal Server Error
@@ -173,6 +173,12 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 {"error":{"message":"Something went wrong..."}}
+
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
 
 ```
 

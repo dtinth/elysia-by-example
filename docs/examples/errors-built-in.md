@@ -35,11 +35,31 @@ export default new Elysia()
 
 ## Tests
 
+| Test | bun | node |
+| --- | --- | --- |
+| [404](#404) | ✅ | ✅ |
+| [parse_error](#parse_error) | 🏃 | 🏃 |
+| [validation_error](#validation_error) | 🏃 | 🏃 |
+| [invalid_cookie_signature](#invalid_cookie_signature) | 🏃 | 🏃 |
+| [internal_server_error](#internal_server_error) | 🏃 | 🏃 |
+| [generic_error](#generic_error) | 🏃 | 🏃 |
+
 ### 404
 
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/nonexistent
+HTTP/1.1 404 Not Found
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:18 GMT
+Content-Length: 9
+
+NOT_FOUND
+✓ expect: 404
+✓ expect-not: 200
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -53,26 +73,9 @@ Started development server: http://localhost:3000
   code: "NOT_FOUND",
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/nonexistent
-HTTP/1.1 404 Not Found
-content-type: text/plain;charset=utf-8
-Date: Sun, 01 Jun 2025 06:24:18 GMT
-Content-Length: 9
-
-NOT_FOUND
-✓ expect: 404
-✓ expect-not: 200
-
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-
 === Test Execution ===
 $ curl -s -D- http://localhost:3000/nonexistent
 HTTP/1.1 404 Not Found
@@ -86,6 +89,12 @@ NOT_FOUND
 ✓ expect: 404
 ✓ expect-not: 200
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+
 ```
 
 :::
@@ -95,6 +104,15 @@ NOT_FOUND
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/body -X POST -H "Content-Type: application/json" -d '{'
+HTTP/1.1 400 Bad Request
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:18 GMT
+Content-Length: 11
+
+Bad Request
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -118,18 +136,19 @@ SyntaxError: Failed to parse JSON
   code: "PARSE",
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/body -X POST -H "Content-Type: application/json" -d '{'
-HTTP/1.1 400 Bad Request
-content-type: text/plain;charset=utf-8
-Date: Sun, 01 Jun 2025 06:24:18 GMT
-Content-Length: 11
-
-Bad Request
-
 ```
 
 ```text [node]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/body -X POST -H "Content-Type: application/json" -d '{'
+HTTP/1.1 400 Bad Request
+Content-Length: 11
+Date: Sun, 01 Jun 2025 06:24:20 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Bad Request
+
 === Runtime Output ===
 (node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -178,16 +197,6 @@ Bad Request
   code: 'PARSE'
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/body -X POST -H "Content-Type: application/json" -d '{'
-HTTP/1.1 400 Bad Request
-Content-Length: 11
-Date: Sun, 01 Jun 2025 06:24:20 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-Bad Request
-
 ```
 
 :::
@@ -197,6 +206,47 @@ Bad Request
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/validate
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/json
+Date: Sun, 01 Jun 2025 06:24:19 GMT
+Content-Length: 680
+
+{
+  "type": "validation",
+  "on": "query",
+  "summary": "Property 'name' is missing",
+  "property": "/name",
+  "message": "Expected required property",
+  "expected": {
+    "name": ""
+  },
+  "found": {},
+  "errors": [
+    {
+      "type": 45,
+      "schema": {
+        "type": "string"
+      },
+      "path": "/name",
+      "message": "Expected required property",
+      "errors": [],
+      "summary": "Property 'name' is missing"
+    },
+    {
+      "type": 54,
+      "schema": {
+        "type": "string"
+      },
+      "path": "/name",
+      "message": "Expected string",
+      "errors": [],
+      "summary": "Expected property 'name' to be string but found: undefined"
+    }
+  ]
+}
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -254,196 +304,9 @@ error: {
   code: "VALIDATION",
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/validate
-HTTP/1.1 422 Unprocessable Entity
-Content-Type: application/json
-Date: Sun, 01 Jun 2025 06:24:19 GMT
-Content-Length: 680
-
-{
-  "type": "validation",
-  "on": "query",
-  "summary": "Property 'name' is missing",
-  "property": "/name",
-  "message": "Expected required property",
-  "expected": {
-    "name": ""
-  },
-  "found": {},
-  "errors": [
-    {
-      "type": 45,
-      "schema": {
-        "type": "string"
-      },
-      "path": "/name",
-      "message": "Expected required property",
-      "errors": [],
-      "summary": "Property 'name' is missing"
-    },
-    {
-      "type": 54,
-      "schema": {
-        "type": "string"
-      },
-      "path": "/name",
-      "message": "Expected string",
-      "errors": [],
-      "summary": "Expected property 'name' to be string but found: undefined"
-    }
-  ]
-}
-
 ```
 
 ```text [node]
-=== Runtime Output ===
-(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-[runtime] Node v22.16.0
-🦊 Elysia is running at :::3000
-[onError] {
-  error: _ValidationError: {
-    "type": "validation",
-    "on": "query",
-    "summary": "Property 'name' is missing",
-    "property": "/name",
-    "message": "Expected required property",
-    "expected": {
-      "name": ""
-    },
-    "found": {},
-    "errors": [
-      {
-        "type": 45,
-        "schema": {
-          "type": "string"
-        },
-        "path": "/name",
-        "message": "Expected required property",
-        "errors": [],
-        "summary": "Property 'name' is missing"
-      },
-      {
-        "type": 54,
-        "schema": {
-          "type": "string"
-        },
-        "path": "/name",
-        "message": "Expected string",
-        "errors": [],
-        "summary": "Expected property 'name' to be string but found: undefined"
-      }
-    ]
-  }
-      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:14:67)
-      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)
-      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:29:76)
-      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)
-      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)
-      at Server.emit (node:events:518:28)
-      at parserOnIncoming (node:_http_server:1153:12)
-      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {
-    type: 'query',
-    validator: TypeCheck {
-      schema: [Object],
-      references: [],
-      checkFunc: [Function: check],
-      code: 'return function check(value) {\n' +
-        '  return (\n' +
-        "    (typeof value === 'object' && value !== null && !Array.isArray(value)) &&\n" +
-        "    (typeof value.name === 'string') &&\n" +
-        '    Object.getOwnPropertyNames(value).length === 1\n' +
-        '  )\n' +
-        '}',
-      hasTransform: false,
-      Clean: [Function (anonymous)],
-      parse: [Function (anonymous)],
-      safeParse: [Function (anonymous)],
-      hasAdditionalProperties: false,
-      hasDefault: false,
-      isOptional: false,
-      hasRef: undefined,
-      '~hasRef': undefined
-    },
-    value: {},
-    code: 'VALIDATION',
-    status: 422
-  },
-  code: 'VALIDATION'
-}
-[onError] {
-  error: _ValidationError: {
-    "type": "validation",
-    "on": "query",
-    "summary": "Property 'name' is missing",
-    "property": "/name",
-    "message": "Expected required property",
-    "expected": {
-      "name": ""
-    },
-    "found": {},
-    "errors": [
-      {
-        "type": 45,
-        "schema": {
-          "type": "string"
-        },
-        "path": "/name",
-        "message": "Expected required property",
-        "errors": [],
-        "summary": "Property 'name' is missing"
-      },
-      {
-        "type": 54,
-        "schema": {
-          "type": "string"
-        },
-        "path": "/name",
-        "message": "Expected string",
-        "errors": [],
-        "summary": "Expected property 'name' to be string but found: undefined"
-      }
-    ]
-  }
-      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:14:67)
-      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)
-      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:29:76)
-      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)
-      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)
-      at Server.emit (node:events:518:28)
-      at parserOnIncoming (node:_http_server:1153:12)
-      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {
-    type: 'query',
-    validator: TypeCheck {
-      schema: [Object],
-      references: [],
-      checkFunc: [Function: check],
-      code: 'return function check(value) {\n' +
-        '  return (\n' +
-        "    (typeof value === 'object' && value !== null && !Array.isArray(value)) &&\n" +
-        "    (typeof value.name === 'string') &&\n" +
-        '    Object.getOwnPropertyNames(value).length === 1\n' +
-        '  )\n' +
-        '}',
-      hasTransform: false,
-      Clean: [Function (anonymous)],
-      parse: [Function (anonymous)],
-      safeParse: [Function (anonymous)],
-      hasAdditionalProperties: false,
-      hasDefault: false,
-      isOptional: false,
-      hasRef: undefined,
-      '~hasRef': undefined
-    },
-    value: {},
-    code: 'VALIDATION',
-    status: 422
-  },
-  code: 'VALIDATION'
-}
-
 === Test Execution ===
 $ curl -s -D- http://localhost:3000/validate
 HTTP/1.1 400 Bad Request
@@ -487,6 +350,152 @@ Keep-Alive: timeout=5
   ]
 }
 
+=== Runtime Output ===
+(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[runtime] Node v22.16.0
+🦊 Elysia is running at :::3000
+[onError] {
+  error: _ValidationError: {
+    "type": "validation",
+    "on": "query",
+    "summary": "Property 'name' is missing",
+    "property": "/name",
+    "message": "Expected required property",
+    "expected": {
+      "name": ""
+    },
+    "found": {},
+    "errors": [
+      {
+        "type": 45,
+        "schema": {
+          "type": "string"
+        },
+        "path": "/name",
+        "message": "Expected required property",
+        "errors": [],
+        "summary": "Property 'name' is missing"
+      },
+      {
+        "type": 54,
+        "schema": {
+          "type": "string"
+        },
+        "path": "/name",
+        "message": "Expected string",
+        "errors": [],
+        "summary": "Expected property 'name' to be string but found: undefined"
+      }
+    ]
+  }
+      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:14:67)
+      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)
+      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:29:76)
+      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)
+      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)
+      at Server.emit (node:events:518:28)
+      at parserOnIncoming (node:_http_server:1153:12)
+      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {
+    type: 'query',
+    validator: TypeCheck {
+      schema: [Object],
+      references: [],
+      checkFunc: [Function: check],
+      code: 'return function check(value) {\n' +
+        '  return (\n' +
+        "    (typeof value === 'object' && value !== null && !Array.isArray(value)) &&\n" +
+        "    (typeof value.name === 'string') &&\n" +
+        '    Object.getOwnPropertyNames(value).length === 1\n' +
+        '  )\n' +
+        '}',
+      hasTransform: false,
+      Clean: [Function (anonymous)],
+      parse: [Function (anonymous)],
+      safeParse: [Function (anonymous)],
+      hasAdditionalProperties: false,
+      hasDefault: false,
+      isOptional: false,
+      hasRef: undefined,
+      '~hasRef': undefined
+    },
+    value: {},
+    code: 'VALIDATION',
+    status: 422
+  },
+  code: 'VALIDATION'
+}
+[onError] {
+  error: _ValidationError: {
+    "type": "validation",
+    "on": "query",
+    "summary": "Property 'name' is missing",
+    "property": "/name",
+    "message": "Expected required property",
+    "expected": {
+      "name": ""
+    },
+    "found": {},
+    "errors": [
+      {
+        "type": 45,
+        "schema": {
+          "type": "string"
+        },
+        "path": "/name",
+        "message": "Expected required property",
+        "errors": [],
+        "summary": "Property 'name' is missing"
+      },
+      {
+        "type": 54,
+        "schema": {
+          "type": "string"
+        },
+        "path": "/name",
+        "message": "Expected string",
+        "errors": [],
+        "summary": "Expected property 'name' to be string but found: undefined"
+      }
+    ]
+  }
+      at handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:14:67)
+      at Object.mainHandler (file:///app/node_modules/elysia/dist/index.mjs:6470:162)
+      at map (eval at composeGeneralHandler (file:///app/node_modules/elysia/dist/index.mjs:4606:12), <anonymous>:29:76)
+      at fetch (file:///app/node_modules/elysia/dist/index.mjs:6021:120)
+      at Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:425:13)
+      at Server.emit (node:events:518:28)
+      at parserOnIncoming (node:_http_server:1153:12)
+      at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17) {
+    type: 'query',
+    validator: TypeCheck {
+      schema: [Object],
+      references: [],
+      checkFunc: [Function: check],
+      code: 'return function check(value) {\n' +
+        '  return (\n' +
+        "    (typeof value === 'object' && value !== null && !Array.isArray(value)) &&\n" +
+        "    (typeof value.name === 'string') &&\n" +
+        '    Object.getOwnPropertyNames(value).length === 1\n' +
+        '  )\n' +
+        '}',
+      hasTransform: false,
+      Clean: [Function (anonymous)],
+      parse: [Function (anonymous)],
+      safeParse: [Function (anonymous)],
+      hasAdditionalProperties: false,
+      hasDefault: false,
+      isOptional: false,
+      hasRef: undefined,
+      '~hasRef': undefined
+    },
+    value: {},
+    code: 'VALIDATION',
+    status: 422
+  },
+  code: 'VALIDATION'
+}
+
 ```
 
 :::
@@ -496,6 +505,15 @@ Keep-Alive: timeout=5
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/cookie -H "Cookie: name=unsigned"
+HTTP/1.1 400 Bad Request
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:19 GMT
+Content-Length: 35
+
+"name" has invalid cookie signature
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -518,18 +536,19 @@ error: "name" has invalid cookie signature
   code: "INVALID_COOKIE_SIGNATURE",
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/cookie -H "Cookie: name=unsigned"
-HTTP/1.1 400 Bad Request
-content-type: text/plain;charset=utf-8
-Date: Sun, 01 Jun 2025 06:24:19 GMT
-Content-Length: 35
-
-"name" has invalid cookie signature
-
 ```
 
 ```text [node]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/cookie -H "Cookie: name=unsigned"
+HTTP/1.1 400 Bad Request
+Content-Length: 35
+Date: Sun, 01 Jun 2025 06:24:21 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+"name" has invalid cookie signature
+
 === Runtime Output ===
 (node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -560,16 +579,6 @@ Content-Length: 35
   code: 'INVALID_COOKIE_SIGNATURE'
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/cookie -H "Cookie: name=unsigned"
-HTTP/1.1 400 Bad Request
-Content-Length: 35
-Date: Sun, 01 Jun 2025 06:24:21 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-"name" has invalid cookie signature
-
 ```
 
 :::
@@ -579,6 +588,15 @@ Keep-Alive: timeout=5
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/crash/internal
+HTTP/1.1 500 Internal Server Error
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:21 GMT
+Content-Length: 21
+
+Something went wrong!
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -603,18 +621,19 @@ error: Something went wrong!
   code: "INTERNAL_SERVER_ERROR",
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/crash/internal
-HTTP/1.1 500 Internal Server Error
-content-type: text/plain;charset=utf-8
-Date: Sun, 01 Jun 2025 06:24:21 GMT
-Content-Length: 21
-
-Something went wrong!
-
 ```
 
 ```text [node]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/crash/internal
+HTTP/1.1 500 Internal Server Error
+Content-Length: 21
+Date: Sun, 01 Jun 2025 06:24:22 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Something went wrong!
+
 === Runtime Output ===
 (node:29) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -653,16 +672,6 @@ Something went wrong!
   code: 'INTERNAL_SERVER_ERROR'
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/crash/internal
-HTTP/1.1 500 Internal Server Error
-Content-Length: 21
-Date: Sun, 01 Jun 2025 06:24:22 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-Something went wrong!
-
 ```
 
 :::
@@ -672,6 +681,15 @@ Something went wrong!
 ::: code-group
 
 ```text [bun]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/crash/error
+HTTP/1.1 500 Internal Server Error
+content-type: text/plain;charset=utf-8
+Date: Sun, 01 Jun 2025 06:24:21 GMT
+Content-Length: 21
+
+Something went wrong!
+
 === Runtime Output ===
 [runtime] Bun 1.2.15
 Started development server: http://localhost:3000
@@ -692,18 +710,19 @@ error: Something went wrong!
   code: "UNKNOWN",
 }
 
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/crash/error
-HTTP/1.1 500 Internal Server Error
-content-type: text/plain;charset=utf-8
-Date: Sun, 01 Jun 2025 06:24:21 GMT
-Content-Length: 21
-
-Something went wrong!
-
 ```
 
 ```text [node]
+=== Test Execution ===
+$ curl -s -D- http://localhost:3000/crash/error
+HTTP/1.1 500 Internal Server Error
+Content-Length: 21
+Date: Sun, 01 Jun 2025 06:24:23 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Something went wrong!
+
 === Runtime Output ===
 (node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -735,16 +754,6 @@ Something went wrong!
       at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17),
   code: 'UNKNOWN'
 }
-
-=== Test Execution ===
-$ curl -s -D- http://localhost:3000/crash/error
-HTTP/1.1 500 Internal Server Error
-Content-Length: 21
-Date: Sun, 01 Jun 2025 06:24:23 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-Something went wrong!
 
 ```
 
