@@ -24,11 +24,7 @@
     },
     {
       "type": "stdout",
-      "contents": "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
+      "contents": "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
     },
     {
       "type": "stdout",
@@ -46,10 +42,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T08:00:38.297Z",
+      "timestamp": "2025-06-01T11:22:37.110Z",
       "command": "curl -s -D- \"http://localhost:3000?crash=1\" -X POST -d x=1",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:38 GMT\r\nContent-Length: 5\r\n\r\ncrash",
+      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 11:22:36 GMT\r\nContent-Length: 5\r\n\r\ncrash",
       "error": ""
     }
   ]

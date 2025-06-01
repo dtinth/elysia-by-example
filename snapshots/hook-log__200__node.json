@@ -28,19 +28,7 @@
     },
     {
       "type": "stdout",
-      "contents": "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
-    },
-    {
-      "type": "stdout",
-      "contents": "[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+      "contents": "[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
     },
     {
       "type": "stdout",
@@ -50,10 +38,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:17:13.949Z",
+      "timestamp": "2025-06-01T11:22:36.914Z",
       "command": "curl -s -D- http://localhost:3000 -X POST -d x=1",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: application/json\r\nContent-Length: 11\r\nDate: Sun, 01 Jun 2025 11:17:14 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"ok\":true}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: application/json\r\nContent-Length: 11\r\nDate: Sun, 01 Jun 2025 11:22:36 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"ok\":true}",
       "error": ""
     }
   ]

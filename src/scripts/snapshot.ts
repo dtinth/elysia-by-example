@@ -97,10 +97,21 @@ const runAndUpdate = async (task: RunnableTask) => {
   }
 };
 
+// Get CLI argument for filtering tasks
+const filterArg = process.argv[2];
+
 const promises: Promise<void>[] = [];
 const limit = pLimit(4);
 
+if (filterArg) {
+  consola.info(`Filtering tasks containing: "${filterArg}"`);
+}
+
 for await (const task of getRunnableTasks()) {
+  // Filter tasks if CLI argument is provided
+  if (filterArg && !task.id.includes(filterArg)) {
+    continue;
+  }
   promises.push(limit(() => runAndUpdate(task)));
 }
 

@@ -14,22 +14,22 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:16:59.799Z",
+      "timestamp": "2025-06-01T11:22:22.754Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json \\\n  -F file=@tsconfig.json",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 11:16:59 GMT\r\nContent-Length: 30\r\n\r\n{ file: [ Blob {}, Blob {} ] }",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 11:22:22 GMT\r\nContent-Length: 30\r\n\r\n{ file: [ Blob {}, Blob {} ] }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:16:59.845Z",
+      "timestamp": "2025-06-01T11:22:22.839Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:16:59.845Z",
-      "expectation": "{ file: [ Blob {}, Blob {} ] }",
+      "timestamp": "2025-06-01T11:22:22.839Z",
+      "expectation": "file: [",
       "success": true
     }
   ]

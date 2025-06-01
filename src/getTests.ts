@@ -85,8 +85,8 @@ export function getTests(text: string): { tests: Test[]; source: string[] } {
         .slice(isNegative ? "// @expect-not ".length : "// @expect ".length)
         .trim();
       const texts: string[] = [];
-      for (const m of textToParse.matchAll(/"([^"]+)"|(\S+)/g)) {
-        texts.push(m[1] || m[2]);
+      for (const m of textToParse.matchAll(/"((?:\\.|[^"])+)"|(\S+)/g)) {
+        texts.push(m[1] ? JSON.parse(m[0]) : m[2]);
       }
       currentActions.push({
         type: isNegative ? "expect-not" : "expect",

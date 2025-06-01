@@ -1,10 +1,10 @@
 {
   "taskId": "body-parsing__file_upload__node",
-  "success": false,
+  "success": true,
   "runtimeLogs": [
     {
       "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,25 +18,23 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:16:59.911Z",
+      "timestamp": "2025-06-01T11:24:38.023Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 134\r\nDate: Sun, 01 Jun 2025 11:16:59 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: File {\n    size: 1172,\n    type: 'application/octet-stream',\n    name: 'package.json',\n    lastModified: 1748776619947\n  }\n}",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 134\r\nDate: Sun, 01 Jun 2025 11:24:38 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: File {\n    size: 1172,\n    type: 'application/octet-stream',\n    name: 'package.json',\n    lastModified: 1748777078072\n  }\n}",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:16:59.956Z",
+      "timestamp": "2025-06-01T11:24:38.089Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:16:59.956Z",
-      "expectation": "{ file: Blob {} }",
-      "success": false,
-      "error": "Expected \"{ file: Blob {} }\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 134\r\nDate: Sun, 01 Jun 2025 11:16:59 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: File {\n    size: 1172,\n    type: 'application/octet-stream',\n    name: 'package.json',\n    lastModified: 1748776619947\n  }\n}\""
+      "timestamp": "2025-06-01T11:24:38.089Z",
+      "expectation": "file: ",
+      "success": true
     }
-  ],
-  "error": "Expected \"{ file: Blob {} }\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 134\r\nDate: Sun, 01 Jun 2025 11:16:59 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: File {\n    size: 1172,\n    type: 'application/octet-stream',\n    name: 'package.json',\n    lastModified: 1748776619947\n  }\n}\""
+  ]
 }

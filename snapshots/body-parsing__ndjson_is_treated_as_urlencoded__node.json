@@ -1,10 +1,10 @@
 {
   "taskId": "body-parsing__ndjson_is_treated_as_urlencoded__node",
-  "success": false,
+  "success": true,
   "runtimeLogs": [
     {
       "type": "stderr",
-      "contents": "(node:26) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,25 +18,23 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:17:03.526Z",
+      "timestamp": "2025-06-01T11:24:41.991Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/x-ndjson\" \\\n  -d $'{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n'",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 69\r\nDate: Sun, 01 Jun 2025 11:17:03 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { '{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n': '' }",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 69\r\nDate: Sun, 01 Jun 2025 11:24:42 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { '{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n': '' }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:03.574Z",
+      "timestamp": "2025-06-01T11:24:42.014Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:03.574Z",
-      "expectation": "'{\"hello\":\"world\"}\\\\n{\"foo\":\"bar\"}\\\\n'",
-      "success": false,
-      "error": "Expected \"'{\"hello\":\"world\"}\\\\n{\"foo\":\"bar\"}\\\\n'\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 69\r\nDate: Sun, 01 Jun 2025 11:17:03 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { '{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n': '' }\""
+      "timestamp": "2025-06-01T11:24:42.014Z",
+      "expectation": "'{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n': ''",
+      "success": true
     }
-  ],
-  "error": "Expected \"'{\"hello\":\"world\"}\\\\n{\"foo\":\"bar\"}\\\\n'\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 69\r\nDate: Sun, 01 Jun 2025 11:17:03 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { '{\"hello\":\"world\"}\\n{\"foo\":\"bar\"}\\n': '' }\""
+  ]
 }
