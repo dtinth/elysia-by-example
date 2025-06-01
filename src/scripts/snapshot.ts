@@ -35,7 +35,9 @@ function normalizeSnapshot(snapshot: TaskRunResult): TaskRunResult {
       ...log,
       timestamp: new Date(0), // Reset timestamp to epoch
       output: normalizeTesterOutput(log.output),
+      error: normalizeTesterOutput(log.error),
     })),
+    error: normalizeTesterOutput(snapshot.error),
   };
 }
 
