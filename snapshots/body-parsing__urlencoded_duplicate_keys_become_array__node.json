@@ -18,11 +18,23 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T08:00:21.606Z",
+      "timestamp": "2025-06-01T11:16:58.244Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -d a=foo -d a=bar -d a=baz",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 55\r\nDate: Sun, 01 Jun 2025 08:00:21 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { a: [ 'foo', 'bar', 'baz' ] }",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 55\r\nDate: Sun, 01 Jun 2025 11:16:58 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { a: [ 'foo', 'bar', 'baz' ] }",
       "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:16:58.290Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:16:58.290Z",
+      "expectation": "a: [ 'foo', 'bar', 'baz' ]",
+      "success": true
     }
   ]
 }

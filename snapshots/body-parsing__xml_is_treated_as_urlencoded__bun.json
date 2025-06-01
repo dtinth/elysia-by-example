@@ -1,0 +1,36 @@
+{
+  "taskId": "body-parsing__xml_is_treated_as_urlencoded__bun",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.15"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-06-01T11:17:01.761Z",
+      "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/xml\" \\\n  -d \"<hello>world</hello>\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 11:17:01 GMT\r\nContent-Length: 55\r\n\r\n[Object: null prototype] { '<hello>world</hello>': '' }",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:17:01.802Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:17:01.802Z",
+      "expectation": "'<hello>world</hello>': ''",
+      "success": true
+    }
+  ]
+}

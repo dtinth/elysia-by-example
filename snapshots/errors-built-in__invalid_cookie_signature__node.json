@@ -16,20 +16,16 @@
     },
     {
       "type": "stdout",
-      "contents": "[onError] {\n  error: InvalidCookieSignature [Error]: \"name\" has invalid cookie signature\n      at parseCookie (file:///app/node_modules/elysia/dist/index.mjs:1940:32)\n      at async handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:7:10)\n      at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n      at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14) {\n    key: 'name',\n    code: 'INVALID_COOKIE_SIGNATURE',\n    status: 400\n  },\n  code: 'INVALID_COOKIE_SIGNATURE'\n}"
-    },
-    {
-      "type": "stdout",
-      "contents": "[onError] {\n  error: InvalidCookieSignature [Error]: \"name\" has invalid cookie signature\n      at parseCookie (file:///app/node_modules/elysia/dist/index.mjs:1940:32)\n      at async handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:7:10)\n      at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n      at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14) {\n    key: 'name',\n    code: 'INVALID_COOKIE_SIGNATURE',\n    status: 400\n  },\n  code: 'INVALID_COOKIE_SIGNATURE'\n}"
+      "contents": "[onError] {\n  error: InvalidCookieSignature [Error]: \"name\" has invalid cookie signature\n      at parseCookie (file:///app/node_modules/elysia/dist/index.mjs:1940:32)\n      at async handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:7:10)\n      at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n      at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14) {\n    key: 'name',\n    code: 'INVALID_COOKIE_SIGNATURE',\n    status: 400\n  },\n  code: 'INVALID_COOKIE_SIGNATURE'\n}\n[onError] {\n  error: InvalidCookieSignature [Error]: \"name\" has invalid cookie signature\n      at parseCookie (file:///app/node_modules/elysia/dist/index.mjs:1940:32)\n      at async handle (eval at composeHandler (file:///app/node_modules/elysia/dist/index.mjs:4451:12), <anonymous>:7:10)\n      at async responseViaResponseObject (file:///app/node_modules/@hono/node-server/dist/index.mjs:370:13)\n      at async Server.<anonymous> (file:///app/node_modules/@hono/node-server/dist/index.mjs:446:14) {\n    key: 'name',\n    code: 'INVALID_COOKIE_SIGNATURE',\n    status: 400\n  },\n  code: 'INVALID_COOKIE_SIGNATURE'\n}"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:21.757Z",
+      "timestamp": "2025-06-01T11:17:22.213Z",
       "command": "curl -s -D- http://localhost:3000/cookie -H \"Cookie: name=unsigned\"",
       "success": true,
-      "output": "HTTP/1.1 400 Bad Request\r\nContent-Length: 35\r\nDate: Sun, 01 Jun 2025 06:24:21 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n\"name\" has invalid cookie signature",
+      "output": "HTTP/1.1 400 Bad Request\r\nContent-Length: 35\r\nDate: Sun, 01 Jun 2025 11:17:22 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n\"name\" has invalid cookie signature",
       "error": ""
     }
   ]

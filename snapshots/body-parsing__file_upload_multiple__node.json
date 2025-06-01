@@ -1,6 +1,6 @@
 {
   "taskId": "body-parsing__file_upload_multiple__node",
-  "success": true,
+  "success": false,
   "runtimeLogs": [
     {
       "type": "stderr",
@@ -18,11 +18,25 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T08:00:24.208Z",
+      "timestamp": "2025-06-01T11:17:00.369Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json \\\n  -F file=@tsconfig.json",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 291\r\nDate: Sun, 01 Jun 2025 08:00:24 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: [\n    File {\n      size: 1172,\n      type: 'application/octet-stream',\n      name: 'package.json',\n      lastModified: 1748764824247\n    },\n    File {\n      size: 45,\n      type: 'application/octet-stream',\n      name: 'tsconfig.json',\n      lastModified: 1748764824248\n    }\n  ]\n}",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 291\r\nDate: Sun, 01 Jun 2025 11:17:00 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: [\n    File {\n      size: 1172,\n      type: 'application/octet-stream',\n      name: 'package.json',\n      lastModified: 1748776620407\n    },\n    File {\n      size: 45,\n      type: 'application/octet-stream',\n      name: 'tsconfig.json',\n      lastModified: 1748776620407\n    }\n  ]\n}",
       "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:17:00.418Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:17:00.418Z",
+      "expectation": "{ file: [ Blob {}, Blob {} ] }",
+      "success": false,
+      "error": "Expected \"{ file: [ Blob {}, Blob {} ] }\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 291\r\nDate: Sun, 01 Jun 2025 11:17:00 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: [\n    File {\n      size: 1172,\n      type: 'application/octet-stream',\n      name: 'package.json',\n      lastModified: 1748776620407\n    },\n    File {\n      size: 45,\n      type: 'application/octet-stream',\n      name: 'tsconfig.json',\n      lastModified: 1748776620407\n    }\n  ]\n}\""
     }
-  ]
+  ],
+  "error": "Expected \"{ file: [ Blob {}, Blob {} ] }\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 291\r\nDate: Sun, 01 Jun 2025 11:17:00 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: [\n    File {\n      size: 1172,\n      type: 'application/octet-stream',\n      name: 'package.json',\n      lastModified: 1748776620407\n    },\n    File {\n      size: 45,\n      type: 'application/octet-stream',\n      name: 'tsconfig.json',\n      lastModified: 1748776620407\n    }\n  ]\n}\""
 }

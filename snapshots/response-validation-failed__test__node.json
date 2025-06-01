@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stderr",
-      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "contents": "(node:29) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -16,29 +16,25 @@
     },
     {
       "type": "stdout",
-      "contents": "[onError] VALIDATION"
-    },
-    {
-      "type": "stdout",
-      "contents": "[onError] VALIDATION"
+      "contents": "[onError] VALIDATION\n[onError] VALIDATION"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:12.501Z",
+      "timestamp": "2025-06-01T11:17:12.686Z",
       "command": "curl -s -D- \"http://localhost:3000/\"",
       "success": true,
-      "output": "HTTP/1.1 400 Bad Request\r\ncontent-type: application/json\r\nContent-Length: 425\r\nDate: Sun, 01 Jun 2025 06:24:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}",
+      "output": "HTTP/1.1 400 Bad Request\r\ncontent-type: application/json\r\nContent-Length: 425\r\nDate: Sun, 01 Jun 2025 11:17:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:24:12.541Z",
+      "timestamp": "2025-06-01T11:17:12.727Z",
       "expectation": "422",
       "success": false,
-      "error": "Expected \"422\" but got: \"HTTP/1.1 400 Bad Request\r\ncontent-type: application/json\r\nContent-Length: 425\r\nDate: Sun, 01 Jun 2025 06:24:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}\""
+      "error": "Expected \"422\" but got: \"HTTP/1.1 400 Bad Request\r\ncontent-type: application/json\r\nContent-Length: 425\r\nDate: Sun, 01 Jun 2025 11:17:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}\""
     }
   ],
-  "error": "Expected \"422\" but got: \"HTTP/1.1 400 Bad Request\r\ncontent-type: application/json\r\nContent-Length: 425\r\nDate: Sun, 01 Jun 2025 06:24:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}\""
+  "error": "Expected \"422\" but got: \"HTTP/1.1 400 Bad Request\r\ncontent-type: application/json\r\nContent-Length: 425\r\nDate: Sun, 01 Jun 2025 11:17:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}\""
 }

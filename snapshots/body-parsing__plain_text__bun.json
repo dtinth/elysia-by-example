@@ -14,11 +14,23 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T08:00:24.278Z",
+      "timestamp": "2025-06-01T11:17:00.229Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: text/plain\" \\\n  -d \"hello, world\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 08:00:24 GMT\r\nContent-Length: 14\r\n\r\n'hello, world'",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 11:17:00 GMT\r\nContent-Length: 14\r\n\r\n'hello, world'",
       "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:17:00.289Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-06-01T11:17:00.289Z",
+      "expectation": "'hello, world'",
+      "success": true
     }
   ]
 }

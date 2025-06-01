@@ -1,5 +1,5 @@
 {
-  "taskId": "body-parsing__plain_text__node",
+  "taskId": "body-parsing__xml_is_treated_as_urlencoded__node",
   "success": true,
   "runtimeLogs": [
     {
@@ -18,22 +18,22 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:17:01.375Z",
-      "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: text/plain\" \\\n  -d \"hello, world\"",
+      "timestamp": "2025-06-01T11:17:03.046Z",
+      "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/xml\" \\\n  -d \"<hello>world</hello>\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 14\r\nDate: Sun, 01 Jun 2025 11:17:01 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n'hello, world'",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 55\r\nDate: Sun, 01 Jun 2025 11:17:03 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { '<hello>world</hello>': '' }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:01.447Z",
+      "timestamp": "2025-06-01T11:17:03.105Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:01.447Z",
-      "expectation": "'hello, world'",
+      "timestamp": "2025-06-01T11:17:03.105Z",
+      "expectation": "'<hello>world</hello>': ''",
       "success": true
     }
   ]
