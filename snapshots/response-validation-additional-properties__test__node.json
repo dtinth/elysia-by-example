@@ -3,12 +3,12 @@
   "success": true,
   "runtimeLogs": [
     {
-      "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "type": "stdout",
+      "contents": "[runtime] Node v22.18.0"
     },
     {
-      "type": "stdout",
-      "contents": "[runtime] Node v22.16.0"
+      "type": "stderr",
+      "contents": "(node:28) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,21 +18,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:51.759Z",
+      "timestamp": "2025-08-05T16:00:59.329Z",
       "command": "curl -s -D- \"http://localhost:3000/\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: 13\r\nDate: Sun, 01 Jun 2025 06:23:51 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"a\":1,\"b\":2}",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: 13\r\nDate: Tue, 05 Aug 2025 16:00:59 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"a\":1,\"b\":2}",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:23:51.792Z",
+      "timestamp": "2025-08-05T16:00:59.384Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:23:51.792Z",
+      "timestamp": "2025-08-05T16:00:59.385Z",
       "expectation": "b",
       "success": true
     }

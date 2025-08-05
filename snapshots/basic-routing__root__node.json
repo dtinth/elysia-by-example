@@ -3,12 +3,12 @@
   "success": true,
   "runtimeLogs": [
     {
-      "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "type": "stdout",
+      "contents": "[runtime] Node v22.18.0"
     },
     {
-      "type": "stdout",
-      "contents": "[runtime] Node v22.16.0"
+      "type": "stderr",
+      "contents": "(node:28) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,21 +18,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:09.392Z",
+      "timestamp": "2025-08-05T16:01:14.861Z",
       "command": "curl -s -D- \"http://localhost:3000\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain; charset=UTF-8\r\nContent-Length: 14\r\nDate: Sun, 01 Jun 2025 06:24:09 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nit is working!",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain; charset=UTF-8\r\nContent-Length: 14\r\nDate: Tue, 05 Aug 2025 16:01:14 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nit is working!",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:24:09.440Z",
+      "timestamp": "2025-08-05T16:01:14.896Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:24:09.441Z",
+      "timestamp": "2025-08-05T16:01:14.896Z",
       "expectation": "it is working!",
       "success": true
     }

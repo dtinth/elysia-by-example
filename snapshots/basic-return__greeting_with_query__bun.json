@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Bun 1.2.15"
+      "contents": "[runtime] Bun 1.2.19"
     },
     {
       "type": "stdout",
@@ -14,21 +14,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:53.096Z",
+      "timestamp": "2025-08-05T16:01:20.674Z",
       "command": "curl -s -D- \"http://localhost:3000/greeting?name=alice\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:23:52 GMT\r\nContent-Length: 11\r\n\r\nhello alice",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:01:20 GMT\r\nContent-Length: 11\r\n\r\nhello alice",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:23:53.134Z",
+      "timestamp": "2025-08-05T16:01:20.731Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:23:53.134Z",
+      "timestamp": "2025-08-05T16:01:20.733Z",
       "expectation": "hello alice",
       "success": true
     }

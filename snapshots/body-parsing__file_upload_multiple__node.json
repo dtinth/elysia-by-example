@@ -3,12 +3,12 @@
   "success": true,
   "runtimeLogs": [
     {
-      "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "type": "stdout",
+      "contents": "[runtime] Node v22.18.0"
     },
     {
-      "type": "stdout",
-      "contents": "[runtime] Node v22.16.0"
+      "type": "stderr",
+      "contents": "(node:27) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,21 +18,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:24:39.301Z",
+      "timestamp": "2025-08-05T16:01:08.589Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json \\\n  -F file=@tsconfig.json",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 291\r\nDate: Sun, 01 Jun 2025 11:24:39 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: [\n    File {\n      size: 1172,\n      type: 'application/octet-stream',\n      name: 'package.json',\n      lastModified: 1748777079353\n    },\n    File {\n      size: 45,\n      type: 'application/octet-stream',\n      name: 'tsconfig.json',\n      lastModified: 1748777079353\n    }\n  ]\n}",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 291\r\nDate: Tue, 05 Aug 2025 16:01:08 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\n  file: [\n    File {\n      size: 1172,\n      type: 'application/octet-stream',\n      name: 'package.json',\n      lastModified: 1754409668622\n    },\n    File {\n      size: 45,\n      type: 'application/octet-stream',\n      name: 'tsconfig.json',\n      lastModified: 1754409668622\n    }\n  ]\n}",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:24:39.364Z",
+      "timestamp": "2025-08-05T16:01:08.629Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:24:39.365Z",
+      "timestamp": "2025-08-05T16:01:08.629Z",
       "expectation": "file: [",
       "success": true
     }

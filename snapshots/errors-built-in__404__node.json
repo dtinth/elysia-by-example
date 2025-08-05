@@ -3,12 +3,12 @@
   "success": true,
   "runtimeLogs": [
     {
-      "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "type": "stdout",
+      "contents": "[runtime] Node v22.18.0"
     },
     {
-      "type": "stdout",
-      "contents": "[runtime] Node v22.16.0"
+      "type": "stderr",
+      "contents": "(node:28) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,21 +18,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:18.799Z",
+      "timestamp": "2025-08-05T16:00:54.189Z",
       "command": "curl -s -D- http://localhost:3000/nonexistent",
       "success": true,
-      "output": "HTTP/1.1 404 Not Found\r\ncontent-type: text/plain;charset=UTF-8\r\ncontent-length: 9\r\nDate: Sun, 01 Jun 2025 06:24:18 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nNOT_FOUND",
+      "output": "HTTP/1.1 404 Not Found\r\ncontent-type: text/plain;charset=UTF-8\r\ncontent-length: 9\r\nDate: Tue, 05 Aug 2025 16:00:54 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nNOT_FOUND",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:24:18.833Z",
+      "timestamp": "2025-08-05T16:00:54.225Z",
       "expectation": "404",
       "success": true
     },
     {
       "type": "expect-not",
-      "timestamp": "2025-06-01T06:24:18.833Z",
+      "timestamp": "2025-08-05T16:00:54.225Z",
       "expectation": "200",
       "success": true
     }
