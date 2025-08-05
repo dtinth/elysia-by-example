@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Bun 1.2.15"
+      "contents": "[runtime] Bun 1.2.19"
     },
     {
       "type": "stdout",
@@ -14,21 +14,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:17:01.244Z",
+      "timestamp": "2025-08-05T16:01:09.488Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/octet-stream\" \\\n  -d \"hello, world\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 11:17:01 GMT\r\nContent-Length: 90\r\n\r\nArrayBuffer {\n  [Uint8Contents]: <68 65 6c 6c 6f 2c 20 77 6f 72 6c 64>,\n  byteLength: 12\n}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:01:09 GMT\r\nContent-Length: 90\r\n\r\nArrayBuffer {\n  [Uint8Contents]: <68 65 6c 6c 6f 2c 20 77 6f 72 6c 64>,\n  byteLength: 12\n}",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:01.282Z",
+      "timestamp": "2025-08-05T16:01:09.562Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:01.282Z",
+      "timestamp": "2025-08-05T16:01:09.563Z",
       "expectation": "ArrayBuffer",
       "success": true
     }

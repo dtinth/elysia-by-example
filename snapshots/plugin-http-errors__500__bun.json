@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Bun 1.2.15"
+      "contents": "[runtime] Bun 1.2.19"
     },
     {
       "type": "stdout",
@@ -14,10 +14,10 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:23:49.928Z",
+      "timestamp": "2025-08-05T16:01:26.380Z",
       "command": "curl -s -D- \"http://localhost:3000?crash=500\"",
       "success": true,
-      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 06:23:49 GMT\r\nContent-Length: 47\r\n\r\n{\"error\":{\"message\":\"Something went wrong...\"}}",
+      "output": "HTTP/1.1 500 Internal Server Error\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:01:26 GMT\r\nContent-Length: 47\r\n\r\n{\"error\":{\"message\":\"Something went wrong...\"}}",
       "error": ""
     }
   ]

@@ -1,0 +1,48 @@
+{
+  "taskId": "hook-log__200__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onRequest]       { error, path, qi, redirect, request, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onParse]         { contentType, error, path, qi, redirect, request, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onTransform]     { body, cookie, error, headers, params, path, qi, query, redirect, request, route, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onBeforeHandle]  { body, cookie, error, headers, params, path, qi, query, redirect, request, route, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[handler]         { body, cookie, error, headers, params, path, qi, query, redirect, request, route, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onAfterHandle]   { body, cookie, error, headers, params, path, qi, query, redirect, request, response, route, set, status, store }"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:19.422Z",
+      "command": "curl -s -D- http://localhost:3000 -X POST -d x=1",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:19 GMT\r\nContent-Length: 11\r\n\r\n{\"ok\":true}",
+      "error": ""
+    }
+  ]
+}

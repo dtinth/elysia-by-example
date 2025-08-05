@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Bun 1.2.15"
+      "contents": "[runtime] Bun 1.2.19"
     },
     {
       "type": "stdout",
@@ -12,16 +12,16 @@
     },
     {
       "type": "stdout",
-      "contents": "[onError] {\n  error: 91 | export class ParseError extends Error {\n92 | \tcode = 'PARSE'\n93 | \tstatus = 400\n94 | \n95 | \tconstructor(cause?: Error) {\n96 | \t\tsuper('Bad Request', {\n       ^\nerror: Bad Request\n status: 400,\n   code: \"PARSE\"\n\n      at new ParseError (/app/node_modules/elysia/src/error.ts:96:3)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:25:22)\n\nSyntaxError: Failed to parse JSON\n,\n  code: \"PARSE\",\n}"
+      "contents": "[onError] {\n  error: 104 | export class ParseError extends Error {\n105 | \tcode = 'PARSE'\n106 | \tstatus = 400\n107 | \n108 | \tconstructor(cause?: Error) {\n109 | \t\tsuper('Bad Request', {\n        ^\nerror: Bad Request\n status: 400,\n   code: \"PARSE\"\n\n      at new ParseError (/app/node_modules/elysia/src/error.ts:109:3)\n      at handle (file:///app/node_modules/elysia/dist/bun/index.js:25:22)\n\nSyntaxError: Failed to parse JSON\n,\n  code: \"PARSE\",\n}"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:18.604Z",
+      "timestamp": "2025-08-05T16:00:54.704Z",
       "command": "curl -s -D- http://localhost:3000/body -X POST -H \"Content-Type: application/json\" -d '{'",
       "success": true,
-      "output": "HTTP/1.1 400 Bad Request\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 06:24:18 GMT\r\nContent-Length: 11\r\n\r\nBad Request",
+      "output": "HTTP/1.1 400 Bad Request\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:00:54 GMT\r\nContent-Length: 11\r\n\r\nBad Request",
       "error": ""
     }
   ]

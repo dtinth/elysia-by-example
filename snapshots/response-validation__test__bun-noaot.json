@@ -1,0 +1,38 @@
+{
+  "taskId": "response-validation__test__bun-noaot",
+  "success": false,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:27.320Z",
+      "command": "curl -s -D- \"http://localhost:3000/\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:27 GMT\r\nContent-Length: 13\r\n\r\n{\"a\":1,\"b\":2}",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:27.345Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect-not",
+      "timestamp": "2025-08-05T16:19:27.345Z",
+      "expectation": "b",
+      "success": false,
+      "error": "Expected not to find \"b\" but it was present in: \"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:27 GMT\r\nContent-Length: 13\r\n\r\n{\"a\":1,\"b\":2}\""
+    }
+  ],
+  "error": "Expected not to find \"b\" but it was present in: \"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:27 GMT\r\nContent-Length: 13\r\n\r\n{\"a\":1,\"b\":2}\""
+}

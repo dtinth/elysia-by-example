@@ -1,0 +1,20 @@
+{
+  "taskId": "errors-built-in__validation_error__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19\nStarted development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:18:56.357Z",
+      "command": "curl -s -D- http://localhost:3000/validate",
+      "success": true,
+      "output": "HTTP/1.1 422 Unprocessable Entity\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:18:56 GMT\r\nContent-Length: 482\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"query\",\n  \"summary\": \"Expected property 'name' to be string but found: undefined\",\n  \"property\": \"/name\",\n  \"message\": \"Expected string\",\n  \"expected\": {\n    \"name\": \"\"\n  },\n  \"found\": {},\n  \"errors\": [\n    {\n      \"type\": 54,\n      \"schema\": {\n        \"type\": \"string\"\n      },\n      \"path\": \"/name\",\n      \"message\": \"Expected string\",\n      \"errors\": [],\n      \"summary\": \"Expected property 'name' to be string but found: undefined\"\n    }\n  ]\n}",
+      "error": ""
+    }
+  ]
+}

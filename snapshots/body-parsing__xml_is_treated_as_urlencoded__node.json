@@ -3,12 +3,12 @@
   "success": true,
   "runtimeLogs": [
     {
-      "type": "stderr",
-      "contents": "(node:27) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "type": "stdout",
+      "contents": "[runtime] Node v22.18.0"
     },
     {
-      "type": "stdout",
-      "contents": "[runtime] Node v22.16.0"
+      "type": "stderr",
+      "contents": "(node:27) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,21 +18,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:17:03.046Z",
+      "timestamp": "2025-08-05T16:01:11.013Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/xml\" \\\n  -d \"<hello>world</hello>\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 55\r\nDate: Sun, 01 Jun 2025 11:17:03 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { '<hello>world</hello>': '' }",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 55\r\nDate: Tue, 05 Aug 2025 16:01:11 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { '<hello>world</hello>': '' }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:03.105Z",
+      "timestamp": "2025-08-05T16:01:11.074Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:03.105Z",
+      "timestamp": "2025-08-05T16:01:11.074Z",
       "expectation": "'<hello>world</hello>': ''",
       "success": true
     }

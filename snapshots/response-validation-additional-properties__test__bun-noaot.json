@@ -1,0 +1,36 @@
+{
+  "taskId": "response-validation-additional-properties__test__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:00.843Z",
+      "command": "curl -s -D- \"http://localhost:3000/\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:00 GMT\r\nContent-Length: 13\r\n\r\n{\"a\":1,\"b\":2}",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:00.873Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:00.873Z",
+      "expectation": "b",
+      "success": true
+    }
+  ]
+}

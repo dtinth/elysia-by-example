@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Bun 1.2.15"
+      "contents": "[runtime] Bun 1.2.19"
     },
     {
       "type": "stdout",
@@ -14,21 +14,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:22:22.754Z",
+      "timestamp": "2025-08-05T16:01:07.978Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json \\\n  -F file=@tsconfig.json",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Sun, 01 Jun 2025 11:22:22 GMT\r\nContent-Length: 30\r\n\r\n{ file: [ Blob {}, Blob {} ] }",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:01:07 GMT\r\nContent-Length: 30\r\n\r\n{ file: [ Blob {}, Blob {} ] }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:22:22.839Z",
+      "timestamp": "2025-08-05T16:01:08.015Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:22:22.839Z",
+      "timestamp": "2025-08-05T16:01:08.015Z",
       "expectation": "file: [",
       "success": true
     }

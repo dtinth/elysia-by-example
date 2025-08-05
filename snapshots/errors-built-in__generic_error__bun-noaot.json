@@ -1,0 +1,24 @@
+{
+  "taskId": "errors-built-in__generic_error__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:18:59.580Z",
+      "command": "curl -s -D- http://localhost:3000/crash/error",
+      "success": true,
+      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:18:59 GMT\r\nContent-Length: 21\r\n\r\nSomething went wrong!",
+      "error": ""
+    }
+  ]
+}

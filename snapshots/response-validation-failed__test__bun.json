@@ -4,7 +4,7 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Bun 1.2.15"
+      "contents": "[runtime] Bun 1.2.19"
     },
     {
       "type": "stdout",
@@ -18,15 +18,15 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T06:24:12.094Z",
+      "timestamp": "2025-08-05T16:01:17.654Z",
       "command": "curl -s -D- \"http://localhost:3000/\"",
       "success": true,
-      "output": "HTTP/1.1 422 Unprocessable Entity\r\nContent-Type: application/json\r\nDate: Sun, 01 Jun 2025 06:24:11 GMT\r\nContent-Length: 425\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}",
+      "output": "HTTP/1.1 422 Unprocessable Entity\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:01:17 GMT\r\nContent-Length: 425\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"response\",\n  \"summary\": \"Expected number\",\n  \"property\": \"/a\",\n  \"message\": \"Expected number\",\n  \"expected\": {\n    \"a\": 0\n  },\n  \"found\": {\n    \"a\": \"x\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected number\",\n      \"type\": 41,\n      \"schema\": {\n        \"type\": \"number\"\n      },\n      \"path\": \"/a\",\n      \"value\": \"x\",\n      \"message\": \"Expected number\",\n      \"errors\": []\n    }\n  ]\n}",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T06:24:12.154Z",
+      "timestamp": "2025-08-05T16:01:17.729Z",
       "expectation": "422",
       "success": true
     }

@@ -1,0 +1,32 @@
+{
+  "taskId": "response-validation-failed__test__bun-noaot",
+  "success": false,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:28.143Z",
+      "command": "curl -s -D- \"http://localhost:3000/\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:27 GMT\r\nContent-Length: 9\r\n\r\n{\"a\":\"x\"}",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:28.167Z",
+      "expectation": "422",
+      "success": false,
+      "error": "Expected \"422\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:27 GMT\r\nContent-Length: 9\r\n\r\n{\"a\":\"x\"}\""
+    }
+  ],
+  "error": "Expected \"422\" but got: \"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nDate: Tue, 05 Aug 2025 16:19:27 GMT\r\nContent-Length: 9\r\n\r\n{\"a\":\"x\"}\""
+}

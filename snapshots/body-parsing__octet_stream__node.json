@@ -3,12 +3,12 @@
   "success": true,
   "runtimeLogs": [
     {
-      "type": "stderr",
-      "contents": "(node:26) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "type": "stdout",
+      "contents": "[runtime] Node v22.18.0"
     },
     {
-      "type": "stdout",
-      "contents": "[runtime] Node v22.16.0"
+      "type": "stderr",
+      "contents": "(node:28) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -18,21 +18,21 @@
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-06-01T11:17:01.890Z",
+      "timestamp": "2025-08-05T16:01:10.049Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/octet-stream\" \\\n  -d \"hello, world\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 90\r\nDate: Sun, 01 Jun 2025 11:17:01 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nArrayBuffer {\n  [Uint8Contents]: <68 65 6c 6c 6f 2c 20 77 6f 72 6c 64>,\n  byteLength: 12\n}",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 90\r\nDate: Tue, 05 Aug 2025 16:01:10 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\nArrayBuffer {\n  [Uint8Contents]: <68 65 6c 6c 6f 2c 20 77 6f 72 6c 64>,\n  byteLength: 12\n}",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:01.942Z",
+      "timestamp": "2025-08-05T16:01:10.094Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-06-01T11:17:01.942Z",
+      "timestamp": "2025-08-05T16:01:10.094Z",
       "expectation": "ArrayBuffer",
       "success": true
     }

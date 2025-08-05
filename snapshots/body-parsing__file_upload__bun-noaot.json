@@ -1,0 +1,36 @@
+{
+  "taskId": "body-parsing__file_upload__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:12.711Z",
+      "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -F file=@package.json",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:19:12 GMT\r\nContent-Length: 17\r\n\r\n{ file: Blob {} }",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:12.737Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:12.738Z",
+      "expectation": "file: ",
+      "success": true
+    }
+  ]
+}

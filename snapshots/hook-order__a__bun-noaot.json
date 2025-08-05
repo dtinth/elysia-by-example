@@ -1,0 +1,24 @@
+{
+  "taskId": "hook-order__a__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:43.350Z",
+      "command": "curl -s -D- \"http://localhost:3000/a\"",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:19:43 GMT\r\nContent-Length: 1\r\n\r\na",
+      "error": ""
+    }
+  ]
+}

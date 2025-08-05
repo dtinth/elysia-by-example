@@ -1,0 +1,24 @@
+{
+  "taskId": "errors-built-in__parse_error__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:18:55.142Z",
+      "command": "curl -s -D- http://localhost:3000/body -X POST -H \"Content-Type: application/json\" -d '{'",
+      "success": true,
+      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:18:55 GMT\r\nContent-Length: 20\r\n\r\nFailed to parse JSON",
+      "error": ""
+    }
+  ]
+}

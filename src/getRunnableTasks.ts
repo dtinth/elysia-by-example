@@ -19,7 +19,7 @@ export async function* getRunnableTasks(): AsyncIterable<RunnableTask> {
     const content = await readFile(example.examplePath, "utf8");
     const { tests } = getTests(content);
     for (const test of tests) {
-      const runtimes: Runtime[] = ["bun", "node"];
+      const runtimes: Runtime[] = ["bun", "bun-noaot", "node"];
       for (const runtime of runtimes) {
         const slugifiedExampleName = slugify(example.exampleName);
         const slugifiedTestName = slugify(test.testName);
