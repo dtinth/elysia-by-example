@@ -8,7 +8,7 @@
     },
     {
       "type": "stderr",
-      "contents": "(node:28) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      "contents": "(node:26) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
     },
     {
       "type": "stdout",
@@ -24,16 +24,28 @@
     },
     {
       "type": "stdout",
-      "contents": "[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }\n[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+      "contents": "[onTransform]     { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onBeforeHandle]  { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[handler]         { body, cookie, error, headers, path, qi, query, redirect, request, route, server, set, status, store, url }\n[onAfterHandle]   { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[mapResponse]     { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onAfterResponse] { body, cookie, error, headers, path, qi, query, redirect, request, response, route, server, set, status, store, url }"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-08-05T16:01:12.662Z",
+      "timestamp": "2025-08-05T16:19:20.041Z",
       "command": "curl -s -D- http://localhost:3000 -X POST -d x=1",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: application/json\r\nContent-Length: 11\r\nDate: Tue, 05 Aug 2025 16:01:12 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"ok\":true}",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: application/json\r\nContent-Length: 11\r\nDate: Tue, 05 Aug 2025 16:19:20 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"ok\":true}",
       "error": ""
     }
   ]

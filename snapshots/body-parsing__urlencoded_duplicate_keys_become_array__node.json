@@ -4,31 +4,35 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Node v22.18.0\n🦊 Elysia is running at :::3000"
+      "contents": "[runtime] Node v22.18.0"
     },
     {
       "type": "stderr",
       "contents": "(node:28) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "type": "stdout",
+      "contents": "🦊 Elysia is running at :::3000"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-08-05T16:01:06.590Z",
+      "timestamp": "2025-08-05T16:19:11.304Z",
       "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -d a=foo -d a=bar -d a=baz",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 55\r\nDate: Tue, 05 Aug 2025 16:01:06 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { a: [ 'foo', 'bar', 'baz' ] }",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 55\r\nDate: Tue, 05 Aug 2025 16:19:11 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n[Object: null prototype] { a: [ 'foo', 'bar', 'baz' ] }",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-08-05T16:01:06.636Z",
+      "timestamp": "2025-08-05T16:19:11.343Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-08-05T16:01:06.636Z",
+      "timestamp": "2025-08-05T16:19:11.343Z",
       "expectation": "a: [ 'foo', 'bar', 'baz' ]",
       "success": true
     }

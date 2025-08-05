@@ -1,0 +1,32 @@
+{
+  "taskId": "hook-log__422__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19\nStarted development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onRequest]       { error, path, qi, redirect, request, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onParse]         { contentType, error, path, qi, redirect, request, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onTransform]     { body, cookie, error, headers, params, path, qi, query, redirect, request, route, set, status, store }"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:20.280Z",
+      "command": "curl -s -D- \"http://localhost:3000?validate=fail\" -X POST -d x=1",
+      "success": true,
+      "output": "HTTP/1.1 422 Unprocessable Entity\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:19:20 GMT\r\nContent-Length: 460\r\n\r\n{\n  \"type\": \"validation\",\n  \"on\": \"query\",\n  \"summary\": \"Expected 'pass'\",\n  \"property\": \"/validate\",\n  \"message\": \"Expected 'pass'\",\n  \"expected\": {},\n  \"found\": {\n    \"validate\": \"fail\"\n  },\n  \"errors\": [\n    {\n      \"summary\": \"Expected 'pass'\",\n      \"type\": 32,\n      \"schema\": {\n        \"const\": \"pass\",\n        \"type\": \"string\"\n      },\n      \"path\": \"/validate\",\n      \"value\": \"fail\",\n      \"message\": \"Expected 'pass'\",\n      \"errors\": []\n    }\n  ]\n}",
+      "error": ""
+    }
+  ]
+}

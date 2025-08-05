@@ -16,20 +16,16 @@
     },
     {
       "type": "stdout",
-      "contents": "[interceptor] onBeforeHandle"
-    },
-    {
-      "type": "stdout",
-      "contents": "[local] onBeforeHandle"
+      "contents": "[interceptor] onBeforeHandle\n[local] onBeforeHandle"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-08-05T16:01:23.157Z",
+      "timestamp": "2025-08-05T16:19:35.799Z",
       "command": "curl -s -D- \"http://localhost:3000/b\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:01:22 GMT\r\nContent-Length: 1\r\n\r\nb",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:19:35 GMT\r\nContent-Length: 1\r\n\r\nb",
       "error": ""
     }
   ]

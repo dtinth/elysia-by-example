@@ -19,6 +19,8 @@ export class Runtime {
   private getCommand(): string {
     if (this.runtime === "bun") {
       return `bun src/runtimes/bun.ts ${this.examplePath}`;
+    } else if (this.runtime === "bun-noaot") {
+      return `env ELYSIA_DISABLE_AOT=1 bun src/runtimes/bun.ts ${this.examplePath}`;
     } else if (this.runtime === "node") {
       return `node --experimental-transform-types src/runtimes/node.ts ${this.examplePath}`;
     } else {

@@ -4,20 +4,24 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Node v22.18.0\n🦊 Elysia is running at :::3000"
+      "contents": "[runtime] Node v22.18.0"
     },
     {
       "type": "stderr",
       "contents": "(node:28) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "type": "stdout",
+      "contents": "🦊 Elysia is running at :::3000"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-08-05T16:01:19.322Z",
+      "timestamp": "2025-08-05T16:19:29.619Z",
       "command": "curl -s -D- \"http://localhost:3000/json\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: 11\r\nDate: Tue, 05 Aug 2025 16:01:19 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"ok\":true}",
+      "output": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: 11\r\nDate: Tue, 05 Aug 2025 16:19:29 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"ok\":true}",
       "error": ""
     }
   ]

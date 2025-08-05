@@ -1,0 +1,36 @@
+{
+  "taskId": "body-parsing__json__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:07.376Z",
+      "command": "curl -s -D- \"http://localhost:3000/parse\" -X POST \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"x\":1,\"a\":[2,3],\"o\":{\"b\":{\"j\":\"k\"}}}'",
+      "success": true,
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:19:07 GMT\r\nContent-Length: 43\r\n\r\n{ x: 1, a: [ 2, 3 ], o: { b: { j: 'k' } } }",
+      "error": ""
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:07.420Z",
+      "expectation": "200",
+      "success": true
+    },
+    {
+      "type": "expect",
+      "timestamp": "2025-08-05T16:19:07.420Z",
+      "expectation": "a: [ 2, 3 ]",
+      "success": true
+    }
+  ]
+}

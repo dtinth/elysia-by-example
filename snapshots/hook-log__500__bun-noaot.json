@@ -1,0 +1,44 @@
+{
+  "taskId": "hook-log__500__bun-noaot",
+  "success": true,
+  "runtimeLogs": [
+    {
+      "type": "stdout",
+      "contents": "[runtime] Bun 1.2.19"
+    },
+    {
+      "type": "stdout",
+      "contents": "Started development server: http://localhost:3000"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onRequest]       { error, path, qi, redirect, request, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onParse]         { contentType, error, path, qi, redirect, request, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onTransform]     { body, cookie, error, headers, params, path, qi, query, redirect, request, route, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[onBeforeHandle]  { body, cookie, error, headers, params, path, qi, query, redirect, request, route, set, status, store }"
+    },
+    {
+      "type": "stdout",
+      "contents": "[handler]         { body, cookie, error, headers, params, path, qi, query, redirect, request, route, set, status, store }"
+    }
+  ],
+  "testerLogs": [
+    {
+      "type": "command",
+      "timestamp": "2025-08-05T16:19:21.609Z",
+      "command": "curl -s -D- \"http://localhost:3000?crash=1\" -X POST -d x=1",
+      "success": true,
+      "output": "HTTP/1.1 500 Internal Server Error\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:19:21 GMT\r\nContent-Length: 5\r\n\r\ncrash",
+      "error": ""
+    }
+  ]
+}

@@ -5,6 +5,7 @@
  * Usage: bun src/runtimes/bun.ts <example-path>
  */
 
+import { Elysia } from "elysia";
 import { pathToFileURL } from "node:url";
 
 const examplePath = process.argv[2];
@@ -21,4 +22,6 @@ console.log("[runtime] Bun " + Bun.version);
 
 // Dynamically import and re-export the default export
 const exampleModule = await import(fileUrl);
-export default exampleModule.default;
+export default Bun.env["ELYSIA_DISABLE_AOT"] === "1"
+  ? new Elysia({ aot: false }).use(exampleModule.default)
+  : exampleModule.default;

@@ -1,7 +1,7 @@
 import type { Example } from "./getExamples";
 import type { Test } from "./getTests";
 
-export type Runtime = "node" | "bun";
+export type Runtime = "node" | "bun" | "bun-noaot";
 
 export interface RunnableTask {
   id: string;

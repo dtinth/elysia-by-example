@@ -4,31 +4,27 @@
   "runtimeLogs": [
     {
       "type": "stdout",
-      "contents": "[runtime] Bun 1.2.19"
-    },
-    {
-      "type": "stdout",
-      "contents": "Started development server: http://localhost:3000"
+      "contents": "[runtime] Bun 1.2.19\nStarted development server: http://localhost:3000"
     }
   ],
   "testerLogs": [
     {
       "type": "command",
-      "timestamp": "2025-08-05T16:01:19.222Z",
+      "timestamp": "2025-08-05T16:19:30.401Z",
       "command": "curl -s -D- \"http://localhost:3000\"",
       "success": true,
-      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:01:19 GMT\r\nContent-Length: 14\r\n\r\nit is working!",
+      "output": "HTTP/1.1 200 OK\r\ncontent-type: text/plain;charset=utf-8\r\nDate: Tue, 05 Aug 2025 16:19:30 GMT\r\nContent-Length: 14\r\n\r\nit is working!",
       "error": ""
     },
     {
       "type": "expect",
-      "timestamp": "2025-08-05T16:01:19.271Z",
+      "timestamp": "2025-08-05T16:19:30.441Z",
       "expectation": "200",
       "success": true
     },
     {
       "type": "expect",
-      "timestamp": "2025-08-05T16:01:19.271Z",
+      "timestamp": "2025-08-05T16:19:30.441Z",
       "expectation": "it is working!",
       "success": true
     }
